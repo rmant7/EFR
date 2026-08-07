@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="{{ lang }}" dir="{{ dir }}" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="{{ description }}">
+  <title>{{ title }}</title>
+  <link rel="canonical" href="https://emotions.help{{ page.url }}">
+  {% for altLang, altUrl in alternates %}
+  <link rel="alternate" hreflang="{{ altLang }}" href="https://emotions.help{{ altUrl }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="https://emotions.help/">
+
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="https://emotions.help{{ page.url }}">
+  <meta property="og:locale" content="{{ ogLocale }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ i18n[lang].common.skip }}</a>
+
+  <header class="app-shell">
+    <div class="topbar">
+      <a class="brand" href="{{ site.homeUrl[lang] }}">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg>
+        <span>EFR</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#about">{{ i18n[lang].nav.about }}</a>
+        <a href="#roman">{{ i18n[lang].nav.roman }}</a>
+        <a href="#testimonials">{{ i18n[lang].nav.testimonials }}</a>
+        <a href="#articles">{{ i18n[lang].nav.articles }}</a>
+        <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+      </nav>
+      <div class="preferences">
+        {% for altLang, altUrl in alternates %}
+        <a class="compact-select lang-link{% if altLang == lang %} current{% endif %}" href="{{ altUrl }}" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">{{ altLang | upper }}</a>
+        {% endfor %}
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav id="mobileNav" class="mobile-nav app-shell" aria-label="Mobile">
+    <a href="#about">{{ i18n[lang].nav.about }}</a>
+    <a href="#roman">{{ i18n[lang].nav.roman }}</a>
+    <a href="#testimonials">{{ i18n[lang].nav.testimonials }}</a>
+    <a href="#articles">{{ i18n[lang].nav.articles }}</a>
+    <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+  </nav>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="app-shell footer-grid">
+      <p style="max-width:520px;">{{ i18n[lang].footer.disclaimer }}</p>
+      <div class="footer-links">
+        <a href="mailto:roman.mantelmakher@gmail.com">roman.mantelmakher@gmail.com</a>
+        <a href="https://linkedin.com/in/roman-mantelmakher/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg>
+  </button>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111299584', 'ym');
+      ym(111299584, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111299584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <script>
+    (function () {
+      "use strict";
+      const themeKey = "efr_home_theme";
+      const theme = localStorage.getItem(themeKey) || "system";
+      document.documentElement.dataset.theme = theme;
+
+      const navToggle = document.getElementById("navToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      navToggle.addEventListener("click", () => {
+        const open = mobileNav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }));
+
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 480);
+      }, { passive: true });
+      backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    })();
+  </script>
+</body>
+</html>

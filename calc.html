@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Free Emotional Cost Calculator by EFR — estimate how much recurring emotional patterns cost your business each year. Private, runs entirely in your browser.">
+  <title>Emotional Cost Calculator | EFR — Roman Mantelmakher</title>
+  <link rel="canonical" href="https://emotions.help/calc.html">
+  <style>
+    :root {
+      --paper: #f3f0e9;
+      --surface: rgba(255, 253, 248, .88);
+      --surface-solid: #fffdf8;
+      --surface-2: #ebe7de;
+      --ink: #17201d;
+      --muted: #66706b;
+      --line: rgba(23, 32, 29, .13);
+      --line-strong: rgba(23, 32, 29, .24);
+      --accent: #176b57;
+      --accent-2: #b56d3b;
+      --accent-soft: rgba(23, 107, 87, .11);
+      --danger: #a34236;
+      --shadow: 0 22px 70px rgba(42, 45, 39, .10), 0 2px 10px rgba(42, 45, 39, .05);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --focus: 0 0 0 3px rgba(23, 107, 87, .28);
+      --display: Georgia, "Times New Roman", serif;
+      --body: "Aptos", "Segoe UI", sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --paper: #111714;
+      --surface: rgba(25, 33, 29, .90);
+      --surface-solid: #19211d;
+      --surface-2: #202a25;
+      --ink: #edf1eb;
+      --muted: #a8b2ac;
+      --line: rgba(237, 241, 235, .12);
+      --line-strong: rgba(237, 241, 235, .23);
+      --accent: #69bfa6;
+      --accent-2: #d59567;
+      --accent-soft: rgba(105, 191, 166, .12);
+      --danger: #ec8c7d;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .28), 0 2px 12px rgba(0, 0, 0, .22);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --paper: #111714;
+        --surface: rgba(25, 33, 29, .90);
+        --surface-solid: #19211d;
+        --surface-2: #202a25;
+        --ink: #edf1eb;
+        --muted: #a8b2ac;
+        --line: rgba(237, 241, 235, .12);
+        --line-strong: rgba(237, 241, 235, .23);
+        --accent: #69bfa6;
+        --accent-2: #d59567;
+        --accent-soft: rgba(105, 191, 166, .12);
+        --danger: #ec8c7d;
+        --shadow: 0 24px 80px rgba(0, 0, 0, .28), 0 2px 12px rgba(0, 0, 0, .22);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 3%, rgba(181, 109, 59, .13), transparent 26rem),
+        radial-gradient(circle at 92% 12%, rgba(23, 107, 87, .14), transparent 30rem),
+        var(--paper);
+      font-family: var(--body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+    }
+    button, input, select { font: inherit; color: inherit; }
+    button, select { cursor: pointer; }
+    button { border: 0; }
+    a { color: inherit; }
+    :focus-visible { outline: none; box-shadow: var(--focus); }
+    .sr-only {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0);
+      white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: fixed; inset-inline-start: 16px; top: -60px; z-index: 100;
+      padding: 10px 14px; border-radius: 10px;
+      background: var(--ink); color: var(--paper);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(76px); }
+    .app-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 82px; gap: 18px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: -.02em; }
+    .brand-mark { width: 28px; height: 28px; }
+    .brand-mark path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+    .preferences { display: flex; gap: 8px; }
+    nav.site-nav { display: flex; gap: 24px; }
+    nav.site-nav a { font-size: .92rem; font-weight: 650; color: var(--muted); text-decoration: none; }
+    nav.site-nav a:hover { color: var(--ink); }
+    nav.site-nav a.current, nav.site-nav span.current { color: var(--accent); font-weight: 700; }
+    @media (max-width: 860px) { nav.site-nav { display: none; } }
+    .nav-toggle { display: none; width: 40px; height: 40px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); align-items: center; justify-content: center; }
+    .nav-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 8px 0 18px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { padding: 13px 16px; border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 650; }
+    .mobile-nav a:active { background: var(--surface-2); }
+    @media (max-width: 860px) { .nav-toggle { display: flex; } }
+    .compact-select {
+      min-height: 40px; padding: 0 34px 0 12px;
+      border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); color: var(--ink);
+      backdrop-filter: blur(16px);
+    }
+    [dir="rtl"] .compact-select { padding: 0 12px 0 34px; }
+    main { min-height: calc(100vh - 158px); }
+    .view { display: none; animation: reveal .48s cubic-bezier(.2,.75,.25,1) both; }
+    .view.active { display: block; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+    .landing {
+      display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(330px, .82fr);
+      align-items: center; gap: clamp(50px, 8vw, 112px);
+      min-height: calc(100vh - 170px); padding: 56px 0 96px;
+    }
+    .eyebrow { margin: 0 0 20px; color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero-title {
+      max-width: 780px; margin-bottom: 24px;
+      font-family: var(--display); font-size: clamp(3.1rem, 7vw, 6.8rem);
+      font-weight: 400; line-height: .92; letter-spacing: -.065em;
+    }
+    [lang="he"] .hero-title { letter-spacing: -.035em; }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-copy { max-width: 650px; margin-bottom: 30px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.26rem); }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
+    .time-note { color: var(--muted); font-size: .9rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 48px; padding: 0 20px; border-radius: 14px;
+      background: var(--ink); color: var(--paper); font-weight: 750;
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0); }
+    .button.secondary { color: var(--ink); background: var(--surface-2); }
+    .button.ghost { color: var(--ink); background: transparent; border: 1px solid var(--line); }
+    .button.accent { background: var(--accent); color: #fff; }
+    .button[disabled] { opacity: .42; cursor: not-allowed; transform: none; }
+    .button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    [dir="rtl"] .direction-icon { transform: scaleX(-1); }
+    .hero-object {
+      position: relative; min-height: 520px;
+      display: grid; place-items: center;
+    }
+    .orbit { position: absolute; border: 1px solid var(--line); border-radius: 50%; }
+    .orbit.one { width: 460px; height: 460px; }
+    .orbit.two { width: 330px; height: 330px; transform: rotate(24deg); border-color: var(--line-strong); }
+    .orbit.three { width: 190px; height: 190px; border-style: dashed; }
+    .cost-card {
+      position: relative; z-index: 2; width: min(330px, 82%); padding: 28px;
+      border: 1px solid var(--line); border-radius: 26px;
+      background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(22px);
+      transform: rotate(-3deg);
+    }
+    [dir="rtl"] .cost-card { transform: rotate(3deg); }
+    .cost-card-label { color: var(--muted); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .cost-card-value { margin: 20px 0 14px; font-family: var(--display); font-size: 3.25rem; letter-spacing: -.06em; }
+    .mini-bars { display: grid; gap: 9px; }
+    .mini-bar { height: 7px; overflow: hidden; border-radius: 999px; background: var(--surface-2); }
+    .mini-bar span { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+    .mini-bar:nth-child(2) span { background: var(--accent-2); }
+    .floating-note {
+      position: absolute; z-index: 3; inset-inline-end: 0; bottom: 74px;
+      width: 190px; padding: 14px 16px; border: 1px solid var(--line);
+      border-radius: 15px; background: var(--surface-solid); box-shadow: var(--shadow);
+      color: var(--muted); font-size: .82rem;
+    }
+    .privacy-banner {
+      margin: 18px 0; padding: 16px 20px; border-radius: 14px;
+      background: var(--accent-soft); border: 1px solid var(--accent);
+      color: var(--ink); font-size: .92rem; font-weight: 650; text-align: center;
+    }
+    .landing-privacy { max-width: 650px; }
+
+    .assessment-wrap { padding: 24px 0 88px; }
+    .assessment-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; margin-bottom: 24px; }
+    .step-kicker { color: var(--accent); font-size: .79rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .section-title { margin: 7px 0 8px; font-family: var(--display); font-size: clamp(2.1rem, 5vw, 4.2rem); font-weight: 400; letter-spacing: -.045em; }
+    .section-description { max-width: 720px; margin: 0; color: var(--muted); }
+    .progress-meta { color: var(--muted); font-size: .84rem; text-align: end; white-space: nowrap; }
+    .progress-track { height: 4px; margin-bottom: 28px; border-radius: 999px; overflow: hidden; background: var(--surface-2); }
+    .progress-fill { height: 100%; background: var(--accent); transform-origin: left; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+    [dir="rtl"] .progress-fill { transform-origin: right; }
+    .assessment-card {
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { min-width: 0; padding: 25px 28px; border-bottom: 1px solid var(--line); }
+    .field:nth-child(odd) { border-inline-end: 1px solid var(--line); }
+    .field-label { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 7px; font-weight: 750; }
+    .field-help { min-height: 1.25em; margin: 0 0 15px; color: var(--muted); font-size: .84rem; }
+    .input, .select {
+      width: 100%; min-height: 49px; padding: 0 14px;
+      border: 1px solid var(--line-strong); border-radius: 12px;
+      background: var(--surface-solid); color: var(--ink);
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .input:hover, .select:hover { border-color: var(--accent); }
+    .input[aria-invalid="true"], .select[aria-invalid="true"] { border-color: var(--danger); }
+    .error { margin: 8px 0 0; color: var(--danger); font-size: .8rem; }
+    .unit-input { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+    .unit-input .input { grid-area: 1 / 1; padding-inline-end: 70px; }
+    .unit { grid-area: 1 / 1; justify-self: end; padding-inline-end: 14px; color: var(--muted); font-size: .82rem; pointer-events: none; }
+    [dir="rtl"] .unit-input .input { padding-inline: 70px 14px; }
+    [dir="rtl"] .unit { justify-self: start; padding-inline: 14px 0; }
+    .range-row { display: grid; grid-template-columns: 1fr 46px; align-items: center; gap: 16px; }
+    input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .range-value { display: grid; place-items: center; width: 46px; height: 38px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-weight: 800; }
+    .range-legend { display: flex; justify-content: space-between; margin-top: 7px; color: var(--muted); font-size: .72rem; }
+
+    .pattern-list { display: grid; }
+    .pattern-card { padding: 25px 28px; border-bottom: 1px solid var(--line); }
+    .pattern-card:last-child { border-bottom: 0; }
+    .pattern-header { display: grid; grid-template-columns: minmax(230px, .8fr) 1.2fr; gap: 35px; margin-bottom: 20px; }
+    .pattern-name { margin-bottom: 7px; font-family: var(--display); font-size: 1.35rem; font-weight: 400; letter-spacing: -.02em; }
+    .pattern-description, .pattern-example { margin: 0; color: var(--muted); font-size: .85rem; }
+    .pattern-example { padding-inline-start: 18px; border-inline-start: 2px solid var(--accent-2); }
+    .pattern-ranges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .mini-range-label { display: flex; justify-content: space-between; margin-bottom: 7px; font-size: .78rem; font-weight: 750; }
+    .mini-range-value { color: var(--accent); }
+    .mini-range input { display: block; }
+    .pattern-role-note { padding: 16px 28px; color: var(--muted); font-size: .82rem; border-bottom: 1px solid var(--line); }
+    .pattern-more { border-top: 1px solid var(--line); }
+    .pattern-more > summary { padding: 18px 28px; cursor: pointer; font-weight: 750; font-size: .88rem; color: var(--accent); list-style: none; display: flex; align-items: center; gap: 8px; }
+    .pattern-more > summary::-webkit-details-marker { display: none; }
+    .pattern-more > summary::before { content: "+"; font-size: 1.1rem; line-height: 1; }
+    .pattern-more[open] > summary::before { content: "−"; }
+
+    .wizard-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 22px 26px; border-top: 1px solid var(--line); }
+    .action-group { display: flex; gap: 10px; }
+    .save-status { color: var(--muted); font-size: .78rem; }
+    .empty-section { padding: 55px 28px; text-align: center; color: var(--muted); }
+
+    .report-page { padding: 24px 0 90px; }
+    .report-hero {
+      position: relative; overflow: hidden;
+      padding: clamp(28px, 6vw, 70px); border: 1px solid var(--line); border-radius: 30px;
+      background: var(--surface); box-shadow: var(--shadow);
+    }
+    .report-hero::after {
+      content: ""; position: absolute; width: 380px; height: 380px;
+      inset-inline-end: -170px; top: -190px; border: 1px solid var(--line-strong); border-radius: 50%;
+      box-shadow: 0 0 0 55px var(--accent-soft), 0 0 0 110px rgba(181,109,59,.05);
+    }
+    .report-overline { position: relative; z-index: 1; color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .report-headline { position: relative; z-index: 1; max-width: 800px; margin: 14px 0 8px; font-family: var(--display); font-size: clamp(2.3rem, 6vw, 5.3rem); font-weight: 400; line-height: 1; letter-spacing: -.055em; }
+    .report-amount { position: relative; z-index: 1; margin: 28px 0 8px; color: var(--accent); font-family: var(--display); font-size: clamp(3.3rem, 9vw, 7.4rem); line-height: .9; letter-spacing: -.065em; }
+    .report-range { position: relative; z-index: 1; color: var(--muted); }
+    .method-note { position: relative; z-index: 1; max-width: 660px; margin: 28px 0 0; color: var(--muted); font-size: .86rem; }
+    .report-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+    .report-card { grid-column: span 6; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 8px 30px rgba(42,45,39,.05); }
+    .report-card.wide { grid-column: 1 / -1; }
+    .report-card.third { grid-column: span 4; }
+    .report-card h3 { margin-bottom: 18px; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; }
+    .metric-big { font-family: var(--display); font-size: 3rem; letter-spacing: -.05em; }
+    .metric-caption { color: var(--muted); font-size: .84rem; }
+    .chart-box { min-height: 280px; display: grid; place-items: center; }
+    .chart-box svg { display: block; width: 100%; max-width: 520px; height: auto; overflow: visible; }
+    .chart-grid { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+    .chart-fill { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+    .chart-label { fill: var(--muted); font: 11px var(--body); }
+    .bar-track { fill: var(--surface-2); }
+    .bar-fill { fill: var(--accent); }
+    .bar-fill.alt { fill: var(--accent-2); }
+    .bar-label, .bar-value { fill: var(--ink); font: 12px var(--body); }
+    .bar-value { fill: var(--muted); }
+    .pattern-ranking { display: grid; gap: 13px; }
+    .rank-item { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+    .rank-number { color: var(--muted); font-family: var(--display); }
+    .rank-track { height: 6px; margin-top: 5px; overflow: hidden; border-radius: 999px; background: var(--surface-2); }
+    .rank-track span { display: block; height: 100%; border-radius: inherit; background: var(--accent-2); }
+    .rank-score { color: var(--muted); font-size: .8rem; }
+    .consequence-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .consequence-list li { padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .consequence-list li:last-child { border-bottom: 0; }
+    .roi-panel { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: center; }
+    .roi-value { color: var(--accent); font-family: var(--display); font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: -.06em; }
+    .cta-panel {
+      margin-top: 18px; padding: clamp(34px, 7vw, 74px);
+      border-radius: 30px; background: var(--ink); color: var(--paper);
+      display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 42px;
+    }
+    .cta-panel h2 { max-width: 760px; margin-bottom: 18px; font-family: var(--display); font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 400; line-height: 1; letter-spacing: -.055em; }
+    .cta-panel p { max-width: 690px; margin: 0; opacity: .72; }
+    .cta-actions { display: grid; gap: 10px; }
+    .cta-panel .button.accent { background: var(--paper); color: var(--ink); }
+    .cta-panel .button.ghost { border-color: rgba(255,255,255,.25); color: var(--paper); }
+    .booking-note { margin-top: 9px; text-align: center; opacity: .62; font-size: .75rem; }
+    .footer { display: flex; justify-content: space-between; gap: 22px; padding: 28px 0 34px; color: var(--muted); font-size: .76rem; }
+    .no-print {}
+
+    @media (max-width: 900px) {
+      .landing { grid-template-columns: 1fr; padding-top: 72px; }
+      .hero-object { min-height: 420px; }
+      .orbit.one { width: 390px; height: 390px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field:nth-child(odd) { border-inline-end: 0; }
+      .pattern-header { grid-template-columns: 1fr; gap: 12px; }
+      .pattern-ranges { grid-template-columns: 1fr; }
+      .report-card, .report-card.third { grid-column: 1 / -1; }
+      .roi-panel, .cta-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .app-shell { width: min(100% - 22px, 1180px); }
+      .topbar { min-height: 68px; }
+      .brand span { display: none; }
+      .compact-select { max-width: 110px; min-height: 38px; font-size: .82rem; }
+      .landing { padding: 46px 4px 76px; }
+      .hero-title { font-size: clamp(3.1rem, 16vw, 5rem); }
+      .hero-object { min-height: 355px; overflow: hidden; }
+      .orbit.one { width: 340px; height: 340px; }
+      .orbit.two { width: 250px; height: 250px; }
+      .floating-note { inset-inline-end: 4px; bottom: 28px; }
+      .assessment-head { grid-template-columns: 1fr; gap: 12px; }
+      .progress-meta { text-align: start; }
+      .field, .pattern-card { padding: 22px 18px; }
+      .wizard-actions { align-items: stretch; flex-direction: column-reverse; padding: 18px; }
+      .action-group { display: grid; grid-template-columns: 1fr 1fr; }
+      .save-status { text-align: center; }
+      .report-hero, .report-card { padding: 24px 20px; }
+      .report-grid { gap: 12px; }
+      .chart-box { min-height: 230px; }
+      .cta-panel { padding: 36px 22px; }
+      .footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    @page { size: A4; margin: 13mm; }
+    @media print {
+      :root, [data-theme="dark"], [data-theme="system"] {
+        --paper: #fff; --surface: #fff; --surface-solid: #fff; --surface-2: #f1f1ee;
+        --ink: #17201d; --muted: #5c655f; --line: rgba(23,32,29,.15); --accent: #176b57; --accent-2: #9e5f35;
+      }
+      body { background: #fff; font-size: 10pt; }
+      body::before, .topbar, .no-print, .landing, #assessmentView, .cta-panel, .footer { display: none !important; }
+      .app-shell { width: 100%; }
+      main { min-height: 0; }
+      #reportView { display: block !important; padding: 0; }
+      .report-page { padding: 0; }
+      .report-hero, .report-card { box-shadow: none; break-inside: avoid; }
+      .report-hero { padding: 11mm; border-radius: 5mm; }
+      .report-headline { font-size: 28pt; }
+      .report-amount { font-size: 48pt; }
+      .report-grid { display: block; }
+      .report-card { margin-top: 5mm; padding: 7mm; border-radius: 4mm; page-break-inside: avoid; }
+      .chart-box { min-height: 0; }
+      .chart-box svg { max-height: 82mm; }
+      .roi-panel { grid-template-columns: .8fr 1.2fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip"></a>
+  <div class="app-shell">
+    <header class="topbar no-print">
+      <div class="brand" data-aria-i18n="common.brand">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16c4.5-9 8 9 12 0s7.5 9 12 0M4 9c4.5-9 8 9 12 0s7.5 9 12 0M4 23c4.5-9 8 9 12 0s7.5 9 12 0"/></svg>
+        <span data-i18n="common.brand"></span>
+      </div>
+      <nav class="site-nav" aria-label="Site">
+        <a href="index.html" data-i18n="common.navHome">Home</a>
+        <a href="index.html#roman" data-i18n="common.navAbout">About</a>
+        <a href="index.html#testimonials" data-i18n="common.navTestimonials">Testimonials</a>
+        <a href="index.html#articles" data-i18n="common.navArticles">Articles</a>
+        <span class="current" data-i18n="common.navCalculator">Calculator</span>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="preferences">
+        <label class="sr-only" for="languageSelect" data-i18n="common.language"></label>
+        <select id="languageSelect" class="compact-select" data-aria-i18n="common.language"></select>
+        <label class="sr-only" for="themeSelect" data-i18n="common.theme"></label>
+        <select id="themeSelect" class="compact-select" data-aria-i18n="common.theme"></select>
+      </div>
+    </header>
+
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile">
+      <a href="index.html" data-i18n="common.navHome">Home</a>
+      <a href="index.html#roman" data-i18n="common.navAbout">About</a>
+      <a href="index.html#testimonials" data-i18n="common.navTestimonials">Testimonials</a>
+      <a href="index.html#articles" data-i18n="common.navArticles">Articles</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+      <section id="landingView" class="view active" aria-labelledby="heroTitle">
+        <div class="landing">
+          <div>
+            <p class="eyebrow" data-i18n="landing.eyebrow"></p>
+            <h1 class="hero-title" id="heroTitle" data-i18n-html="landing.title"></h1>
+            <p class="hero-copy" data-i18n="landing.subtitle"></p>
+            <p class="method-note" data-i18n="landing.disclaimer"></p>
+            <div class="hero-actions">
+              <button class="button accent" id="startButton" type="button">
+                <span data-i18n="landing.start"></span>
+                <svg class="direction-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+              </button>
+              <span class="time-note" data-i18n="landing.time"></span>
+            </div>
+          </div>
+          <div class="hero-object" aria-hidden="true">
+            <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
+            <div class="cost-card">
+              <div class="cost-card-label" data-i18n="landing.previewLabel"></div>
+              <div class="cost-card-value">—</div>
+              <div class="mini-bars"><div class="mini-bar"><span style="width:78%"></span></div><div class="mini-bar"><span style="width:54%"></span></div><div class="mini-bar"><span style="width:66%"></span></div></div>
+            </div>
+            <div class="privacy-banner landing-privacy" data-i18n="common.privacyBanner"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="assessmentView" class="view assessment-wrap" aria-labelledby="sectionTitle">
+        <div class="assessment-head">
+          <div>
+            <div class="step-kicker" id="stepKicker"></div>
+            <h2 class="section-title" id="sectionTitle"></h2>
+            <p class="section-description" id="sectionDescription"></p>
+          </div>
+          <div class="progress-meta" id="progressMeta" aria-live="polite"></div>
+        </div>
+        <div class="progress-track" role="progressbar" id="progressTrack" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="progressFill"></div></div>
+        <p class="privacy-banner" data-i18n="common.privacyBanner"></p>
+        <form id="assessmentForm" class="assessment-card" novalidate>
+          <div id="sectionContent"></div>
+          <div class="wizard-actions">
+            <div class="save-status" id="saveStatus" aria-live="polite"></div>
+            <div class="action-group">
+              <button class="button secondary" id="backButton" type="button" data-i18n="common.back"></button>
+              <button class="button accent" id="nextButton" type="submit"></button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section id="reportView" class="view report-page" aria-labelledby="reportHeadline">
+        <div id="reportContent"></div>
+      </section>
+    </main>
+
+    <footer class="footer no-print">
+      <span data-i18n="footer.private"></span>
+      <span data-i18n="footer.disclaimer"></span>
+    </footer>
+  </div>
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+
+  <script>
+    const i18n = {
+      en: {
+        common: { brand: "Pattern Cost", navHome: "Home", navAbout: "About", navTestimonials: "Testimonials", navArticles: "Articles", navCalculator: "Calculator", skip: "Skip to main content", language: "Language", theme: "Theme", back: "Back", next: "Next", finish: "Finish assessment", saved: "Answers saved", required: "Please complete this field.", low: "Low", high: "High", notApplicable: "Not applicable", score: "score", of: "of", showMorePatterns: "Show other patterns", roleFilterNote: "Showing the patterns most often relevant to this role. You can open the rest below.", roleFilterNoteGeneric: "Showing the questions most often relevant to this role. You can open the rest below.", showMoreQuestions: "Show other questions", privacyBanner: "Everything stays on this device. No answers, income figures, or reports are ever sent, saved, or transmitted anywhere." },
+        languages: { en: "English", he: "עברית", ru: "Русский" },
+        themes: { light: "Light", dark: "Dark", system: "System" },
+        landing: { eyebrow: "Business behavior assessment", title: "See what invisible patterns <em>cost the business.</em>", subtitle: "A private, behavior-based estimate of how emotional friction affects time, decisions, leadership, and opportunity. Not a diagnosis. Not false precision.", start: "Start assessment", time: "About 9–12 minutes", previewLabel: "Estimated annual impact", privacy: "Your answers stay in this browser. Nothing is transmitted.", disclaimer: "The purpose of this assessment is awareness that emotional patterns have a business cost — not a precise accounting of losses. After you finish, you'll see a report and can optionally book a short conversation to explore one pattern live." },
+        sections: {
+          context: { title: "Professional context", description: "Establish the scale of your work. These inputs anchor the estimate without asking you to guess losses." },
+          patterns: { title: "Emotional patterns", description: "Rate what you can observe in your behavior. Use the examples as practical reference points, not labels." },
+          time: { title: "Time loss", description: "Estimate recurring weekly time absorbed by friction rather than productive work." },
+          decisions: { title: "Decision quality", description: "Consider consequential choices, not routine administration." },
+          leadership: { title: "Leadership drag", description: "This section appears because you indicated that you lead at least one person." },
+          opportunities: { title: "Lost opportunities", description: "Rate how often hesitation, avoidance, or emotional reactivity reduces follow-through." }
+        },
+        fields: {
+          role: { label: "Primary role", help: "Choose the role closest to your current responsibility. This tailors which patterns are shown first — you can always reveal the rest." }, years: { label: "Years in this level of responsibility", help: "Experience in comparable decision-making roles." }, income: { label: "Annual personal income", help: "Used only as one reference for the value of your working time." }, currency: { label: "Report currency", help: "All financial estimates use this currency." }, companySize: { label: "Company size", help: "Approximate number of people in the organization." }, teamSize: { label: "People you directly or indirectly lead", help: "Enter zero if you do not lead a team." }, revenue: { label: "Annual revenue you influence", help: "Revenue meaningfully affected by your decisions, relationships, or output." }, hourly: { label: "Estimated value of one focused hour", help: "Your best practical estimate, including leverage—not only salary." }, decisionsMonth: { label: "Important decisions per month", help: "Decisions with meaningful financial, people, or strategic consequences." }, decisionValue: { label: "Average value influenced by an important decision", help: "Use the value at stake, not the full company value." },
+          interference: { label: "How often do emotions interfere with important decisions?", help: "Examples include delaying, narrowing options, avoiding conversations, or reacting too quickly." }, qualityReduction: { label: "When interference occurs, how much does decision quality decline?", help: "Estimate the reduction in clarity, timing, or execution." }
+        },
+        roles: { founder: "Founder / owner", executive: "Executive / C-level", manager: "People manager", sales: "Sales / business development", engineering: "Engineering / product", operations: "Operations / finance", creative: "Creative / marketing", professional: "Independent professional / consultant", other: "Other" },
+        units: { years: "years", people: "people", perYear: "per year", perHour: "per hour", perMonth: "per month", hoursWeek: "hours / week", percent: "%" },
+        scales: { never: "Never", rarely: "Rarely", sometimes: "Sometimes", often: "Often", veryOften: "Very often", none: "None", moderate: "Moderate", severe: "Severe", uncertain: "Uncertain", confident: "Confident" },
+        timeItems: {
+          overthinking: { label: "Overthinking", help: "Replaying options after enough information is available." }, stressRecovery: { label: "Stress recovery", help: "Time needed to return to useful focus after pressure or activation." }, meetings: { label: "Avoidable meeting time", help: "Meetings extended by unclear ownership, approval, or tension." }, waiting: { label: "Waiting and delayed action", help: "Time lost while seeking certainty, permission, or the perfect moment." }, rework: { label: "Rework", help: "Redoing work because standards, communication, or decisions kept shifting." }, conflict: { label: "Conflict management", help: "Time spent containing unresolved tension rather than resolving it." }, secondGuessing: { label: "Second-guessing", help: "Reviewing completed work or decisions without new evidence." }
+        },
+        leadershipItems: {
+          delegation: { label: "Difficulty delegating", help: "Holding work because explaining or trusting feels costly." }, hiring: { label: "Delayed or compromised hiring", help: "Postponing a decision or choosing comfort over fit." }, firing: { label: "Delayed performance action", help: "Keeping damaging situations unresolved longer than necessary." }, conflict: { label: "Avoided team conflict", help: "Allowing tension or ambiguity to continue." }, approvals: { label: "Approval bottlenecks", help: "Requiring decisions to pass through you unnecessarily." }, micromanagement: { label: "Micromanagement", help: "Excessive checking, correction, or control after delegation." }
+        },
+        opportunityItems: {
+          sales: { label: "Sales opportunities", help: "Prospects not pursued, asked for, or closed decisively." }, clients: { label: "Client growth", help: "Expansion, pricing, or boundary conversations avoided." }, investors: { label: "Investor conversations", help: "Outreach or negotiation reduced by fear, image, or uncertainty." }, partnerships: { label: "Partnerships", help: "Potential alliances not initiated or developed." }, hiring: { label: "High-value hiring", help: "Strong candidates missed through delay or control." }, promotions: { label: "Promotion or visibility", help: "Responsibility, recognition, or positioning not pursued." }
+        },
+        patternScale: { frequency: "Frequency", impact: "Business impact", confidence: "Confidence in rating" },
+        patterns: {
+          approval: { name: "Need for approval", desc: "External agreement becomes a condition for acting clearly.", ex: "Rewriting a proposal repeatedly after it is already strong." },
+          conflictAvoidance: { name: "Conflict avoidance", desc: "Necessary tension is postponed to preserve short-term comfort.", ex: "Leaving ownership or performance issues unspoken." },
+          rejection: { name: "Fear of rejection", desc: "Possible refusal reduces outreach, negotiation, or direct asks.", ex: "Not contacting a valuable prospect without a warm introduction." },
+          failure: { name: "Fear of failure", desc: "Protecting against a poor outcome limits speed or ambition.", ex: "Keeping a project in preparation after evidence supports launch." },
+          certainty: { name: "Need for certainty", desc: "Action waits for information that the situation cannot provide.", ex: "Requesting another analysis when the remaining uncertainty is irreducible." },
+          control: { name: "Need for control", desc: "Variability feels more costly than personal involvement.", ex: "Keeping decisions centralized despite capable ownership." },
+          micromanagement: { name: "Micromanagement", desc: "Delegated work remains under excessive observation or correction.", ex: "Reviewing every message or minor implementation choice." },
+          perfectionism: { name: "Perfectionism", desc: "Marginal improvements consume disproportionate time and attention.", ex: "Polishing internal work beyond what its business value requires." },
+          overthinking: { name: "Overthinking", desc: "Analysis continues after it stops improving the decision.", ex: "Reopening settled options without meaningful new evidence." },
+          rumination: { name: "Rumination", desc: "Past interactions keep occupying attention after action is possible.", ex: "Replaying a difficult meeting for the rest of the day." },
+          stress: { name: "Stress", desc: "Persistent activation reduces focus, range, and recovery.", ex: "Switching tasks repeatedly while urgent thoughts compete for attention." },
+          anxiety: { name: "Anxiety", desc: "Anticipated threats distort timing or perceived risk.", ex: "Treating an uncertain outcome as if it were already negative." },
+          impatience: { name: "Impatience", desc: "Pressure for speed reduces listening, sequencing, or quality.", ex: "Interrupting discovery to push prematurely toward execution." },
+          anger: { name: "Anger", desc: "Frustration narrows communication and decision range.", ex: "Sending a response before the underlying issue is clear." },
+          defensiveness: { name: "Defensiveness", desc: "Protecting identity competes with receiving useful information.", ex: "Explaining intent before understanding the impact of feedback." },
+          resentment: { name: "Resentment", desc: "Unaddressed expectations reduce collaboration and initiative.", ex: "Withholding support after repeatedly agreeing to work you did not want." },
+          guilt: { name: "Guilt", desc: "Responsibility expands beyond what is accurate or useful.", ex: "Avoiding a necessary boundary because someone may be disappointed." },
+          shame: { name: "Shame", desc: "A mistake becomes evidence about personal worth rather than data.", ex: "Hiding a problem that would be cheaper to surface early." },
+          selfDoubt: { name: "Self-doubt", desc: "Capability is discounted despite relevant evidence.", ex: "Deferring a decision you are qualified to make." },
+          comparison: { name: "Comparison", desc: "Other people’s progress disrupts priorities or judgment.", ex: "Changing strategy after seeing a competitor announcement." },
+          scarcity: { name: "Scarcity mindset", desc: "Perceived shortage favors protection over strategic investment.", ex: "Rejecting a high-return expense because spending itself feels unsafe." },
+          attachment: { name: "Attachment", desc: "A preferred outcome becomes difficult to reassess objectively.", ex: "Continuing a project because of identity or sunk effort." },
+          impress: { name: "Need to impress", desc: "Signaling competence competes with clarity or usefulness.", ex: "Adding complexity to appear sophisticated." },
+          right: { name: "Need to be right", desc: "Winning the interpretation becomes more important than updating it.", ex: "Continuing an argument after the operational answer is clear." },
+          peoplePleasing: { name: "People pleasing", desc: "Other people’s comfort overrides capacity, priorities, or truth.", ex: "Accepting work that displaces a more valuable commitment." }
+        },
+        report: {
+          overline: "Your assessment", headline: "Estimated annual emotional cost", rangePrefix: "Practical range", method: "This is a directional business estimate based on observable time use, decision exposure, leadership behavior, and opportunity follow-through. It is designed to support judgment, not claim accounting precision.",
+          riskScore: "Risk score", confidence: "Confidence level", confidenceLow: "Developing", confidenceMedium: "Moderate", confidenceHigh: "Strong", breakdown: "Estimated cost breakdown", radar: "Business exposure", topPatterns: "Top emotional patterns", consequences: "Likely business consequences", roi: "Potential annual savings", roiCopy: "The savings scenario assumes that targeted work reduces only part of the observed friction. It does not assume every pattern disappears or every opportunity converts.",
+          decision: "Decision quality", leadership: "Leadership", time: "Lost time", opportunity: "Lost opportunities", patterns: "Pattern intensity", annual: "annual", scoreOutOf: "out of 100", range: "estimated range", noLeadership: "No leadership cost was modeled because the team size is zero.",
+          consequenceTime: "High-value attention is being spent on recovery, rework, or repeated analysis.", consequenceDecision: "Important decisions may be slower, narrower, or less consistent under emotional pressure.", consequenceLeadership: "Team throughput may be constrained by delayed conversations, approvals, or control.", consequenceOpportunity: "Commercial and career opportunities may be under-pursued when discomfort rises.",
+          ctaTitle: "What if these patterns could disappear instead of being managed?", ctaCopy: "EFR is a focused process for identifying and resolving the emotional response beneath a repeated business behavior. A demonstration session explores one live pattern and whether this approach is appropriate for you.", book: "Book demonstration", bookCall: "Book a conversation", emailReport: "Send report by email", download: "Download PDF", restart: "Restart assessment", printHint: "Your browser’s print dialog opens. Choose “Save as PDF”.", bookingNote: "\"Send report by email\" opens your email app with a prepared summary.", reportReady: "Your report is ready.", noPatternsNote: "No patterns showed measurable influence on this estimate."
+        },
+        footer: { private: "Private by design · Stored only in this browser", disclaimer: "Directional estimate · Not financial, medical, or psychological advice" }
+      },
+      he: {
+        common: { brand: "עלות הדפוס", navHome: "בית", navAbout: "אודות", navTestimonials: "המלצות", navArticles: "מאמרים", navCalculator: "מחשבון", skip: "דילוג לתוכן הראשי", language: "שפה", theme: "ערכת נושא", back: "חזרה", next: "הבא", finish: "סיום האבחון", saved: "התשובות נשמרו", required: "יש להשלים שדה זה.", low: "נמוך", high: "גבוה", notApplicable: "לא רלוונטי", score: "ציון", of: "מתוך", showMorePatterns: "הצגת דפוסים נוספים", roleFilterNote: "מוצגים הדפוסים הרלוונטיים ביותר לתפקיד זה. ניתן לפתוח את השאר למטה.", roleFilterNoteGeneric: "מוצגות השאלות הרלוונטיות ביותר לתפקיד זה. ניתן לפתוח את השאר למטה.", showMoreQuestions: "הצגת שאלות נוספות", privacyBanner: "הכול נשאר במכשיר הזה. שום תשובה, נתון הכנסה או דוח לא נשלחים, נשמרים או מועברים לשום מקום." },
+        languages: { en: "English", he: "עברית", ru: "Русский" }, themes: { light: "בהיר", dark: "כהה", system: "מערכת" },
+        landing: { eyebrow: "הערכת התנהגות עסקית", title: "לראות מה דפוסים סמויים <em>עולים לעסק.</em>", subtitle: "אומדן פרטי המבוסס על התנהגות, ובוחן כיצד חיכוך רגשי משפיע על זמן, החלטות, מנהיגות והזדמנויות. לא אבחון ולא דיוק מדומה.", start: "התחלת האבחון", time: "כ־9–12 דקות", previewLabel: "השפעה שנתית משוערת", privacy: "התשובות נשארות בדפדפן הזה. דבר אינו נשלח.", disclaimer: "מטרת האבחון היא מודעות לכך שלדפוסים רגשיים יש עלות עסקית — לא חישוב מדויק של הפסדים. בסיום תקבלו דוח, ותוכלו לבחור לקבוע שיחה קצרה לבחינת דפוס אחד באופן חי." },
+        sections: { context: { title: "הקשר מקצועי", description: "נגדיר את היקף העבודה שלך. הנתונים מעגנים את האומדן בלי לבקש ממך לנחש הפסדים." }, patterns: { title: "דפוסים רגשיים", description: "דרגו התנהגות שניתן לראות. הדוגמאות הן נקודת ייחוס מעשית, לא תוויות." }, time: { title: "אובדן זמן", description: "העריכו זמן שבועי חוזר שנספג בחיכוך במקום בעבודה מועילה." }, decisions: { title: "איכות החלטות", description: "התייחסו להחלטות משמעותיות, לא לניהול שוטף." }, leadership: { title: "חיכוך מנהיגותי", description: "החלק מוצג משום שציינתם שאתם מובילים לפחות אדם אחד." }, opportunities: { title: "הזדמנויות שהוחמצו", description: "דרגו באיזו תדירות היסוס, הימנעות או תגובתיות רגשית מפחיתים ביצוע." } },
+        fields: { role: { label: "תפקיד עיקרי", help: "בחרו את התפקיד הקרוב ביותר לאחריות הנוכחית. הבחירה קובעת אילו דפוסים יוצגו ראשונים — תמיד ניתן לחשוף את השאר." }, years: { label: "שנים ברמת האחריות הזו", help: "ניסיון בתפקידים עם רמת החלטה דומה." }, income: { label: "הכנסה אישית שנתית", help: "משמשת רק כנקודת ייחוס אחת לערך זמן העבודה." }, currency: { label: "מטבע הדוח", help: "כל האומדנים הכספיים יוצגו במטבע זה." }, companySize: { label: "גודל החברה", help: "מספר האנשים המשוער בארגון." }, teamSize: { label: "אנשים בהובלה ישירה או עקיפה", help: "הזינו אפס אם אינכם מובילים צוות." }, revenue: { label: "הכנסה שנתית שעליה יש לכם השפעה", help: "הכנסה שמושפעת באופן מהותי מהחלטות, קשרים או תפוקה שלכם." }, hourly: { label: "ערך משוער של שעת ריכוז", help: "אומדן מעשי הכולל מינוף, לא רק שכר." }, decisionsMonth: { label: "החלטות חשובות בחודש", help: "החלטות בעלות השלכות כספיות, אנושיות או אסטרטגיות." }, decisionValue: { label: "ערך ממוצע המושפע מהחלטה חשובה", help: "השתמשו בערך שבסיכון, לא בשווי החברה כולו." }, interference: { label: "באיזו תדירות רגשות מפריעים להחלטות חשובות?", help: "למשל דחייה, צמצום אפשרויות, הימנעות משיחה או תגובה מהירה מדי." }, qualityReduction: { label: "כאשר יש הפרעה, עד כמה איכות ההחלטה יורדת?", help: "העריכו ירידה בבהירות, בתזמון או בביצוע." } },
+        roles: { founder: "מייסד/ת או בעלים", executive: "הנהלה בכירה", manager: "מנהל/ת צוות", sales: "מכירות ופיתוח עסקי", engineering: "הנדסה / מוצר", operations: "תפעול / כספים", creative: "קריאייטיב / שיווק", professional: "מקצוע עצמאי / ייעוץ", other: "אחר" },
+        units: { years: "שנים", people: "אנשים", perYear: "לשנה", perHour: "לשעה", perMonth: "לחודש", hoursWeek: "שעות בשבוע", percent: "%" },
+        scales: { never: "אף פעם", rarely: "לעיתים רחוקות", sometimes: "לפעמים", often: "לעיתים קרובות", veryOften: "לעיתים קרובות מאוד", none: "ללא", moderate: "בינוני", severe: "חמור", uncertain: "לא בטוח", confident: "בטוח" },
+        timeItems: { overthinking: { label: "חשיבת יתר", help: "בחינה חוזרת של אפשרויות לאחר שכבר יש מספיק מידע." }, stressRecovery: { label: "התאוששות מלחץ", help: "הזמן הדרוש לחזרה לריכוז מועיל לאחר לחץ." }, meetings: { label: "זמן ישיבות שניתן למנוע", help: "ישיבות שמתארכות בגלל בעלות, אישור או מתח לא ברורים." }, waiting: { label: "המתנה ועיכוב פעולה", help: "זמן שאובד בחיפוש אחר ודאות, רשות או הרגע המושלם." }, rework: { label: "עבודה מחדש", help: "ביצוע חוזר בגלל סטנדרטים, תקשורת או החלטות משתנים." }, conflict: { label: "ניהול קונפליקט", help: "זמן שמושקע בהכלת מתח לא פתור במקום בפתרונו." }, secondGuessing: { label: "הטלת ספק חוזרת", help: "בחינת עבודה או החלטות שהושלמו ללא מידע חדש." } },
+        leadershipItems: { delegation: { label: "קושי בהאצלת סמכויות", help: "שמירת עבודה אצלכם כי הסבר או אמון מרגישים יקרים." }, hiring: { label: "גיוס דחוי או מתפשר", help: "דחיית החלטה או בחירת נוחות על פני התאמה." }, firing: { label: "דחיית טיפול בביצועים", help: "השארת מצב מזיק לא פתור זמן רב מהנדרש." }, conflict: { label: "הימנעות מקונפליקט בצוות", help: "מתן אפשרות למתח או עמימות להימשך." }, approvals: { label: "צווארי בקבוק באישורים", help: "דרישה שהחלטות יעברו דרככם שלא לצורך." }, micromanagement: { label: "מיקרו־ניהול", help: "בדיקה, תיקון או שליטה מופרזים לאחר האצלה." } },
+        opportunityItems: { sales: { label: "הזדמנויות מכירה", help: "לקוחות פוטנציאליים שלא קודמו, התבקשו או נסגרו בהחלטיות." }, clients: { label: "צמיחת לקוחות", help: "שיחות על הרחבה, תמחור או גבולות שנמנעו." }, investors: { label: "שיחות עם משקיעים", help: "פנייה או משא ומתן שנחלשו בשל פחד, דימוי או חוסר ודאות." }, partnerships: { label: "שותפויות", help: "בריתות אפשריות שלא נפתחו או קודמו." }, hiring: { label: "גיוס בעל ערך גבוה", help: "מועמדים חזקים שהוחמצו בגלל עיכוב או שליטה." }, promotions: { label: "קידום או נראות", help: "אחריות, הכרה או מיצוב שלא קודמו." } },
+        patternScale: { frequency: "תדירות", impact: "השפעה עסקית", confidence: "ביטחון בדירוג" },
+        patterns: {
+          approval: { name: "צורך באישור", desc: "הסכמה חיצונית הופכת לתנאי לפעולה ברורה.", ex: "שכתוב חוזר של הצעה שכבר טובה מספיק." }, conflictAvoidance: { name: "הימנעות מקונפליקט", desc: "מתח נחוץ נדחה כדי לשמור על נוחות בטווח הקצר.", ex: "אי־דיבור על בעלות או בעיות ביצוע." }, rejection: { name: "פחד מדחייה", desc: "אפשרות לסירוב מפחיתה פנייה, משא ומתן או בקשה ישירה.", ex: "אי־פנייה ללקוח בעל ערך ללא היכרות חמה." }, failure: { name: "פחד מכישלון", desc: "הגנה מפני תוצאה גרועה מגבילה מהירות או שאפתנות.", ex: "השארת פרויקט בהכנה גם כשהראיות תומכות בהשקה." }, certainty: { name: "צורך בוודאות", desc: "הפעולה מחכה למידע שהמצב אינו יכול לספק.", ex: "בקשת ניתוח נוסף כשהאי־ודאות שנותרה אינה ניתנת להסרה." }, control: { name: "צורך בשליטה", desc: "שונות מרגישה יקרה יותר ממעורבות אישית.", ex: "ריכוז החלטות למרות בעלות מקצועית זמינה." }, micromanagement: { name: "מיקרו־ניהול", desc: "עבודה שהועברה נשארת תחת פיקוח או תיקון מופרזים.", ex: "בדיקת כל הודעה או בחירת יישום קטנה." }, perfectionism: { name: "פרפקציוניזם", desc: "שיפורים שוליים צורכים זמן ותשומת לב לא מידתיים.", ex: "ליטוש עבודה פנימית מעבר לערכה העסקי." }, overthinking: { name: "חשיבת יתר", desc: "הניתוח נמשך לאחר שאינו משפר עוד את ההחלטה.", ex: "פתיחה מחדש של אפשרויות ללא ראיות חדשות." }, rumination: { name: "הרהור חוזר", desc: "אינטראקציות מהעבר ממשיכות לתפוס קשב גם כשאפשר לפעול.", ex: "שחזור פגישה קשה במשך שאר היום." }, stress: { name: "לחץ", desc: "עוררות מתמשכת מצמצמת ריכוז, טווח והתאוששות.", ex: "מעבר חוזר בין משימות כשמחשבות דחופות מתחרות על הקשב." }, anxiety: { name: "חרדה", desc: "איומים צפויים מעוותים תזמון או תפיסת סיכון.", ex: "התייחסות לתוצאה לא ודאית כאילו היא כבר שלילית." }, impatience: { name: "חוסר סבלנות", desc: "לחץ למהירות פוגע בהקשבה, סדר או איכות.", ex: "קטיעת בירור כדי לעבור מוקדם מדי לביצוע." }, anger: { name: "כעס", desc: "תסכול מצמצם תקשורת וטווח החלטה.", ex: "שליחת תגובה לפני שהבעיה הבסיסית ברורה." }, defensiveness: { name: "התגוננות", desc: "הגנה על הזהות מתחרה בקבלת מידע שימושי.", ex: "הסברת הכוונה לפני הבנת השפעת המשוב." }, resentment: { name: "טינה", desc: "ציפיות שלא טופלו מפחיתות שיתוף פעולה ויוזמה.", ex: "מניעת תמיכה לאחר הסכמה חוזרת לעבודה שלא רציתם." }, guilt: { name: "אשמה", desc: "האחריות מתרחבת מעבר למה שמדויק או שימושי.", ex: "הימנעות מגבול נחוץ כי מישהו עלול להתאכזב." }, shame: { name: "בושה", desc: "טעות הופכת לראיה על הערך העצמי במקום לנתון.", ex: "הסתרת בעיה שזול יותר לחשוף מוקדם." }, selfDoubt: { name: "ספק עצמי", desc: "היכולת מוערכת בחסר למרות ראיות רלוונטיות.", ex: "העברת החלטה שאתם מוסמכים לקבל." }, comparison: { name: "השוואה", desc: "התקדמות של אחרים משבשת סדרי עדיפויות או שיקול דעת.", ex: "שינוי אסטרטגיה לאחר הודעת מתחרה." }, scarcity: { name: "תודעת מחסור", desc: "מחסור נתפס מעדיף הגנה על פני השקעה אסטרטגית.", ex: "דחיית הוצאה עם תשואה גבוהה כי ההוצאה עצמה מרגישה לא בטוחה." }, attachment: { name: "היקשרות", desc: "קשה להעריך מחדש תוצאה מועדפת באופן אובייקטיבי.", ex: "המשך פרויקט בגלל זהות או מאמץ שכבר הושקע." }, impress: { name: "צורך להרשים", desc: "הצגת יכולת מתחרה בבהירות או בתועלת.", ex: "הוספת מורכבות כדי להיראות מתוחכמים." }, right: { name: "צורך להיות צודקים", desc: "ניצחון בפרשנות חשוב יותר מעדכונה.", ex: "המשך ויכוח לאחר שהתשובה התפעולית ברורה." }, peoplePleasing: { name: "ריצוי אנשים", desc: "נוחות של אחרים גוברת על קיבולת, עדיפויות או אמת.", ex: "קבלת עבודה שדוחקת התחייבות בעלת ערך רב יותר." }
+        },
+        report: { overline: "האבחון שלך", headline: "עלות רגשית שנתית משוערת", rangePrefix: "טווח מעשי", method: "זהו אומדן עסקי כיווני המבוסס על שימוש נצפה בזמן, חשיפה בהחלטות, התנהגות מנהיגותית ומימוש הזדמנויות. הוא נועד לתמוך בשיקול דעת, לא לטעון לדיוק חשבונאי.", riskScore: "ציון סיכון", confidence: "רמת ביטחון", confidenceLow: "מתפתחת", confidenceMedium: "בינונית", confidenceHigh: "חזקה", breakdown: "פירוט עלות משוערת", radar: "חשיפה עסקית", topPatterns: "הדפוסים הרגשיים המובילים", consequences: "השלכות עסקיות סבירות", roi: "חיסכון שנתי אפשרי", roiCopy: "תרחיש החיסכון מניח שעבודה ממוקדת מפחיתה רק חלק מהחיכוך שנצפה. הוא אינו מניח שכל דפוס נעלם או שכל הזדמנות מתממשת.", decision: "איכות החלטות", leadership: "מנהיגות", time: "זמן שאבד", opportunity: "הזדמנויות שהוחמצו", patterns: "עוצמת דפוסים", annual: "לשנה", scoreOutOf: "מתוך 100", range: "טווח משוער", noLeadership: "לא חושבה עלות מנהיגותית משום שגודל הצוות הוא אפס.", consequenceTime: "קשב בעל ערך גבוה מושקע בהתאוששות, עבודה מחדש או ניתוח חוזר.", consequenceDecision: "החלטות חשובות עשויות להיות איטיות, צרות או פחות עקביות תחת לחץ רגשי.", consequenceLeadership: "תפוקת הצוות עשויה להיות מוגבלת בשל שיחות דחויות, אישורים או שליטה.", consequenceOpportunity: "הזדמנויות מסחריות ומקצועיות עשויות לקבל פחות מימוש כשהאי־נוחות עולה.", ctaTitle: "מה אם הדפוסים האלה יכולים להיעלם במקום להיות מנוהלים?", ctaCopy: "EFR הוא תהליך ממוקד לזיהוי ולפתרון התגובה הרגשית שמתחת להתנהגות עסקית חוזרת. פגישת הדגמה בוחנת דפוס חי אחד והאם הגישה מתאימה לכם.", book: "קביעת הדגמה", bookCall: "קביעת שיחה", emailReport: "שליחת דוח בדוא״ל", download: "הורדת PDF", restart: "התחלת האבחון מחדש", printHint: "חלון ההדפסה של הדפדפן ייפתח. בחרו ״שמירה כ־PDF״.", bookingNote: "״שליחת דוח בדוא״ל״ פותחת את יישום הדוא״ל עם סיכום מוכן.", reportReady: "הדוח שלך מוכן.", noPatternsNote: "אף דפוס לא הראה השפעה מדידה על האומדן הזה." },
+        footer: { private: "פרטי מעצם התכנון · נשמר רק בדפדפן הזה", disclaimer: "אומדן כיווני · אינו ייעוץ כספי, רפואי או פסיכולוגי" }
+      },
+      ru: {
+        common: { brand: "Цена паттернов", navHome: "Главная", navAbout: "Об авторе", navTestimonials: "Отзывы", navArticles: "Статьи", navCalculator: "Калькулятор", skip: "Перейти к основному содержанию", language: "Язык", theme: "Тема", back: "Назад", next: "Далее", finish: "Завершить оценку", saved: "Ответы сохранены", required: "Заполните это поле.", low: "Низко", high: "Высоко", notApplicable: "Не применимо", score: "балл", of: "из", showMorePatterns: "Показать остальные паттерны", roleFilterNote: "Показаны паттерны, чаще всего актуальные для этой роли. Остальные можно раскрыть ниже.", roleFilterNoteGeneric: "Показаны вопросы, чаще всего актуальные для этой роли. Остальные можно раскрыть ниже.", showMoreQuestions: "Показать остальные вопросы", privacyBanner: "Всё остаётся на этом устройстве. Ни ответы, ни цифры дохода, ни отчёт никуда не отправляются, не сохраняются и не передаются." },
+        languages: { en: "English", he: "עברית", ru: "Русский" }, themes: { light: "Светлая", dark: "Тёмная", system: "Системная" },
+        landing: { eyebrow: "Оценка делового поведения", title: "Узнайте, во что бизнесу <em>обходятся скрытые паттерны.</em>", subtitle: "Конфиденциальная поведенческая оценка влияния эмоционального трения на время, решения, лидерство и возможности. Не диагноз и не ложная точность.", start: "Начать оценку", time: "Около 9–12 минут", previewLabel: "Ожидаемое годовое влияние", privacy: "Ответы остаются в этом браузере. Ничего не передаётся.", disclaimer: "Цель этой оценки — осознание того, что у эмоциональных паттернов есть деловая цена, а не точный подсчёт убытков. По завершении вы увидите отчёт и сможете при желании записаться на короткую беседу, где один паттерн разбирается на живом примере." },
+        sections: { context: { title: "Профессиональный контекст", description: "Определим масштаб вашей работы. Эти данные задают основу оценки, не заставляя вас угадывать потери." }, patterns: { title: "Эмоциональные паттерны", description: "Оценивайте наблюдаемое поведение. Примеры — практические ориентиры, а не ярлыки." }, time: { title: "Потеря времени", description: "Оцените регулярное еженедельное время, поглощаемое трением вместо продуктивной работы." }, decisions: { title: "Качество решений", description: "Учитывайте значимые решения, а не обычное администрирование." }, leadership: { title: "Лидерское трение", description: "Этот раздел показан, потому что вы руководите хотя бы одним человеком." }, opportunities: { title: "Упущенные возможности", description: "Оцените, как часто сомнения, избегание или эмоциональная реактивность снижают доведение до результата." } },
+        fields: { role: { label: "Основная роль", help: "Выберите роль, наиболее близкую к вашей текущей ответственности. От неё зависит, какие паттерны покажутся первыми — остальные всегда можно раскрыть." }, years: { label: "Лет на этом уровне ответственности", help: "Опыт в ролях с сопоставимым уровнем решений." }, income: { label: "Годовой личный доход", help: "Используется только как один ориентир стоимости рабочего времени." }, currency: { label: "Валюта отчёта", help: "Все финансовые оценки будут показаны в этой валюте." }, companySize: { label: "Размер компании", help: "Примерное число сотрудников организации." }, teamSize: { label: "Людей под прямым или косвенным руководством", help: "Введите ноль, если вы не руководите командой." }, revenue: { label: "Годовая выручка под вашим влиянием", help: "Выручка, на которую существенно влияют ваши решения, отношения или результат." }, hourly: { label: "Оценочная стоимость часа концентрации", help: "Практическая оценка с учётом рычага, а не только зарплаты." }, decisionsMonth: { label: "Важных решений в месяц", help: "Решения с заметными финансовыми, кадровыми или стратегическими последствиями." }, decisionValue: { label: "Средняя ценность, затрагиваемая важным решением", help: "Укажите ценность под риском, а не стоимость всей компании." }, interference: { label: "Как часто эмоции мешают важным решениям?", help: "Например: задержка, сужение вариантов, избегание разговора или слишком быстрая реакция." }, qualityReduction: { label: "Когда это происходит, насколько снижается качество решения?", help: "Оцените снижение ясности, своевременности или исполнения." } },
+        roles: { founder: "Основатель / владелец", executive: "Топ-менеджер / C-level", manager: "Руководитель команды", sales: "Продажи / развитие бизнеса", engineering: "Инженерия / продукт", operations: "Операции / финансы", creative: "Креатив / маркетинг", professional: "Независимый специалист / консультант", other: "Другое" },
+        units: { years: "лет", people: "человек", perYear: "в год", perHour: "в час", perMonth: "в месяц", hoursWeek: "часов в неделю", percent: "%" },
+        scales: { never: "Никогда", rarely: "Редко", sometimes: "Иногда", often: "Часто", veryOften: "Очень часто", none: "Нет", moderate: "Умеренно", severe: "Сильно", uncertain: "Не уверен", confident: "Уверен" },
+        timeItems: { overthinking: { label: "Чрезмерное обдумывание", help: "Возврат к вариантам после того, как информации уже достаточно." }, stressRecovery: { label: "Восстановление после стресса", help: "Время до возвращения полезной концентрации после давления." }, meetings: { label: "Лишнее время на встречах", help: "Встречи, затянутые из-за неясной ответственности, согласований или напряжения." }, waiting: { label: "Ожидание и задержка действий", help: "Время на поиск определённости, разрешения или идеального момента." }, rework: { label: "Переделки", help: "Повторная работа из-за меняющихся стандартов, коммуникации или решений." }, conflict: { label: "Управление конфликтами", help: "Время на сдерживание нерешённого напряжения вместо его разрешения." }, secondGuessing: { label: "Повторные сомнения", help: "Пересмотр завершённой работы или решений без новых данных." } },
+        leadershipItems: { delegation: { label: "Трудности с делегированием", help: "Удержание работы, потому что объяснение или доверие кажутся затратными." }, hiring: { label: "Задержка или компромисс в найме", help: "Откладывание решения или выбор комфорта вместо соответствия." }, firing: { label: "Задержка кадровых решений", help: "Сохранение вредной ситуации дольше необходимого." }, conflict: { label: "Избегание конфликта в команде", help: "Продолжение напряжения или неопределённости." }, approvals: { label: "Узкие места согласований", help: "Ненужное прохождение решений через вас." }, micromanagement: { label: "Микроменеджмент", help: "Избыточная проверка, исправление или контроль после делегирования." } },
+        opportunityItems: { sales: { label: "Возможности продаж", help: "Потенциальные сделки, которые не были развиты, запрошены или уверенно закрыты." }, clients: { label: "Рост клиентов", help: "Избегание разговоров о расширении, цене или границах." }, investors: { label: "Разговоры с инвесторами", help: "Снижение активности или качества переговоров из-за страха, имиджа или неопределённости." }, partnerships: { label: "Партнёрства", help: "Потенциальные альянсы, которые не были начаты или развиты." }, hiring: { label: "Найм сильных специалистов", help: "Потеря хороших кандидатов из-за задержки или контроля." }, promotions: { label: "Повышение или видимость", help: "Ответственность, признание или позиционирование, за которыми не последовали." } },
+        patternScale: { frequency: "Частота", impact: "Влияние на бизнес", confidence: "Уверенность в оценке" },
+        patterns: {
+          approval: { name: "Потребность в одобрении", desc: "Внешнее согласие становится условием ясного действия.", ex: "Многократная переработка уже сильного предложения." }, conflictAvoidance: { name: "Избегание конфликтов", desc: "Необходимое напряжение откладывается ради краткого комфорта.", ex: "Замалчивание проблем ответственности или результата." }, rejection: { name: "Страх отказа", desc: "Возможный отказ снижает активность, переговоры или прямые просьбы.", ex: "Отказ от контакта с ценным клиентом без тёплого знакомства." }, failure: { name: "Страх неудачи", desc: "Защита от плохого результата ограничивает скорость или амбицию.", ex: "Проект остаётся в подготовке, хотя данные поддерживают запуск." }, certainty: { name: "Потребность в определённости", desc: "Действие ждёт информации, которой ситуация дать не может.", ex: "Заказ ещё одного анализа при неустранимой неопределённости." }, control: { name: "Потребность в контроле", desc: "Вариативность кажется дороже личного участия.", ex: "Централизация решений при наличии компетентных владельцев." }, micromanagement: { name: "Микроменеджмент", desc: "Делегированная работа остаётся под чрезмерным наблюдением.", ex: "Проверка каждого сообщения или мелкого решения." }, perfectionism: { name: "Перфекционизм", desc: "Незначительные улучшения отнимают непропорционально много времени.", ex: "Полировка внутренней работы сверх её деловой ценности." }, overthinking: { name: "Чрезмерное обдумывание", desc: "Анализ продолжается после того, как перестаёт улучшать решение.", ex: "Возврат к закрытым вариантам без новых данных." }, rumination: { name: "Руминация", desc: "Прошлые события занимают внимание после появления возможности действовать.", ex: "Прокручивание сложной встречи до конца дня." }, stress: { name: "Стресс", desc: "Постоянное напряжение снижает фокус, диапазон и восстановление.", ex: "Частое переключение задач из-за конкурирующих срочных мыслей." }, anxiety: { name: "Тревога", desc: "Ожидаемые угрозы искажают сроки или восприятие риска.", ex: "Отношение к неопределённому исходу как к уже негативному." }, impatience: { name: "Нетерпение", desc: "Давление скорости ухудшает слушание, последовательность или качество.", ex: "Прерывание исследования ради преждевременного исполнения." }, anger: { name: "Гнев", desc: "Раздражение сужает коммуникацию и диапазон решений.", ex: "Отправка ответа до прояснения основной проблемы." }, defensiveness: { name: "Защитная реакция", desc: "Защита идентичности мешает получать полезную информацию.", ex: "Объяснение намерений до понимания влияния обратной связи." }, resentment: { name: "Обида", desc: "Необсуждённые ожидания снижают сотрудничество и инициативу.", ex: "Отказ от поддержки после повторного согласия на нежелательную работу." }, guilt: { name: "Вина", desc: "Ответственность расширяется за пределы точного и полезного.", ex: "Избегание необходимой границы из-за возможного разочарования другого." }, shame: { name: "Стыд", desc: "Ошибка становится выводом о собственной ценности, а не данными.", ex: "Сокрытие проблемы, которую дешевле поднять рано." }, selfDoubt: { name: "Неуверенность в себе", desc: "Способности обесцениваются вопреки релевантным доказательствам.", ex: "Передача решения, которое вы компетентны принять." }, comparison: { name: "Сравнение", desc: "Чужой прогресс нарушает приоритеты или суждение.", ex: "Смена стратегии после новости конкурента." }, scarcity: { name: "Мышление дефицита", desc: "Ощущение нехватки ставит защиту выше стратегических инвестиций.", ex: "Отказ от высокодоходной траты, потому что сама трата кажется опасной." }, attachment: { name: "Привязанность", desc: "Предпочтительный исход трудно переоценить объективно.", ex: "Продолжение проекта из-за идентичности или уже вложенных усилий." }, impress: { name: "Потребность впечатлять", desc: "Демонстрация компетентности конкурирует с ясностью и пользой.", ex: "Добавление сложности, чтобы выглядеть более убедительно." }, right: { name: "Потребность быть правым", desc: "Победа в интерпретации становится важнее её обновления.", ex: "Продолжение спора после прояснения рабочего ответа." }, peoplePleasing: { name: "Угодничество", desc: "Комфорт других перевешивает ресурсы, приоритеты или правду.", ex: "Принятие работы, вытесняющей более ценное обязательство." }
+        },
+        report: { overline: "Ваша оценка", headline: "Ожидаемая годовая эмоциональная стоимость", rangePrefix: "Практический диапазон", method: "Это ориентировочная деловая оценка на основе наблюдаемого использования времени, масштаба решений, лидерского поведения и реализации возможностей. Она поддерживает суждение, а не претендует на бухгалтерскую точность.", riskScore: "Оценка риска", confidence: "Уровень уверенности", confidenceLow: "Формируется", confidenceMedium: "Умеренный", confidenceHigh: "Высокий", breakdown: "Структура ожидаемой стоимости", radar: "Деловая экспозиция", topPatterns: "Ведущие эмоциональные паттерны", consequences: "Вероятные деловые последствия", roi: "Потенциальная годовая экономия", roiCopy: "Сценарий экономии предполагает, что целевая работа уменьшает лишь часть наблюдаемого трения. Он не предполагает исчезновения всех паттернов или реализации каждой возможности.", decision: "Качество решений", leadership: "Лидерство", time: "Потерянное время", opportunity: "Упущенные возможности", patterns: "Интенсивность паттернов", annual: "в год", scoreOutOf: "из 100", range: "ожидаемый диапазон", noLeadership: "Лидерская стоимость не моделировалась, поскольку размер команды равен нулю.", consequenceTime: "Ценное внимание расходуется на восстановление, переделки или повторный анализ.", consequenceDecision: "Важные решения могут становиться медленнее, уже или менее последовательными под эмоциональным давлением.", consequenceLeadership: "Пропускная способность команды может снижаться из-за отложенных разговоров, согласований или контроля.", consequenceOpportunity: "Коммерческие и карьерные возможности могут реализовываться слабее при росте дискомфорта.", ctaTitle: "Что, если эти паттерны могут исчезнуть, а не просто управляться?", ctaCopy: "EFR — сфокусированный процесс выявления и разрешения эмоциональной реакции под повторяющимся деловым поведением. Демонстрационная сессия рассматривает один актуальный паттерн и помогает понять, подходит ли вам этот подход.", book: "Записаться на демонстрацию", bookCall: "Записаться на беседу", emailReport: "Отправить отчёт на почту", download: "Скачать PDF", restart: "Начать заново", printHint: "Откроется окно печати браузера. Выберите «Сохранить как PDF».", bookingNote: "«Отправить отчёт на почту» открывает почтовое приложение с подготовленным письмом.", reportReady: "Ваш отчёт готов.", noPatternsNote: "Ни один паттерн не показал измеримого влияния на эту оценку." },
+        footer: { private: "Конфиденциально по дизайну · Хранится только в этом браузере", disclaimer: "Ориентировочная оценка · Не является финансовой, медицинской или психологической консультацией" }
+      }
+    };
+
+    const STORAGE_KEY = "patternCostAssessment.v1";
+    const patternKeys = ["approval","conflictAvoidance","rejection","failure","certainty","control","micromanagement","perfectionism","overthinking","rumination","stress","anxiety","impatience","anger","defensiveness","resentment","guilt","shame","selfDoubt","comparison","scarcity","attachment","impress","right","peoplePleasing"];
+    const roleGroups = {
+      founder: ["control","perfectionism","overthinking","scarcity","attachment","guilt","anxiety","stress","selfDoubt","impress","right","micromanagement"],
+      executive: ["control","defensiveness","right","impress","certainty","stress","impatience","anger","resentment","comparison","micromanagement","guilt"],
+      manager: ["conflictAvoidance","micromanagement","control","guilt","peoplePleasing","impatience","anger","defensiveness","resentment","approval","certainty","overthinking"],
+      sales: ["rejection","approval","peoplePleasing","impatience","comparison","anxiety","selfDoubt","impress","scarcity","conflictAvoidance","stress","right"],
+      engineering: ["perfectionism","overthinking","certainty","control","rumination","anxiety","defensiveness","right","selfDoubt","impatience","stress","shame"],
+      operations: ["certainty","control","perfectionism","scarcity","stress","overthinking","impatience","guilt","resentment","rumination","defensiveness","anxiety"],
+      creative: ["approval","rejection","comparison","selfDoubt","perfectionism","shame","impress","peoplePleasing","anxiety","overthinking","attachment","right"],
+      professional: ["scarcity","approval","rejection","selfDoubt","impress","peoplePleasing","anxiety","perfectionism","comparison","guilt","stress","attachment"]
+    };
+    function relevantPatternKeys(role) {
+      const base = roleGroups[role];
+      if (!base) return patternKeys;
+      const answered = patternKeys.filter(key => numberAnswer(`pattern.${key}.frequency`) > 0);
+      return patternKeys.filter(key => base.includes(key) || answered.includes(key));
+    }
+    const timeRoleGroups = {
+      founder: ["overthinking","secondGuessing","waiting","meetings"],
+      executive: ["meetings","waiting","conflict","secondGuessing"],
+      manager: ["conflict","meetings","rework","waiting"],
+      sales: ["waiting","conflict","secondGuessing","overthinking"],
+      engineering: ["rework","overthinking","secondGuessing","stressRecovery"],
+      operations: ["rework","waiting","overthinking","stressRecovery"],
+      creative: ["overthinking","secondGuessing","rework","stressRecovery"],
+      professional: ["overthinking","waiting","secondGuessing","stressRecovery"]
+    };
+    const leadershipRoleGroups = {
+      founder: ["hiring","firing","approvals","delegation"],
+      executive: ["hiring","firing","approvals","conflict"],
+      manager: ["delegation","micromanagement","conflict","approvals"],
+      sales: ["delegation","conflict","approvals","micromanagement"],
+      engineering: ["delegation","micromanagement","approvals","conflict"],
+      operations: ["approvals","delegation","micromanagement","conflict"],
+      creative: ["delegation","approvals","conflict","micromanagement"],
+      professional: ["delegation","approvals","conflict","micromanagement"]
+    };
+    const opportunityRoleGroups = {
+      founder: ["investors","partnerships","sales","hiring"],
+      executive: ["partnerships","hiring","promotions","investors"],
+      manager: ["hiring","promotions","clients","sales"],
+      sales: ["sales","clients","partnerships","hiring"],
+      engineering: ["hiring","promotions","partnerships","clients"],
+      operations: ["partnerships","hiring","clients","promotions"],
+      creative: ["clients","partnerships","sales","promotions"],
+      professional: ["clients","partnerships","sales","promotions"]
+    };
+    function activeKeysFor(keys, roleGroupsMap, role, answerPrefix) {
+      const base = roleGroupsMap[role];
+      if (!base) return keys;
+      const answered = keys.filter(key => numberAnswer(`${answerPrefix}.${key}`) > 0);
+      return keys.filter(key => base.includes(key) || answered.includes(key));
+    }
+    const currencyOptions = ["USD","EUR","GBP","ILS","RUB","CAD","AUD"];
+    const scaleValues = [0,1,2,3,4];
+    const sectionConfig = [
+      { id: "context", type: "fields" },
+      { id: "patterns", type: "patterns" },
+      { id: "time", type: "time" },
+      { id: "decisions", type: "decisions" },
+      { id: "leadership", type: "leadership", conditional: () => numberAnswer("teamSize") > 0 },
+      { id: "opportunities", type: "opportunities" }
+    ];
+    const fieldConfig = [
+      { id:"role", type:"select", options:Object.keys(i18n.en.roles), required:false },
+      { id:"years", type:"number", min:0, max:60, unit:"years", required:false },
+      { id:"income", type:"number", min:0, max:1000000000, unit:"perYear", required:false },
+      { id:"currency", type:"select", options:currencyOptions, required:false, rawOptions:true },
+      { id:"companySize", type:"number", min:1, max:1000000, unit:"people", required:false },
+      { id:"teamSize", type:"number", min:0, max:100000, unit:"people", required:false },
+      { id:"revenue", type:"number", min:0, max:100000000000, unit:"perYear", required:false },
+      { id:"hourly", type:"number", min:1, max:1000000, unit:"perHour", required:false },
+      { id:"decisionsMonth", type:"number", min:0, max:1000, unit:"perMonth", required:false },
+      { id:"decisionValue", type:"number", min:0, max:10000000000, unit:"perMonth", required:false }
+    ];
+    const timeKeys = ["overthinking","stressRecovery","meetings","waiting","rework","conflict","secondGuessing"];
+    const leadershipKeys = ["delegation","hiring","firing","conflict","approvals","micromanagement"];
+    const opportunityKeys = ["sales","clients","investors","partnerships","hiring","promotions"];
+
+    const defaultAnswers = { currency:"USD" };
+    patternKeys.forEach(key => { defaultAnswers[`pattern.${key}.frequency`] = 0; defaultAnswers[`pattern.${key}.impact`] = 0; defaultAnswers[`pattern.${key}.confidence`] = 2; });
+    timeKeys.forEach(key => defaultAnswers[`time.${key}`] = 0);
+    leadershipKeys.forEach(key => defaultAnswers[`leadership.${key}`] = 0);
+    opportunityKeys.forEach(key => defaultAnswers[`opportunity.${key}`] = 0);
+    defaultAnswers.interference = 0;
+    defaultAnswers.qualityReduction = 0;
+
+    function detectBrowserLang() {
+      const langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
+      for (const l of langs) {
+        const code = (l || "").toLowerCase();
+        if (code.startsWith("ru")) return "ru";
+        if (code.startsWith("he") || code.startsWith("iw")) return "he";
+      }
+      return "en";
+    }
+    const urlLang = new URLSearchParams(location.search).get("lang");
+    const validLangs = ["en", "ru", "he"];
+    const savedState = safeParse(localStorage.getItem(STORAGE_KEY));
+    const initialLanguage = (urlLang && validLangs.includes(urlLang))
+      ? urlLang
+      : (savedState.language || localStorage.getItem("efr_lang") || localStorage.getItem("patternCost.language") || detectBrowserLang());
+    const state = {
+      language: initialLanguage,
+      theme: savedState.theme || localStorage.getItem("patternCost.theme") || "system",
+      page: savedState.page || "landing",
+      sectionIndex: Number.isInteger(savedState.sectionIndex) ? savedState.sectionIndex : 0,
+      answers: { ...defaultAnswers, ...(savedState.answers || {}) },
+      report: savedState.report || null
+    };
+
+    const elements = {
+      landing: document.getElementById("landingView"), assessment: document.getElementById("assessmentView"), report: document.getElementById("reportView"),
+      language: document.getElementById("languageSelect"), theme: document.getElementById("themeSelect"), start: document.getElementById("startButton"),
+      form: document.getElementById("assessmentForm"), content: document.getElementById("sectionContent"), back: document.getElementById("backButton"), next: document.getElementById("nextButton"),
+      kicker: document.getElementById("stepKicker"), title: document.getElementById("sectionTitle"), description: document.getElementById("sectionDescription"), progressMeta: document.getElementById("progressMeta"), progressTrack: document.getElementById("progressTrack"), progressFill: document.getElementById("progressFill"), saveStatus: document.getElementById("saveStatus"),
+      reportContent: document.getElementById("reportContent"), live: document.getElementById("liveRegion")
+    };
+
+    function safeParse(value) { try { return value ? JSON.parse(value) : {}; } catch { return {}; } }
+    function t(path) { return path.split(".").reduce((value, key) => value && value[key], i18n[state.language]) ?? path; }
+    function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[character]); }
+    function numberAnswer(key) { const value = Number(state.answers[key]); return Number.isFinite(value) ? value : 0; }
+    function activeSections() { return sectionConfig.filter(section => !section.conditional || section.conditional()); }
+    function currentSection() { const sections = activeSections(); state.sectionIndex = Math.min(state.sectionIndex, sections.length - 1); return sections[state.sectionIndex]; }
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem("efr_lang", state.language);
+      localStorage.setItem("patternCost.language", state.language);
+      localStorage.setItem("patternCost.theme", state.theme);
+      elements.saveStatus.textContent = t("common.saved");
+    }
+    function applyDocumentSettings() {
+      document.documentElement.lang = state.language;
+      document.documentElement.dir = state.language === "he" ? "rtl" : "ltr";
+      document.documentElement.dataset.theme = state.theme;
+      document.querySelectorAll('nav.site-nav a[href^="index.html"], nav.mobile-nav a[href^="index.html"], #mobileNav a[href^="index.html"]').forEach(a => {
+        const hash = a.getAttribute("href").split("#")[1];
+        a.setAttribute("href", `index.html?lang=${state.language}${hash ? "#" + hash : ""}`);
+      });
+    }
+    function populatePreferences() {
+      elements.language.innerHTML = Object.keys(i18n).map(code => `<option value="${code}">${escapeHtml(t(`languages.${code}`))}</option>`).join("");
+      elements.language.value = state.language;
+      elements.theme.innerHTML = ["light","dark","system"].map(theme => `<option value="${theme}">${escapeHtml(t(`themes.${theme}`))}</option>`).join("");
+      elements.theme.value = state.theme;
+    }
+    function translateStatic() {
+      document.querySelectorAll("[data-i18n]").forEach(node => node.textContent = t(node.dataset.i18n));
+      document.querySelectorAll("[data-i18n-html]").forEach(node => node.innerHTML = t(node.dataset.i18nHtml));
+      document.querySelectorAll("[data-aria-i18n]").forEach(node => node.setAttribute("aria-label", t(node.dataset.ariaI18n)));
+      document.title = `${t("common.brand")} — ${t("landing.eyebrow")}`;
+    }
+    function showPage(page) {
+      state.page = page;
+      [elements.landing, elements.assessment, elements.report].forEach(view => view.classList.remove("active"));
+      elements[page].classList.add("active");
+      if (page === "assessment") renderSection();
+      if (page === "report") renderReport();
+      saveState();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    function initializeUI() {
+      applyDocumentSettings(); populatePreferences(); translateStatic();
+      if (state.page === "report" && !state.report) state.page = "landing";
+      showPage(state.page);
+      const navToggle = document.getElementById("navToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener("click", () => {
+          const open = mobileNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      }
+    }
+
+    function inputValue(id) { return state.answers[id] ?? ""; }
+    function renderField(field) {
+      const label = t(`fields.${field.id}.label`), help = t(`fields.${field.id}.help`), value = inputValue(field.id);
+      let control = "";
+      if (field.type === "select") {
+        const options = field.options.map(option => `<option value="${escapeHtml(option)}" ${String(value) === option ? "selected" : ""}>${escapeHtml(field.rawOptions ? option : t(`roles.${option}`))}</option>`).join("");
+        control = `<select class="select" id="${field.id}" name="${field.id}" ${field.required ? "required" : ""}><option value=""></option>${options}</select>`;
+      } else {
+        control = `<div class="unit-input"><input class="input" id="${field.id}" name="${field.id}" type="number" inputmode="decimal" value="${escapeHtml(value)}" min="${field.min}" max="${field.max}" step="any" ${field.required ? "required" : ""} aria-describedby="${field.id}-help ${field.id}-error"><span class="unit">${escapeHtml(t(`units.${field.unit}`))}</span></div>`;
+      }
+      return `<div class="field"><label class="field-label" for="${field.id}"><span>${escapeHtml(label)}</span></label><p class="field-help" id="${field.id}-help">${escapeHtml(help)}</p>${control}<p class="error" id="${field.id}-error" hidden></p></div>`;
+    }
+    function rangeControl(id, label, help, max = 4, unit = null) {
+      const value = numberAnswer(id);
+      const displayed = unit ? `${value}${unit === "percent" ? "%" : ""}` : value;
+      return `<div class="field"><label class="field-label" for="${id}"><span>${escapeHtml(label)}</span><span>${escapeHtml(displayed)}</span></label><p class="field-help">${escapeHtml(help)}</p><div class="range-row"><input id="${id}" name="${id}" type="range" min="0" max="${max}" step="${max > 10 ? 5 : 1}" value="${value}" aria-valuetext="${escapeHtml(String(displayed))}"><output class="range-value" for="${id}">${escapeHtml(displayed)}</output></div><div class="range-legend"><span>${escapeHtml(t("common.low"))}</span><span>${escapeHtml(t("common.high"))}</span></div></div>`;
+    }
+    function patternCardHtml(key) {
+      const pattern = t(`patterns.${key}`);
+      const ranges = ["frequency","impact","confidence"].map(metric => {
+        const id = `pattern.${key}.${metric}`, value = numberAnswer(id);
+        return `<div class="mini-range"><label class="mini-range-label" for="${id}"><span>${escapeHtml(t(`patternScale.${metric}`))}</span><span class="mini-range-value">${value}</span></label><input id="${id}" name="${id}" type="range" min="0" max="4" step="1" value="${value}"><div class="range-legend"><span>${escapeHtml(metric === "confidence" ? t("scales.uncertain") : t("scales.never"))}</span><span>${escapeHtml(metric === "confidence" ? t("scales.confident") : t("scales.veryOften"))}</span></div></div>`;
+      }).join("");
+      return `<article class="pattern-card"><div class="pattern-header"><div><h3 class="pattern-name">${escapeHtml(pattern.name)}</h3><p class="pattern-description">${escapeHtml(pattern.desc)}</p></div><p class="pattern-example">${escapeHtml(pattern.ex)}</p></div><div class="pattern-ranges">${ranges}</div></article>`;
+    }
+    function renderPatterns() {
+      const role = state.answers.role, group = roleGroups[role];
+      if (!group) return `<div class="pattern-list">${patternKeys.map(patternCardHtml).join("")}</div>`;
+      const primary = patternKeys.filter(key => group.includes(key));
+      const rest = patternKeys.filter(key => !group.includes(key));
+      return `<div class="pattern-list">
+        <p class="pattern-role-note">${escapeHtml(t("common.roleFilterNote"))}</p>
+        ${primary.map(patternCardHtml).join("")}
+        <details class="pattern-more"><summary>${escapeHtml(t("common.showMorePatterns"))} (${rest.length})</summary>${rest.map(patternCardHtml).join("")}</details>
+      </div>`;
+    }
+    function renderItemRanges(keys, group, translationGroup, roleGroupsMap) {
+      const role = state.answers.role, roleSet = roleGroupsMap && roleGroupsMap[role];
+      const renderOne = key => rangeControl(`${group}.${key}`, t(`${translationGroup}.${key}.label`), t(`${translationGroup}.${key}.help`), 10);
+      if (!roleSet) return `<div class="form-grid">${keys.map(renderOne).join("")}</div>`;
+      const primary = keys.filter(key => roleSet.includes(key));
+      const rest = keys.filter(key => !roleSet.includes(key));
+      if (!rest.length) return `<div class="form-grid">${primary.map(renderOne).join("")}</div>`;
+      return `<p class="pattern-role-note">${escapeHtml(t("common.roleFilterNoteGeneric"))}</p>
+        <div class="form-grid">${primary.map(renderOne).join("")}</div>
+        <details class="pattern-more"><summary>${escapeHtml(t("common.showMoreQuestions"))} (${rest.length})</summary><div class="form-grid">${rest.map(renderOne).join("")}</div></details>`;
+    }
+    function renderSection() {
+      const sections = activeSections(), section = currentSection(), progress = ((state.sectionIndex + 1) / sections.length) * 100;
+      elements.kicker.textContent = `${t("common.of")} ${sections.length} · ${state.sectionIndex + 1}`;
+      elements.title.textContent = t(`sections.${section.id}.title`);
+      elements.description.textContent = t(`sections.${section.id}.description`);
+      elements.progressMeta.textContent = `${Math.round(progress)}%`;
+      elements.progressTrack.setAttribute("aria-valuenow", Math.round(progress));
+      elements.progressFill.style.transform = `scaleX(${progress / 100})`;
+      elements.back.disabled = state.sectionIndex === 0;
+      elements.next.textContent = state.sectionIndex === sections.length - 1 ? t("common.finish") : t("common.next");
+      if (section.type === "fields") elements.content.innerHTML = `<div class="form-grid">${fieldConfig.map(renderField).join("")}</div>`;
+      if (section.type === "patterns") elements.content.innerHTML = renderPatterns();
+      if (section.type === "time") elements.content.innerHTML = renderItemRanges(timeKeys, "time", "timeItems", timeRoleGroups);
+      if (section.type === "decisions") elements.content.innerHTML = `<div class="form-grid">${rangeControl("interference", t("fields.interference.label"), t("fields.interference.help"), 4)}${rangeControl("qualityReduction", t("fields.qualityReduction.label"), t("fields.qualityReduction.help"), 100, "percent")}</div>`;
+      if (section.type === "leadership") elements.content.innerHTML = renderItemRanges(leadershipKeys, "leadership", "leadershipItems", leadershipRoleGroups);
+      if (section.type === "opportunities") elements.content.innerHTML = renderItemRanges(opportunityKeys, "opportunity", "opportunityItems", opportunityRoleGroups);
+      bindDynamicInputs();
+    }
+    function bindDynamicInputs() {
+      elements.content.querySelectorAll("input, select").forEach(control => {
+        control.addEventListener("input", event => {
+          state.answers[event.target.name] = event.target.value;
+          const output = event.target.closest(".field")?.querySelector("output");
+          if (output) output.textContent = event.target.name === "qualityReduction" ? `${event.target.value}%` : event.target.value;
+          const miniValue = event.target.closest(".mini-range")?.querySelector(".mini-range-value");
+          if (miniValue) miniValue.textContent = event.target.value;
+          event.target.setAttribute("aria-invalid", "false");
+          const error = document.getElementById(`${event.target.id}-error`); if (error) error.hidden = true;
+          saveState();
+        });
+      });
+    }
+    function validateSection() {
+      let valid = true;
+      elements.content.querySelectorAll("[required]").forEach(control => {
+        if (control.value === "" || !control.checkValidity()) {
+          valid = false; control.setAttribute("aria-invalid", "true");
+          const error = document.getElementById(`${control.id}-error`); if (error) { error.textContent = t("common.required"); error.hidden = false; }
+        }
+      });
+      if (!valid) elements.content.querySelector("[aria-invalid='true']")?.focus();
+      return valid;
+    }
+
+    const CalculationEngine = {
+      clamp(value, min, max) { return Math.min(max, Math.max(min, value)); },
+      average(values) { return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0; },
+      calculate(answers) {
+        const num = key => Number(answers[key]) || 0;
+        const hourly = num("hourly") || (num("income") / 1800) || 1;
+        const activeKeys = relevantPatternKeys(answers.role);
+        const patternScores = activeKeys.map(key => {
+          const frequency = num(`pattern.${key}.frequency`) / 4;
+          const impact = num(`pattern.${key}.impact`) / 4;
+          const confidence = .55 + (num(`pattern.${key}.confidence`) / 4) * .45;
+          return { key, score: frequency * impact * confidence };
+        }).sort((a,b) => b.score - a.score);
+        const patternIntensity = this.average(patternScores.map(item => item.score));
+        const highPatternIntensity = this.average(patternScores.slice(0, 8).map(item => item.score));
+
+        const weightedTimeHours = timeKeys.reduce((sum, key) => {
+          const weights = { overthinking:1, stressRecovery:.82, meetings:.58, waiting:.65, rework:.9, conflict:.78, secondGuessing:.82 };
+          return sum + num(`time.${key}`) * weights[key];
+        }, 0);
+        const timeCost = weightedTimeHours * hourly * 48 * (.52 + highPatternIntensity * .48);
+
+        const interference = num("interference") / 4;
+        const qualityReduction = num("qualityReduction") / 100;
+        const decisionExposure = num("decisionsMonth") * num("decisionValue") * 12;
+        const decisionCost = decisionExposure * interference * qualityReduction * (.07 + highPatternIntensity * .08);
+
+        const activeLeadershipKeys = activeKeysFor(leadershipKeys, leadershipRoleGroups, answers.role, "leadership");
+        const leadershipAverage = this.average(activeLeadershipKeys.map(key => num(`leadership.${key}`) / 10));
+        const teamSize = num("teamSize");
+        const leadershipCost = teamSize > 0 ? leadershipAverage * teamSize * hourly * 12 * (5 + highPatternIntensity * 8) : 0;
+
+        const activeOpportunityKeys = activeKeysFor(opportunityKeys, opportunityRoleGroups, answers.role, "opportunity");
+        const opportunityAverage = this.average(activeOpportunityKeys.map(key => num(`opportunity.${key}`) / 10));
+        const opportunityBase = Math.max(num("revenue") * .035, num("income") * .18, num("decisionValue") * 2.5);
+        const opportunityCost = opportunityAverage * opportunityBase * (.28 + highPatternIntensity * .42);
+
+        const rawTotal = timeCost + decisionCost + leadershipCost + opportunityCost;
+        const revenueGuardrail = Math.max(num("revenue") * .28, num("income") * 1.8, rawTotal);
+        const total = Math.min(rawTotal, revenueGuardrail);
+        const riskScore = Math.round(this.clamp((highPatternIntensity * 42) + (interference * 18) + (qualityReduction * 13) + (leadershipAverage * 12) + (opportunityAverage * 15), 0, 100));
+        const answeredPatterns = activeKeys.filter(key => num(`pattern.${key}.frequency`) > 0).length;
+        const completionFields = ((fieldConfig.filter(field => answers[field.id] !== "" && answers[field.id] !== undefined).length + answeredPatterns) / (fieldConfig.length + activeKeys.length));
+        const confidenceRatings = this.average(activeKeys.map(key => num(`pattern.${key}.confidence`) / 4));
+        const confidenceScore = this.clamp((completionFields * .58) + (confidenceRatings * .42), 0, 1);
+        const savingsRate = this.clamp(.17 + riskScore / 320, .18, .46);
+        const potentialSavings = total * savingsRate;
+        const low = total * (.72 + confidenceScore * .08), high = total * (1.18 + (1 - confidenceScore) * .20);
+        const breakdown = { time: timeCost, decision: decisionCost, leadership: leadershipCost, opportunity: opportunityCost };
+        const exposure = {
+          time: this.clamp(weightedTimeHours / 25, 0, 1), decision: this.clamp((interference + qualityReduction) / 2, 0, 1), leadership: leadershipAverage,
+          opportunity: opportunityAverage, patterns: highPatternIntensity
+        };
+        return { total, low, high, riskScore, confidenceScore, potentialSavings, breakdown, exposure, patternScores: patternScores.slice(0,5), allPatternScores: patternScores, weightedTimeHours };
+      }
+    };
+
+    function money(value, compact = false) {
+      const currency = state.answers.currency || "USD";
+      const locale = state.language === "he" ? "he-IL" : state.language === "ru" ? "ru-RU" : "en-US";
+      return new Intl.NumberFormat(locale, { style:"currency", currency, maximumFractionDigits:0, notation: compact && value > 999999 ? "compact" : "standard" }).format(Math.round(value));
+    }
+    function confidenceLabel(score) { return score > .78 ? t("report.confidenceHigh") : score > .56 ? t("report.confidenceMedium") : t("report.confidenceLow"); }
+    function riskMeter(score) {
+      const circumference = 2 * Math.PI * 52, offset = circumference * (1 - score / 100);
+      return `<svg viewBox="0 0 140 140" role="img" aria-label="${escapeHtml(`${t("report.riskScore")}: ${score} ${t("report.scoreOutOf")}`)}"><circle cx="70" cy="70" r="52" fill="none" stroke="var(--surface-2)" stroke-width="12"/><circle cx="70" cy="70" r="52" fill="none" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}" transform="rotate(-90 70 70)"/><text x="70" y="67" text-anchor="middle" fill="var(--ink)" font-family="Georgia" font-size="30">${score}</text><text x="70" y="86" text-anchor="middle" class="chart-label">${escapeHtml(t("report.scoreOutOf"))}</text></svg>`;
+    }
+    function radarChart(exposure) {
+      const keys = ["time","decision","leadership","opportunity","patterns"], center = 160, radius = 105;
+      const point = (index, scale) => { const angle = -Math.PI/2 + index * Math.PI*2/keys.length; return [center + Math.cos(angle)*radius*scale, center + Math.sin(angle)*radius*scale]; };
+      const grids = [.25,.5,.75,1].map(scale => `<polygon class="chart-grid" points="${keys.map((_,i) => point(i,scale).join(",")).join(" ")}"/>`).join("");
+      const axes = keys.map((key,i) => { const end = point(i,1), label = point(i,1.26); return `<line class="chart-grid" x1="${center}" y1="${center}" x2="${end[0]}" y2="${end[1]}"/><text class="chart-label" x="${label[0]}" y="${label[1]}" text-anchor="middle" dominant-baseline="middle">${escapeHtml(t(`report.${key}`))}</text>`; }).join("");
+      const shape = keys.map((key,i) => point(i, exposure[key]).join(",")).join(" ");
+      return `<svg viewBox="0 0 320 320" role="img" aria-label="${escapeHtml(t("report.radar"))}">${grids}${axes}<polygon class="chart-fill" points="${shape}"/>${keys.map((key,i) => { const p = point(i,exposure[key]); return `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="var(--accent)"/>`; }).join("")}</svg>`;
+    }
+    function barChart(breakdown) {
+      const keys = ["time","decision","leadership","opportunity"], max = Math.max(...keys.map(key => breakdown[key]), 1);
+      return `<svg viewBox="0 0 560 250" role="img" aria-label="${escapeHtml(t("report.breakdown"))}">${keys.map((key,index) => { const y = 18 + index * 58, width = (breakdown[key]/max)*330; return `<text class="bar-label" x="0" y="${y+14}">${escapeHtml(t(`report.${key}`))}</text><rect class="bar-track" x="160" y="${y}" width="330" height="18" rx="9"/><rect class="bar-fill ${index % 2 ? "alt" : ""}" x="160" y="${y}" width="${width}" height="18" rx="9"/><text class="bar-value" x="550" y="${y+14}" text-anchor="end">${escapeHtml(money(breakdown[key], true))}</text>`; }).join("")}</svg>`;
+    }
+    function renderReport() {
+      const report = state.report || CalculationEngine.calculate(state.answers); state.report = report;
+      const consequences = [];
+      if (report.exposure.time > .25) consequences.push("consequenceTime");
+      if (report.exposure.decision > .2) consequences.push("consequenceDecision");
+      if (numberAnswer("teamSize") > 0 && report.exposure.leadership > .18) consequences.push("consequenceLeadership");
+      if (report.exposure.opportunity > .18) consequences.push("consequenceOpportunity");
+      if (!consequences.length) consequences.push("consequenceDecision");
+      const rankings = report.patternScores.map((item,index) => `<div class="rank-item"><span class="rank-number">0${index+1}</span><div><strong>${escapeHtml(t(`patterns.${item.key}.name`))}</strong><div class="rank-track"><span style="width:${Math.max(3,item.score*100)}%"></span></div></div><span class="rank-score">${Math.round(item.score*100)}</span></div>`).join("");
+      elements.reportContent.innerHTML = `
+        <div class="report-hero"><div class="report-overline">${escapeHtml(t("report.overline"))}</div><h1 class="report-headline" id="reportHeadline">${escapeHtml(t("report.headline"))}</h1><div class="report-amount" data-animate-number="${Math.round(report.total)}">${escapeHtml(money(report.total))}</div><div class="report-range">${escapeHtml(t("report.rangePrefix"))}: ${escapeHtml(money(report.low))} — ${escapeHtml(money(report.high))}</div><p class="method-note">${escapeHtml(t("report.method"))}</p></div>
+        <div class="report-grid">
+          <section class="report-card third"><h3>${escapeHtml(t("report.riskScore"))}</h3><div class="chart-box">${riskMeter(report.riskScore)}</div></section>
+          <section class="report-card third"><h3>${escapeHtml(t("report.confidence"))}</h3><div class="metric-big">${escapeHtml(confidenceLabel(report.confidenceScore))}</div><p class="metric-caption">${Math.round(report.confidenceScore*100)} ${escapeHtml(t("common.of"))} 100</p></section>
+          <section class="report-card third"><h3>${escapeHtml(t("report.roi"))}</h3><div class="metric-big">${escapeHtml(money(report.potentialSavings, true))}</div><p class="metric-caption">${escapeHtml(t("report.annual"))}</p></section>
+          <section class="report-card"><h3>${escapeHtml(t("report.radar"))}</h3><div class="chart-box">${radarChart(report.exposure)}</div></section>
+          <section class="report-card"><h3>${escapeHtml(t("report.breakdown"))}</h3><div class="chart-box">${barChart(report.breakdown)}</div>${numberAnswer("teamSize") === 0 ? `<p class="metric-caption">${escapeHtml(t("report.noLeadership"))}</p>` : ""}</section>
+          <section class="report-card"><h3>${escapeHtml(t("report.topPatterns"))}</h3><div class="pattern-ranking">${rankings}</div></section>
+          <section class="report-card"><h3>${escapeHtml(t("report.consequences"))}</h3><ul class="consequence-list">${consequences.map(key => `<li>${escapeHtml(t(`report.${key}`))}</li>`).join("")}</ul></section>
+          <section class="report-card wide"><div class="roi-panel"><div><h3>${escapeHtml(t("report.roi"))}</h3><div class="roi-value">${escapeHtml(money(report.potentialSavings))}</div></div><p>${escapeHtml(t("report.roiCopy"))}</p></div></section>
+        </div>
+        <section class="cta-panel no-print"><div><h2>${escapeHtml(t("report.ctaTitle"))}</h2><p>${escapeHtml(t("report.ctaCopy"))}</p></div><div class="cta-actions"><button class="button accent" id="callButton" type="button">${escapeHtml(t("report.bookCall"))}</button><button class="button ghost" id="bookButton" type="button">${escapeHtml(t("report.emailReport"))}</button><button class="button ghost" id="printButton" type="button">${escapeHtml(t("report.download"))}</button><button class="button ghost" id="restartButton" type="button">${escapeHtml(t("report.restart"))}</button><div class="booking-note">${escapeHtml(t("report.bookingNote"))}</div></div></section>`;
+      document.getElementById("printButton").addEventListener("click", () => { elements.live.textContent = t("report.printHint"); setTimeout(() => window.print(), 80); });
+      document.getElementById("restartButton").addEventListener("click", restartAssessment);
+      document.getElementById("callButton").addEventListener("click", () => window.open("https://calendly.com/roman-mantelmakher/intro-call", "_blank", "noopener"));
+      document.getElementById("bookButton").addEventListener("click", bookDemonstration);
+      saveState(); animateReportAmount();
+    }
+    function animateReportAmount() {
+      const node = elements.reportContent.querySelector("[data-animate-number]"); if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const target = Number(node.dataset.animateNumber), start = performance.now(), duration = 850;
+      const frame = now => { const progress = Math.min(1, (now-start)/duration), eased = 1-Math.pow(1-progress,3); node.textContent = money(target*eased); if (progress < 1) requestAnimationFrame(frame); };
+      requestAnimationFrame(frame);
+    }
+    function bookDemonstration() {
+      const subject = encodeURIComponent(t("report.emailReport"));
+      const influencing = (state.report.allPatternScores || []).filter(item => item.score > 0.02);
+      const patternLines = influencing.length
+        ? influencing.map(item => `- ${t(`patterns.${item.key}.name`)}: ${Math.round(item.score * 100)}/100`).join("\n")
+        : t("report.noPatternsNote");
+      const body = encodeURIComponent(`${t("report.ctaTitle")}\n\n${t("report.headline")}: ${money(state.report.total)}\n${t("report.riskScore")}: ${state.report.riskScore}/100\n\n${t("report.topPatterns")}:\n${patternLines}\n\n${t("report.method")}`);
+      window.location.href = `mailto:roman.mantelmakher@gmail.com?subject=${subject}&body=${body}`;
+    }
+    function restartAssessment() {
+      const language = state.language, theme = state.theme;
+      state.answers = { ...defaultAnswers }; state.report = null; state.sectionIndex = 0; state.page = "landing"; state.language = language; state.theme = theme;
+      saveState(); showPage("landing");
+    }
+
+    elements.start.addEventListener("click", () => showPage("assessment"));
+    elements.back.addEventListener("click", () => { if (state.sectionIndex > 0) { state.sectionIndex--; saveState(); renderSection(); window.scrollTo({top:0,behavior:"smooth"}); } });
+    elements.form.addEventListener("submit", event => {
+      event.preventDefault(); if (!validateSection()) return;
+      const sections = activeSections();
+      if (state.sectionIndex < sections.length - 1) { state.sectionIndex++; saveState(); renderSection(); window.scrollTo({top:0,behavior:"smooth"}); }
+      else { state.report = CalculationEngine.calculate(state.answers); elements.live.textContent = t("report.reportReady"); showPage("report"); }
+    });
+    elements.language.addEventListener("change", event => { state.language = event.target.value; applyDocumentSettings(); populatePreferences(); translateStatic(); if (state.page === "assessment") renderSection(); if (state.page === "report") renderReport(); saveState(); });
+    elements.theme.addEventListener("change", event => { state.theme = event.target.value; applyDocumentSettings(); saveState(); });
+    window.addEventListener("storage", event => { if (event.key === STORAGE_KEY) location.reload(); });
+    initializeUI();
+  </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111299584', 'ym');
+
+    ym(111299584, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111299584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

@@ -1,0 +1,311 @@
+{
+  "en": {
+    "common": {
+      "skip": "Skip to content",
+      "themeSystem": "System",
+      "themeLight": "Light",
+      "themeDark": "Dark"
+    },
+    "nav": {
+      "about": "About",
+      "roman": "About Roman",
+      "testimonials": "Testimonials",
+      "articles": "Articles",
+      "calculator": "Calculator"
+    },
+    "hero": {
+      "eyebrow": "EFR — Emotional Factory Reset",
+      "title": "Your biggest business cost may already be <em>emotional</em>.",
+      "subtitle": "Stress is visible. Emotional patterns are not. Most leaders measure revenue, CAC, and churn — almost nobody measures the hidden cost of fear, perfectionism, conflict avoidance, and the need for control.",
+      "ctaPrimary": "Free emotional cost calculator",
+      "ctaSecondary": "Book a short intro conversation",
+      "note": "Takes about 8 minutes. Nothing you enter ever leaves your device.",
+      "cardLabel": "Estimated annual cost",
+      "cardCaption": "Based on your patterns, decisions, and time lost."
+    },
+    "about": {
+      "eyebrow": "What is EFR",
+      "title": "Not coaching. Not therapy. Not meditation.",
+      "p1": "EFR (Emotional Factory Reset) targets a different question than most approaches to stress: can a recurring emotional pattern stop arising at all — not just be managed or softened, but stop triggering.",
+      "p2": "Most methods work at the level of controlling a reaction, or weakening it over time. EFR works at the level where the pattern no longer activates in the first place, so the reaction it used to produce simply isn't there to manage.",
+      "p3": "It's built for people whose decisions carry weight — founders, executives, and other professionals working in high-stakes environments where clarity under pressure is the actual product."
+    },
+    "roman": {
+      "eyebrow": "About Roman",
+      "title": "Thirty years building systems. Thirty years studying the mind.",
+      "p1": "I've spent over thirty years in IT — programming, product, and leadership roles, including time at Intel — before founding IntelliVerse and building EFR.",
+      "p2": "In parallel, for just as long, I've been on a spiritual search, most of it focused on studying emotions. It started with the EFRAT model — Event, Interpretation, Feeling, Reaction — taught at the Adler Institute in Israel.",
+      "p3": "Over time it became clear this path had a ceiling: the nature of the mind is dual, and so is any emotion built on top of it — you either keep swinging between opposites, or you stop the swing itself.",
+      "p4": "That question is what led to EFR."
+    },
+    "steps": [
+      {
+        "title": "Between thoughts",
+        "body": "You're guided to notice the gaps between thoughts — the space that's already there, usually missed."
+      },
+      {
+        "title": "Out of the head",
+        "body": "Attention moves out of the head, into a quieter place to operate from."
+      },
+      {
+        "title": "Yours to practice",
+        "body": "You take this with you and practice it over the following days. Once it's clearly yours and you want to go deeper, the first session begins — and that's where we work with specific emotional patterns."
+      }
+    ],
+    "testimonials": {
+      "eyebrow": "Client experience",
+      "title": "What people notice",
+      "more": "More reviews (in Russian) are available on <a href=\"https://m.liveexpert.org/e/bhappy/expert-reviews\" target=\"_blank\" rel=\"noopener\">LiveExpert</a> and Roman's <a href=\"https://behappy.ucoz.com/index/otzyvy/0-11\" target=\"_blank\" rel=\"noopener\">personal site</a>.",
+      "sourceLi": "Original posted in English on",
+      "sourceRu": "Original in Russian — full review on",
+      "watchVideo": "Watch the video testimonial"
+    },
+    "articles": {
+      "eyebrow": "From LinkedIn",
+      "title": "Articles",
+      "subtitle": "Posts from LinkedIn, kept here as a permanent, searchable library."
+    },
+    "cta": {
+      "title": "See what the intro conversation actually feels like.",
+      "subtitle": "A short conversation. No commitment, no framework pitch — just a first direct experience of finding the space between thoughts and moving attention out of the head.",
+      "button": "Book a short intro conversation",
+      "buttonSecondary": "Try the calculator first",
+      "note": "Payment is tied to what you personally experience, not to a promised outcome."
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Before you book",
+      "items": [
+        {
+          "q": "Is this therapy?",
+          "a": "No. EFR is not a clinical or medical treatment and doesn't replace one. It's a structured method for working with emotional patterns that affect decision-making and leadership."
+        },
+        {
+          "q": "How is this different from coaching or meditation?",
+          "a": "Coaching and meditation typically help you manage or reduce a reaction over time. EFR works to observe and interrupt the pattern directly, so the reaction it used to produce stops arising."
+        },
+        {
+          "q": "What happens in the intro conversation?",
+          "a": "It's a short, direct conversation focused on one thing: showing you how to notice the gaps between thoughts and move attention out of the head. We don't work with a specific emotional pattern yet — that comes later, in the first session, once you've practiced this on your own for a few days and it's clearly yours."
+        },
+        {
+          "q": "What does it cost?",
+          "a": "The intro conversation lets you feel the approach before any commitment. Pricing for further work is discussed only after that, based on what's actually relevant to you."
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "EFR is a proprietary method for working with emotional patterns that affect decisions and leadership. It is not a substitute for medical or psychological treatment."
+    },
+    "meta": {
+      "homeTitle": "EFR — Emotional Factory Reset | Roman Mantelmakher",
+      "homeDescription": "EFR is a method for resolving the emotional patterns that quietly cost businesses time, clarity, and decisions. By Roman Mantelmakher."
+    }
+  },
+  "ru": {
+    "common": {
+      "skip": "К содержанию",
+      "themeSystem": "Система",
+      "themeLight": "Светлая",
+      "themeDark": "Тёмная"
+    },
+    "nav": {
+      "about": "О методе",
+      "roman": "Об авторе",
+      "testimonials": "Отзывы",
+      "articles": "Статьи",
+      "calculator": "Калькулятор"
+    },
+    "hero": {
+      "eyebrow": "EFR — Обнуление эмоционального паттерна",
+      "title": "Самая большая статья расходов в бизнесе может быть <em>эмоциональной</em>.",
+      "subtitle": "Стресс заметен. Эмоциональные паттерны — нет. Большинство руководителей считают выручку, CAC и отток клиентов — почти никто не считает скрытую цену страха, перфекционизма, избегания конфликтов и потребности контролировать всё.",
+      "ctaPrimary": "Бесплатный калькулятор эмоциональных издержек",
+      "ctaSecondary": "Записаться на короткий вводный разговор",
+      "note": "Занимает около 8 минут. Ничего из введённого не покидает ваше устройство.",
+      "cardLabel": "Оценка годовых издержек",
+      "cardCaption": "На основе ваших паттернов, решений и потерянного времени."
+    },
+    "about": {
+      "eyebrow": "Что такое EFR",
+      "title": "Не коучинг. Не терапия. Не медитация.",
+      "p1": "EFR (Обнуление эмоционального паттерна) ставит другой вопрос, чем большинство подходов к стрессу: может ли повторяющийся эмоциональный паттерн вообще перестать возникать — не просто ослабнуть или стать управляемым, а перестать запускаться.",
+      "p2": "Большинство методов работают на уровне контроля реакции или её постепенного ослабления. EFR работает на уровне, где паттерн больше не активируется вовсе — и реакция, которую он раньше вызывал, просто не существует больше.",
+      "p3": "Метод создан для людей, чьи решения имеют вес — основателей, руководителей и других профессионалов, работающих в условиях высокой ответственности, где ясность под давлением и есть реальный результат работы."
+    },
+    "roman": {
+      "eyebrow": "Об авторе",
+      "title": "Тридцать лет в разработке систем. Тридцать лет в исследовании ума.",
+      "p1": "Я более тридцати лет проработал в IT — программирование, продукт, руководящие позиции, включая работу в Intel — прежде чем основал IntelliVerse и создал EFR.",
+      "p2": "Параллельно, столько же времени, я занимался духовным поиском, большая часть которого была посвящена исследованию эмоций. Начиналось всё с модели АФРАТ (Событие → Интерпретация → Чувство → Реакция), которую преподают в Институте Адлера в Израиле.",
+      "p3": "Со временем стало ясно, что у этого пути есть потолок: природа ума дуальна, а значит дуальна и любая эмоция, построенная на нём — можно либо продолжать качаться между противоположностями, либо остановить сами качели.",
+      "p4": "Именно этот вопрос привёл меня к EFR."
+    },
+    "steps": [
+      {
+        "title": "Промежутки между мыслями",
+        "body": "Мы направляем внимание на то, чтобы заметить промежутки между мыслями — пространство, которое уже есть, но обычно упускается."
+      },
+      {
+        "title": "Выход из головы",
+        "body": "Внимание смещается из головы в более тихое место, из которого можно действовать."
+      },
+      {
+        "title": "Ваш опыт для практики",
+        "body": "Вы забираете этот опыт с собой и практикуете его несколько дней. Когда он станет ясно вашим и вы захотите пойти глубже, начинается первая сессия — там мы уже работаем с конкретными эмоциональными паттернами."
+      }
+    ],
+    "testimonials": {
+      "eyebrow": "Опыт клиентов",
+      "title": "Что замечают люди",
+      "more": "Больше отзывов (на русском) — на <a href=\"https://m.liveexpert.org/e/bhappy/expert-reviews\" target=\"_blank\" rel=\"noopener\">LiveExpert</a> и на <a href=\"https://behappy.ucoz.com/index/otzyvy/0-11\" target=\"_blank\" rel=\"noopener\">личном сайте</a> Романа.",
+      "sourceLi": "Оригинал опубликован на английском в",
+      "sourceRu": "Оригинал на русском — полный отзыв на",
+      "watchVideo": "Смотреть видеоотзыв"
+    },
+    "articles": {
+      "eyebrow": "Из LinkedIn",
+      "title": "Статьи",
+      "subtitle": "Посты из LinkedIn, собранные здесь как постоянная, доступная для поиска библиотека."
+    },
+    "cta": {
+      "title": "Почувствуйте, как проходит вводный разговор.",
+      "subtitle": "Короткий разговор. Без обязательств и без презентации метода — первый прямой опыт нахождения промежутков между мыслями и выхода внимания из головы.",
+      "button": "Записаться на короткий вводный разговор",
+      "buttonSecondary": "Сначала пройти калькулятор",
+      "note": "Оплата привязана к вашему личному ощущению, а не к обещанному результату."
+    },
+    "faq": {
+      "eyebrow": "Вопросы",
+      "title": "Перед записью",
+      "items": [
+        {
+          "q": "Это терапия?",
+          "a": "Нет. EFR не является клиническим или медицинским лечением и не заменяет его. Это структурированный метод работы с эмоциональными паттернами, влияющими на решения и лидерство."
+        },
+        {
+          "q": "Чем это отличается от коучинга или медитации?",
+          "a": "Коучинг и медитация обычно помогают со временем управлять реакцией или ослаблять её. EFR работает на прямое наблюдение и прерывание паттерна — так, что реакция, которую он вызывал, перестаёт возникать."
+        },
+        {
+          "q": "Что происходит во вводном разговоре?",
+          "a": "Это короткий прямой разговор, сфокусированный на одном: показать вам, как замечать промежутки между мыслями и выводить внимание из головы. С конкретным эмоциональным паттерном мы пока не работаем — это происходит позже, на первой сессии, когда вы попрактикуете это самостоятельно несколько дней и опыт станет ясно вашим."
+        },
+        {
+          "q": "Сколько это стоит?",
+          "a": "Вводный разговор даёт почувствовать метод до каких-либо обязательств. Стоимость дальнейшей работы обсуждается только после этого, исходя из того, что действительно актуально для вас."
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "EFR — авторский метод работы с эмоциональными паттернами, влияющими на решения и лидерство. Не заменяет медицинское или психологическое лечение."
+    },
+    "meta": {
+      "homeTitle": "EFR — Обнуление эмоционального паттерна | Roman Mantelmakher",
+      "homeDescription": "EFR — метод работы с эмоциональными паттернами, которые незаметно стоят бизнесу времени, ясности и качества решений. Автор — Roman Mantelmakher."
+    }
+  },
+  "he": {
+    "common": {
+      "skip": "עבור לתוכן",
+      "themeSystem": "מערכת",
+      "themeLight": "בהיר",
+      "themeDark": "כהה"
+    },
+    "nav": {
+      "about": "אודות",
+      "roman": "אודות רומן",
+      "testimonials": "המלצות",
+      "articles": "מאמרים",
+      "calculator": "מחשבון"
+    },
+    "hero": {
+      "eyebrow": "EFR — איפוס רגשי",
+      "title": "העלות העסקית הגדולה ביותר שלך עשויה להיות כבר <em>רגשית</em>.",
+      "subtitle": "לחץ נראה לעין. דפוסים רגשיים - לא. רוב המנהלים מודדים הכנסות, עלות רכישת לקוח ונטישה - כמעט אף אחד לא מודד את העלות הנסתרת של פחד, פרפקציוניזם, הימנעות מקונפליקטים והצורך בשליטה.",
+      "ctaPrimary": "מחשבון עלות רגשית חינם",
+      "ctaSecondary": "קביעת שיחת היכרות קצרה",
+      "note": "לוקח כשמונה דקות. שום דבר שתזינו לא עוזב את המכשיר שלכם.",
+      "cardLabel": "הערכת עלות שנתית",
+      "cardCaption": "בהתבסס על הדפוסים, ההחלטות והזמן האבוד שלכם."
+    },
+    "about": {
+      "eyebrow": "מהו EFR",
+      "title": "לא אימון. לא טיפול. לא מדיטציה.",
+      "p1": "EFR (איפוס רגשי) שואל שאלה שונה מרוב הגישות ללחץ: האם דפוס רגשי חוזר יכול פשוט להפסיק להתעורר - לא רק להיחלש או להיות בשליטה, אלא להפסיק להיות מופעל מלכתחילה.",
+      "p2": "רוב השיטות פועלות ברמת השליטה בתגובה, או החלשתה לאורך זמן. EFR פועל ברמה שבה הדפוס כבר לא מופעל כלל - כך שהתגובה שהוא יצר בעבר פשוט כבר לא קיימת.",
+      "p3": "השיטה נבנתה עבור אנשים שההחלטות שלהם נושאות משקל - מייסדים, מנהלים בכירים ואנשי מקצוע אחרים הפועלים בסביבות בעלות סיכון גבוה, שבהן בהירות תחת לחץ היא התוצר עצמו."
+    },
+    "roman": {
+      "eyebrow": "אודות רומן",
+      "title": "שלושים שנה בבניית מערכות. שלושים שנה בחקר התודעה.",
+      "p1": "יותר משלושים שנה עבדתי בהייטק - תפקידי פיתוח, מוצר וניהול, כולל תקופה באינטל - לפני שהקמתי את IntelliVerse ופיתחתי את EFR.",
+      "p2": "במקביל, במשך תקופה דומה, הייתי בתהליך של חיפוש רוחני, שרובו הוקדש לחקר הרגשות. זה התחיל במודל אפר\\\"ת (אירוע, פירוש, רגש, תגובה) של מכון אדלר בישראל.",
+      "p3": "עם הזמן התברר שלדרך הזו יש תקרה: טבע התודעה דואלי, ולכן גם כל רגש הבנוי עליו דואלי - או שממשיכים להתנדנד בין הקצוות, או שעוצרים את הנדנדה עצמה.",
+      "p4": "השאלה הזו היא שהובילה אותי אל EFR."
+    },
+    "steps": [
+      {
+        "title": "רווחים בין המחשבות",
+        "body": "אתם מודרכים להבחין ברווחים שבין המחשבות - במרחב שכבר קיים שם, אך בדרך כלל מתפספס."
+      },
+      {
+        "title": "יציאה מהראש",
+        "body": "תשומת הלב עוברת מהראש למקום שקט יותר לפעול ממנו."
+      },
+      {
+        "title": "חוויה להמשיך לתרגל",
+        "body": "אתם לוקחים את החוויה איתכם ומתרגלים אותה במשך הימים הבאים. כשהיא הופכת ברור לשלכם ואתם רוצים להעמיק, מתחילה השיחה הראשונה - ושם עובדים כבר עם דפוסים רגשיים ספציפיים."
+      }
+    ],
+    "testimonials": {
+      "eyebrow": "חוויית לקוחות",
+      "title": "מה אנשים מבחינים בו",
+      "more": "ביקורות נוספות (ברוסית) זמינות ב-<a href=\"https://m.liveexpert.org/e/bhappy/expert-reviews\" target=\"_blank\" rel=\"noopener\">LiveExpert</a> ובאתר <a href=\"https://behappy.ucoz.com/index/otzyvy/0-11\" target=\"_blank\" rel=\"noopener\">האישי</a> של רומן.",
+      "sourceLi": "המקור פורסם באנגלית ב",
+      "sourceRu": "המקור ברוסית - הביקורת המלאה ב",
+      "watchVideo": "צפייה בהמלצת הווידאו"
+    },
+    "articles": {
+      "eyebrow": "מ-LinkedIn",
+      "title": "מאמרים",
+      "subtitle": "פוסטים מ-LinkedIn, שמורים כאן כספרייה קבועה וניתנת לחיפוש."
+    },
+    "cta": {
+      "title": "הרגישו איך נראית שיחת ההיכרות בפועל.",
+      "subtitle": "שיחה קצרה. ללא התחייבות וללא הצגת שיטה - חוויה ישירה ראשונה של מציאת הרווחים שבין המחשבות ויציאת תשומת הלב מהראש.",
+      "button": "קביעת שיחת היכרות קצרה",
+      "buttonSecondary": "נסו קודם את המחשבון",
+      "note": "התשלום קשור לחוויה האישית שלכם, לא לתוצאה מובטחת."
+    },
+    "faq": {
+      "eyebrow": "שאלות",
+      "title": "לפני שקובעים",
+      "items": [
+        {
+          "q": "האם זה טיפול?",
+          "a": "לא. EFR אינו טיפול קליני או רפואי ואינו מחליף אותו. זו שיטה מובנית לעבודה עם דפוסים רגשיים המשפיעים על קבלת החלטות ומנהיגות."
+        },
+        {
+          "q": "במה זה שונה מאימון או מדיטציה?",
+          "a": "אימון ומדיטציה בדרך כלל עוזרים לנהל או להחליש תגובה לאורך זמן. EFR פועל לתצפית ישירה והפרעה לדפוס עצמו, כך שהתגובה שהוא יצר מפסיקה להתעורר."
+        },
+        {
+          "q": "מה קורה בשיחת ההיכרות?",
+          "a": "זו שיחה קצרה וישירה, ממוקדת בדבר אחד: להראות לכם איך להבחין ברווחים שבין המחשבות ולהוציא את תשומת הלב מהראש. אנחנו עדיין לא עובדים עם דפוס רגשי ספציפי - זה מגיע מאוחר יותר, בשיחה הראשונה, לאחר שתרגלתם זאת בעצמכם כמה ימים וזה הופך להיות ברור שלכם."
+        },
+        {
+          "q": "כמה זה עולה?",
+          "a": "שיחת ההיכרות מאפשרת לכם להרגיש את הגישה לפני כל התחייבות. תמחור להמשך העבודה נדון רק לאחר מכן, בהתאם למה שרלוונטי עבורכם."
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "EFR היא שיטה קניינית לעבודה עם דפוסים רגשיים המשפיעים על החלטות ומנהיגות. אינה תחליף לטיפול רפואי או פסיכולוגי."
+    },
+    "meta": {
+      "homeTitle": "EFR — איפוס רגשי | Roman Mantelmakher",
+      "homeDescription": "EFR היא שיטה לעבודה עם דפוסים רגשיים שעולים לעסקים זמן, בהירות ואיכות החלטות. מאת Roman Mantelmakher."
+    }
+  }
+}
