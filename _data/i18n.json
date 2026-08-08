@@ -11,7 +11,10 @@
       "roman": "About Roman",
       "testimonials": "Testimonials",
       "articles": "Articles",
-      "calculator": "Calculator"
+      "calculator": "Calculator",
+      "faq": "FAQ",
+      "forFounders": "For Founders",
+      "forExecutives": "For Executives"
     },
     "hero": {
       "eyebrow": "EFR — Emotional Factory Reset",
@@ -119,8 +122,8 @@
       "disclaimer": "EFR is a proprietary method for working with emotional patterns that affect decisions and leadership. It is not a substitute for medical or psychological treatment."
     },
     "meta": {
-      "homeTitle": "EFR — Emotional Factory Reset | Roman Mantelmakher",
-      "homeDescription": "EFR is a method for resolving the emotional patterns that quietly cost businesses time, clarity, and decisions. By Roman Mantelmakher."
+      "homeTitle": "Emotional Patterns in Leadership & Decisions | EFR — Roman Mantelmakher",
+      "homeDescription": "EFR is a method for identifying and interrupting the recurring emotional patterns that affect leadership, decisions, and performance under pressure. By Roman Mantelmakher."
     }
   },
   "ru": {
@@ -135,7 +138,10 @@
       "roman": "Об авторе",
       "testimonials": "Отзывы",
       "articles": "Статьи",
-      "calculator": "Калькулятор"
+      "calculator": "Калькулятор",
+      "faq": "Вопросы",
+      "forFounders": "Основателям",
+      "forExecutives": "Руководителям"
     },
     "hero": {
       "eyebrow": "EFR — Обнуление эмоционального паттерна",
@@ -243,8 +249,8 @@
       "disclaimer": "EFR — авторский метод работы с эмоциональными паттернами, влияющими на решения и лидерство. Не заменяет медицинское или психологическое лечение."
     },
     "meta": {
-      "homeTitle": "EFR — Обнуление эмоционального паттерна | Roman Mantelmakher",
-      "homeDescription": "EFR — метод работы с эмоциональными паттернами, которые незаметно стоят бизнесу времени, ясности и качества решений. Автор — Roman Mantelmakher."
+      "homeTitle": "Эмоциональные паттерны в лидерстве и решениях | EFR — Roman Mantelmakher",
+      "homeDescription": "EFR — метод выявления и прерывания повторяющихся эмоциональных паттернов, влияющих на лидерство, решения и результаты под давлением. Автор — Roman Mantelmakher."
     }
   },
   "he": {
@@ -259,7 +265,10 @@
       "roman": "אודות רומן",
       "testimonials": "המלצות",
       "articles": "מאמרים",
-      "calculator": "מחשבון"
+      "calculator": "מחשבון",
+      "faq": "שאלות",
+      "forFounders": "למייסדים",
+      "forExecutives": "למנהלים"
     },
     "hero": {
       "eyebrow": "EFR — איפוס רגשי",
@@ -367,8 +376,8 @@
       "disclaimer": "EFR היא שיטה קניינית לעבודה עם דפוסים רגשיים המשפיעים על החלטות ומנהיגות. אינה תחליף לטיפול רפואי או פסיכולוגי."
     },
     "meta": {
-      "homeTitle": "EFR — איפוס רגשי | Roman Mantelmakher",
-      "homeDescription": "EFR היא שיטה לעבודה עם דפוסים רגשיים שעולים לעסקים זמן, בהירות ואיכות החלטות. מאת Roman Mantelmakher."
+      "homeTitle": "דפוסים רגשיים במנהיגות ובקבלת החלטות | EFR — Roman Mantelmakher",
+      "homeDescription": "EFR היא שיטה לזיהוי ולעצירת דפוסים רגשיים חוזרים המשפיעים על מנהיגות, החלטות וביצועים תחת לחץ. מאת Roman Mantelmakher."
     }
   }
 }

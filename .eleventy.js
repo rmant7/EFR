@@ -1,6 +1,14 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
+  // These files must never be run through the Nunjucks/Markdown template
+  // pipeline — calc.html is copied verbatim (see passthrough below), and
+  // README.md is repo documentation, not a page. Without this, Eleventy's
+  // default .html/.md template formats pick them up and additionally build
+  // them as real pages (/calc/, /README/).
+  eleventyConfig.ignores.add("calc.html");
+  eleventyConfig.ignores.add("README.md");
+
   // Static assets copied as-is
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("calc.html");

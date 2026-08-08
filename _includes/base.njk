@@ -33,10 +33,13 @@
         <span>EFR</span>
       </a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="#about">{{ i18n[lang].nav.about }}</a>
-        <a href="#roman">{{ i18n[lang].nav.roman }}</a>
-        <a href="#testimonials">{{ i18n[lang].nav.testimonials }}</a>
-        <a href="#articles">{{ i18n[lang].nav.articles }}</a>
+        <a href="{{ site.homeUrl[lang] }}#about">{{ i18n[lang].nav.about }}</a>
+        <a href="{{ site.homeUrl[lang] }}#roman">{{ i18n[lang].nav.roman }}</a>
+        <a href="{{ site.homeUrl[lang] }}#testimonials">{{ i18n[lang].nav.testimonials }}</a>
+        <a href="{{ site.homeUrl[lang] }}#articles">{{ i18n[lang].nav.articles }}</a>
+        <a href="{{ site.homeUrl[lang] }}#faq">{{ i18n[lang].nav.faq }}</a>
+        <a href="{{ site.forFoundersUrl[lang] }}">{{ i18n[lang].nav.forFounders }}</a>
+        <a href="{{ site.forExecutivesUrl[lang] }}">{{ i18n[lang].nav.forExecutives }}</a>
         <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
       </nav>
       <div class="preferences">
@@ -51,10 +54,13 @@
   </header>
 
   <nav id="mobileNav" class="mobile-nav app-shell" aria-label="Mobile">
-    <a href="#about">{{ i18n[lang].nav.about }}</a>
-    <a href="#roman">{{ i18n[lang].nav.roman }}</a>
-    <a href="#testimonials">{{ i18n[lang].nav.testimonials }}</a>
-    <a href="#articles">{{ i18n[lang].nav.articles }}</a>
+    <a href="{{ site.homeUrl[lang] }}#about">{{ i18n[lang].nav.about }}</a>
+    <a href="{{ site.homeUrl[lang] }}#roman">{{ i18n[lang].nav.roman }}</a>
+    <a href="{{ site.homeUrl[lang] }}#testimonials">{{ i18n[lang].nav.testimonials }}</a>
+    <a href="{{ site.homeUrl[lang] }}#articles">{{ i18n[lang].nav.articles }}</a>
+    <a href="{{ site.homeUrl[lang] }}#faq">{{ i18n[lang].nav.faq }}</a>
+    <a href="{{ site.forFoundersUrl[lang] }}">{{ i18n[lang].nav.forFounders }}</a>
+    <a href="{{ site.forExecutivesUrl[lang] }}">{{ i18n[lang].nav.forExecutives }}</a>
     <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
   </nav>
 
@@ -112,7 +118,10 @@
       window.addEventListener("scroll", () => {
         backToTop.classList.toggle("visible", window.scrollY > 480);
       }, { passive: true });
-      backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      backToTop.addEventListener("click", () => {
+        if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     })();
   </script>
 </body>
