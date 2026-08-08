@@ -3,7 +3,7 @@ layout: base.njk
 ogType: article
 ---
 <div class="app-shell">
-  {% articleSchema { title: title, description: excerpt, isoDate: date | isoDate, url: "https://emotions.help" + page.url, lang: lang } %}
+  {% articleSchema { title: title, description: excerpt, isoDate: date | isoDate, modifiedIsoDate: (dateModified | isoDate if dateModified else null), url: "https://emotions.help" + page.url, lang: lang } %}
   <article style="max-width:760px;margin:40px auto;">
     <p class="eyebrow">{{ i18n[lang].articles.eyebrow }}</p>
     <h1 class="hero-title" style="font-size:clamp(2rem,4.5vw,3.2rem);">{{ title }}</h1>

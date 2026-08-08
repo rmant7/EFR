@@ -1,0 +1,33 @@
+name: Build, validate, and notify search engines
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate article content
+        run: node scripts/validate-content.js
+
+      - name: Build site (same command Netlify runs)
+        run: npm run build
+
+      - name: Ping IndexNow (Bing + Yandex) with current sitemap
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          echo "Waiting for Netlify to finish deploying before notifying search engines..."
+          sleep 90
+          node scripts/ping-indexnow.js

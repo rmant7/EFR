@@ -73,6 +73,7 @@ module.exports = function (eleventyConfig) {
       "headline": opts.title,
       "description": opts.description,
       "datePublished": opts.isoDate,
+      "dateModified": opts.modifiedIsoDate || opts.isoDate,
       "author": { "@type": "Person", "name": "Roman Mantelmakher", "url": "https://www.linkedin.com/in/roman-mantelmakher/" },
       "publisher": { "@type": "Organization", "name": "EFR", "url": "https://emotions.help/" },
       "mainEntityOfPage": { "@type": "WebPage", "@id": opts.url },
