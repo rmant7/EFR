@@ -40,7 +40,7 @@
         <a href="{{ site.homeUrl[lang] }}#faq">{{ i18n[lang].nav.faq }}</a>
         <a href="{{ site.forFoundersUrl[lang] }}">{{ i18n[lang].nav.forFounders }}</a>
         <a href="{{ site.forExecutivesUrl[lang] }}">{{ i18n[lang].nav.forExecutives }}</a>
-        <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+        <a href="{{ site.calcUrl[lang] }}">{{ i18n[lang].nav.calculator }}</a>
       </nav>
       <div class="preferences">
         {% for altLang, altUrl in alternates %}
@@ -61,7 +61,7 @@
     <a href="{{ site.homeUrl[lang] }}#faq">{{ i18n[lang].nav.faq }}</a>
     <a href="{{ site.forFoundersUrl[lang] }}">{{ i18n[lang].nav.forFounders }}</a>
     <a href="{{ site.forExecutivesUrl[lang] }}">{{ i18n[lang].nav.forExecutives }}</a>
-    <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+    <a href="{{ site.calcUrl[lang] }}">{{ i18n[lang].nav.calculator }}</a>
   </nav>
 
   <main id="main">
@@ -74,7 +74,7 @@
       <div class="footer-links">
         <a href="mailto:roman.mantelmakher@gmail.com">roman.mantelmakher@gmail.com</a>
         <a href="https://linkedin.com/in/roman-mantelmakher/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="/calc.html?lang={{ lang }}">{{ i18n[lang].nav.calculator }}</a>
+        <a href="{{ site.calcUrl[lang] }}">{{ i18n[lang].nav.calculator }}</a>
       </div>
     </div>
   </footer>

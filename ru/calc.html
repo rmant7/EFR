@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-theme="system">
+<html lang="ru" dir="ltr" data-theme="system">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Free Emotional Cost Calculator by EFR — estimate how much recurring emotional patterns cost your business each year. Private, runs entirely in your browser.">
-  <title>Emotional Cost Calculator | EFR — Roman Mantelmakher</title>
-  <link rel="canonical" href="https://emotions.help/calc.html">
+  <meta name="description" content="Бесплатный калькулятор эмоциональной стоимости EFR — оцените, во сколько повторяющиеся эмоциональные паттерны обходятся вашему бизнесу за год. Конфиденциально, работает полностью в браузере.">
+  <title>Калькулятор эмоциональной стоимости | EFR — Роман Мантельмахер</title>
+  <link rel="canonical" href="https://emotions.help/ru/calc.html">
   <link rel="alternate" hreflang="en" href="https://emotions.help/calc.html">
   <link rel="alternate" hreflang="ru" href="https://emotions.help/ru/calc.html">
   <link rel="alternate" hreflang="he" href="https://emotions.help/he/calc.html">
@@ -841,12 +841,12 @@
     defaultAnswers.interference = 0;
     defaultAnswers.qualityReduction = 0;
 
-    // This page is the fixed "en" edition of the calculator (see /calc.html,
+    // This page is the fixed "ru" edition of the calculator (see /calc.html,
     // /ru/calc.html, /he/calc.html). Language is chosen by which page you're on,
     // the same way the rest of the site works — not by an in-page query param.
     const validLangs = ["en", "ru", "he"];
     const savedState = safeParse(localStorage.getItem(STORAGE_KEY));
-    const initialLanguage = "en";
+    const initialLanguage = "ru";
     const state = {
       language: initialLanguage,
       theme: savedState.theme || localStorage.getItem("patternCost.theme") || "system",
@@ -1529,183 +1529,183 @@
 
 <section id="emotional-patterns-guide" class="seo-patterns-guide" aria-labelledby="emotional-patterns-guide-title">
   <h2 id="emotional-patterns-guide-title">Emotional Patterns</h2>
-<details open class="seo-pattern-language" lang="en"open>
-<summary>Emotional Patterns That Can Affect Business Decisions</summary>
-<p>The following explanations describe the emotional patterns assessed by the calculator. The examples are practical reference points, not diagnostic labels.</p>
+<details open class="seo-pattern-language" lang="ru">
+<summary>Эмоциональные паттерны, которые могут влиять на бизнес-решения</summary>
+<p>Ниже приведены объяснения эмоциональных паттернов, которые оценивает калькулятор. Примеры являются практическими ориентирами, а не диагностическими ярлыками.</p>
 <article class="seo-pattern">
-<h3>Stress</h3>
-<p class="pattern-short">Persistent activation reduces focus, range, and recovery.</p>
-<p>Stress becomes a recurring pattern when pressure repeatedly disrupts attention, recovery, communication, or judgment. The relevant question is not whether pressure exists, but how strongly it changes your functioning and behavior.</p>
-<h4>Examples</h4>
-<ul><li>Remaining mentally activated long after an urgent issue has been resolved.</li><li>Making a rushed decision because sustained pressure has reduced your patience.</li></ul>
+<h3>Стресс</h3>
+<p class="pattern-short">Постоянное напряжение снижает фокус, диапазон и восстановление.</p>
+<p>Стресс становится повторяющимся паттерном, когда давление регулярно нарушает внимание, восстановление, коммуникацию или качество решений. Важен не сам факт давления, а степень изменения поведения под его воздействием.</p>
+<h4>Примеры</h4>
+<ul><li>Долго оставаться внутренне напряжённым после завершения срочной проблемы.</li><li>Принимать поспешное решение после длительного периода давления.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Overthinking</h3>
-<p class="pattern-short">Analysis continues after it stops improving the decision.</p>
-<p>Overthinking is analysis that continues after additional thought stops materially improving the decision. It can create an illusion of control while consuming attention and reopening options that were already sufficiently evaluated.</p>
-<h4>Examples</h4>
-<ul><li>Comparing the same three options repeatedly without new information.</li><li>Reopening a settled decision because another possible interpretation occurred to you.</li></ul>
+<h3>Чрезмерное обдумывание</h3>
+<p class="pattern-short">Анализ продолжается после того, как перестаёт улучшать решение.</p>
+<p>Избыточное обдумывание — анализ, который продолжается после того, как новые размышления уже не улучшают решение. Оно создаёт ощущение контроля, но расходует внимание и постоянно открывает уже закрытые варианты.</p>
+<h4>Примеры</h4>
+<ul><li>Снова и снова сравнивать одни и те же варианты без новой информации.</li><li>Возвращаться к принятому решению из-за новой малозначимой трактовки.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Anxiety</h3>
-<p class="pattern-short">Anticipated threats distort timing or perceived risk.</p>
-<p>Anxiety can influence business behavior when anticipated threat becomes stronger than the evidence available in the present situation. It may narrow perceived options and make uncertain outcomes feel more negative than they are.</p>
-<h4>Examples</h4>
-<ul><li>Treating a possible problem as if it were already happening.</li><li>Avoiding a conversation because you anticipate several negative outcomes.</li></ul>
+<h3>Тревога</h3>
+<p class="pattern-short">Ожидаемые угрозы искажают сроки или восприятие риска.</p>
+<p>Тревожность влияет на деловое поведение, когда ожидаемая угроза становится сильнее фактов текущей ситуации. Она может сужать воспринимаемые варианты и заставлять неопределённый исход казаться заранее негативным.</p>
+<h4>Примеры</h4>
+<ul><li>Относиться к возможной проблеме как к уже случившейся.</li><li>Избегать разговора из-за заранее предполагаемых негативных сценариев.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Conflict avoidance</h3>
-<p class="pattern-short">Necessary tension is postponed to preserve short-term comfort.</p>
-<p>Conflict avoidance is a tendency to postpone necessary tension because an uncomfortable conversation feels more costly than leaving the situation unresolved. It can preserve short-term comfort while increasing ambiguity, resentment, or operational cost.</p>
-<h4>Examples</h4>
-<ul><li>Not addressing repeated underperformance because the conversation feels unpleasant.</li><li>Leaving unclear ownership in place rather than clarifying it directly.</li></ul>
+<h3>Избегание конфликтов</h3>
+<p class="pattern-short">Необходимое напряжение откладывается ради краткого комфорта.</p>
+<p>Избегание конфликта — откладывание необходимого напряжённого разговора ради краткосрочного комфорта. Нерешённая ситуация при этом часто становится дороже: растут неопределённость, раздражение и операционные потери.</p>
+<h4>Примеры</h4>
+<ul><li>Не обсуждать систематически слабую работу сотрудника, потому что разговор неприятен.</li><li>Оставлять неясные зоны ответственности вместо прямого разговора.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Perfectionism</h3>
-<p class="pattern-short">Marginal improvements consume disproportionate time and attention.</p>
-<p>Perfectionism becomes costly when marginal improvements receive more time and attention than their practical value justifies. The standard itself is not the problem; the problem is difficulty stopping when the work is already good enough for its purpose.</p>
-<h4>Examples</h4>
-<ul><li>Polishing an internal presentation for hours after the key decision is already clear.</li><li>Delaying a launch because a non-critical detail is not perfect.</li></ul>
+<h3>Перфекционизм</h3>
+<p class="pattern-short">Незначительные улучшения отнимают непропорционально много времени.</p>
+<p>Перфекционизм становится дорогим, когда небольшие улучшения получают больше времени и внимания, чем оправдано их практической ценностью. Проблема не в высоком стандарте, а в невозможности остановиться вовремя.</p>
+<h4>Примеры</h4>
+<ul><li>Часами улучшать внутреннюю презентацию после того, как решение уже понятно.</li><li>Откладывать запуск из-за несущественной детали.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>People pleasing</h3>
-<p class="pattern-short">Other people’s comfort overrides capacity, priorities, or truth.</p>
-<p>People pleasing occurs when other people’s comfort, approval, or immediate happiness repeatedly overrides your own priorities, boundaries, or accurate communication. It can look cooperative while creating hidden overload and unclear commitments.</p>
-<h4>Examples</h4>
-<ul><li>Accepting work that displaces a more valuable commitment because saying no feels uncomfortable.</li><li>Avoiding a necessary price increase because you fear disappointing a client.</li></ul>
+<h3>Угодничество</h3>
+<p class="pattern-short">Комфорт других перевешивает ресурсы, приоритеты или правду.</p>
+<p>Угодничество возникает, когда комфорт и одобрение других систематически важнее собственных приоритетов, границ и честной коммуникации. Снаружи это выглядит как сотрудничество, но создаёт скрытую перегрузку и неясные обязательства.</p>
+<h4>Примеры</h4>
+<ul><li>Брать дополнительную работу, хотя она вытесняет более ценную задачу, чтобы не отказать.</li><li>Не поднимать цену из страха расстроить клиента.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for approval</h3>
-<p class="pattern-short">External agreement becomes a condition for acting clearly.</p>
-<p>The need for approval appears when agreement, praise, or permission from others becomes necessary before you can act with confidence. The issue is not collaboration itself, but when external validation repeatedly delays a decision or changes your position.</p>
-<h4>Examples</h4>
-<ul><li>Rewriting a proposal after it is already clear because you fear the client will dislike it.</li><li>Waiting for several colleagues to agree before making a decision that is already within your responsibility.</li></ul>
+<h3>Потребность в одобрении</h3>
+<p class="pattern-short">Внешнее согласие становится условием ясного действия.</p>
+<p>Потребность в одобрении возникает, когда согласие, похвала или разрешение других становятся условием уверенного действия. Проблема не в сотрудничестве, а в том, что внешняя оценка регулярно меняет позицию или откладывает решение.</p>
+<h4>Примеры</h4>
+<ul><li>Переписывать предложение, которое уже достаточно хорошее, из страха не понравиться клиенту.</li><li>Ждать согласия нескольких коллег перед решением в зоне своей ответственности.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Self-doubt</h3>
-<p class="pattern-short">Capability is discounted despite relevant evidence.</p>
-<p>Self-doubt becomes a pattern when relevant evidence of competence is repeatedly discounted. The result can be unnecessary delegation upward, delayed decisions, or reluctance to act without reassurance.</p>
-<h4>Examples</h4>
-<ul><li>Deferring a decision that clearly falls within your expertise.</li><li>Asking for repeated confirmation even after the available evidence supports your choice.</li></ul>
+<h3>Неуверенность в себе</h3>
+<p class="pattern-short">Способности обесцениваются вопреки релевантным доказательствам.</p>
+<p>Неуверенность в себе становится паттерном, когда реальные доказательства компетентности систематически обесцениваются. Результат — ненужная передача решений наверх, задержки и постоянный поиск подтверждения.</p>
+<h4>Примеры</h4>
+<ul><li>Откладывать решение, которое явно находится в вашей компетенции.</li><li>Несколько раз просить подтверждения уже очевидного выбора.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Impatience</h3>
-<p class="pattern-short">Pressure for speed reduces listening, sequencing, or quality.</p>
-<p>Impatience appears when the need for immediate progress repeatedly overrides listening, sequencing, or the time required for a sound decision. Speed becomes valuable in itself rather than relative to the cost of mistakes.</p>
-<h4>Examples</h4>
-<ul><li>Interrupting discovery questions to move directly to execution.</li><li>Changing direction before a team has enough time to test the current approach.</li></ul>
+<h3>Нетерпение</h3>
+<p class="pattern-short">Давление скорости ухудшает слушание, последовательность или качество.</p>
+<p>Нетерпение возникает, когда потребность в немедленном результате регулярно важнее слушания, последовательности и времени, необходимого для хорошего решения. Скорость становится самоцелью.</p>
+<h4>Примеры</h4>
+<ul><li>Прерывать исследование потребностей клиента, чтобы быстрее перейти к продаже.</li><li>Менять направление до завершения достаточного теста.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Rumination</h3>
-<p class="pattern-short">Past interactions keep occupying attention after action is possible.</p>
-<p>Rumination is repeated mental replay of a past interaction, mistake, or conflict after useful action is already possible. The event remains active in attention even though replay does not change what happened.</p>
-<h4>Examples</h4>
-<ul><li>Replaying a difficult meeting for hours after it ended.</li><li>Repeatedly reconstructing what you should have said in an argument from yesterday.</li></ul>
+<h3>Руминация</h3>
+<p class="pattern-short">Прошлые события занимают внимание после появления возможности действовать.</p>
+<p>Руминация — повторное мысленное прокручивание прошлого разговора, ошибки или конфликта, когда полезное действие уже возможно. Событие продолжает занимать внимание, хотя повторение не меняет его.</p>
+<h4>Примеры</h4>
+<ul><li>Часами прокручивать сложную встречу после её окончания.</li><li>Снова и снова думать, что стоило сказать вчера в споре.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Fear of failure</h3>
-<p class="pattern-short">Protecting against a poor outcome limits speed or ambition.</p>
-<p>Fear of failure becomes a pattern when protecting yourself from a bad outcome repeatedly takes priority over learning, testing, or acting. Preparation can then continue long after there is enough evidence to move.</p>
-<h4>Examples</h4>
-<ul><li>Keeping a product in preparation instead of launching a controlled test.</li><li>Avoiding a high-value decision because a visible mistake could damage your reputation.</li></ul>
+<h3>Страх неудачи</h3>
+<p class="pattern-short">Защита от плохого результата ограничивает скорость или амбицию.</p>
+<p>Страх неудачи становится паттерном, когда защита от плохого результата систематически важнее тестирования, обучения и действия. Подготовка продолжается даже тогда, когда уже достаточно данных для следующего шага.</p>
+<h4>Примеры</h4>
+<ul><li>Продолжать готовить продукт вместо ограниченного запуска.</li><li>Откладывать важное решение из-за риска публичной ошибки.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Comparison</h3>
-<p class="pattern-short">Other people’s progress disrupts priorities or judgment.</p>
-<p>Comparison becomes costly when another person’s progress or status repeatedly changes your priorities or judgment. External benchmarks can be useful, but the pattern appears when comparison displaces your own strategy.</p>
-<h4>Examples</h4>
-<ul><li>Changing your product direction after seeing a competitor’s announcement.</li><li>Feeling behind because another founder raised more money and then changing plans without evidence.</li></ul>
+<h3>Сравнение</h3>
+<p class="pattern-short">Чужой прогресс нарушает приоритеты или суждение.</p>
+<p>Сравнение становится дорогим, когда прогресс или статус другого человека регулярно меняет ваши приоритеты и стратегию. Внешние ориентиры полезны, но паттерн возникает, когда они вытесняют собственные данные.</p>
+<h4>Примеры</h4>
+<ul><li>Менять стратегию после новости о конкуренте без новых данных о своём рынке.</li><li>Менять планы только потому, что другой основатель привлёк больше денег.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for control</h3>
-<p class="pattern-short">Variability feels more costly than personal involvement.</p>
-<p>The need for control appears when uncertainty or variability feels safer if you personally monitor or decide everything. It can reduce delegation, slow execution, and prevent capable people from taking ownership.</p>
-<h4>Examples</h4>
-<ul><li>Keeping routine approvals because someone else might make a different choice.</li><li>Checking every stage of a project after responsibility has already been delegated.</li></ul>
+<h3>Потребность в контроле</h3>
+<p class="pattern-short">Вариативность кажется дороже личного участия.</p>
+<p>Потребность в контроле проявляется, когда неопределённость кажется безопаснее при личном участии во всех решениях. Это ограничивает делегирование, замедляет исполнение и мешает другим брать ответственность.</p>
+<h4>Примеры</h4>
+<ul><li>Оставлять за собой все согласования из опасения, что другой выберет иначе.</li><li>Проверять каждый этап уже делегированного проекта.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Guilt</h3>
-<p class="pattern-short">Responsibility expands beyond what is accurate or useful.</p>
-<p>Guilt becomes a pattern when responsibility expands beyond what is actually yours, making reasonable boundaries or necessary decisions feel morally wrong. It can turn other people’s disappointment into a reason not to act.</p>
-<h4>Examples</h4>
-<ul><li>Avoiding a necessary boundary because someone may be upset.</li><li>Keeping an ineffective arrangement because changing it makes you feel responsible for the consequences.</li></ul>
+<h3>Вина</h3>
+<p class="pattern-short">Ответственность расширяется за пределы точного и полезного.</p>
+<p>Чувство вины становится паттерном, когда ответственность расширяется далеко за пределы собственной зоны влияния. Тогда разумные границы и необходимые решения переживаются как морально неправильные.</p>
+<h4>Примеры</h4>
+<ul><li>Не устанавливать границу, потому что другой человек может расстроиться.</li><li>Сохранять неэффективную договорённость из-за чувства ответственности за последствия изменений.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Defensiveness</h3>
-<p class="pattern-short">Protecting identity competes with receiving useful information.</p>
-<p>Defensiveness appears when protecting your identity, competence, or intentions becomes more important than receiving information. It can block useful feedback and make problems harder to surface early.</p>
-<h4>Examples</h4>
-<ul><li>Explaining why you were right before asking what impact your decision had.</li><li>Rejecting criticism because it feels like a judgment of your competence.</li></ul>
+<h3>Защитная реакция</h3>
+<p class="pattern-short">Защита идентичности мешает получать полезную информацию.</p>
+<p>Защитная реакция возникает, когда сохранение образа компетентного человека становится важнее получения информации. Это затрудняет обратную связь и мешает обнаруживать проблемы на ранней стадии.</p>
+<h4>Примеры</h4>
+<ul><li>Сначала объяснять, почему вы правы, вместо того чтобы выяснить влияние решения.</li><li>Отвергать критику, потому что она воспринимается как оценка личности.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Resentment</h3>
-<p class="pattern-short">Unaddressed expectations reduce collaboration and initiative.</p>
-<p>Resentment can build when unspoken expectations, repeated concessions, or perceived unfairness remain unresolved. The pattern often affects cooperation indirectly through withdrawal, irritation, or reduced initiative.</p>
-<h4>Examples</h4>
-<ul><li>Agreeing to work you do not want and later becoming angry that others expect it.</li><li>Withholding support after feeling that your contribution was not appreciated.</li></ul>
+<h3>Обида</h3>
+<p class="pattern-short">Необсуждённые ожидания снижают сотрудничество и инициативу.</p>
+<p>Обида и накопленное раздражение возникают из-за невысказанных ожиданий, постоянных уступок или ощущения несправедливости. Паттерн часто проявляется косвенно — через отстранение, раздражение и снижение инициативы.</p>
+<h4>Примеры</h4>
+<ul><li>Соглашаться на нежелательную работу, а потом злиться на ожидания других.</li><li>Сокращать поддержку после ощущения недооценённости.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for certainty</h3>
-<p class="pattern-short">Action waits for information that the situation cannot provide.</p>
-<p>The need for certainty appears when action is postponed until uncertainty falls below a level that reality cannot provide. More analysis can feel productive while actually delaying the decision.</p>
-<h4>Examples</h4>
-<ul><li>Requesting another report even though the remaining uncertainty cannot be resolved.</li><li>Waiting for a perfect market signal before making a reversible move.</li></ul>
+<h3>Потребность в определённости</h3>
+<p class="pattern-short">Действие ждёт информации, которой ситуация дать не может.</p>
+<p>Потребность в определённости возникает, когда действие откладывается до уровня уверенности, которого реальность просто не может дать. Дополнительный анализ может создавать ощущение работы, хотя фактически решение не движется.</p>
+<h4>Примеры</h4>
+<ul><li>Запрашивать ещё один анализ, хотя остаточную неопределённость устранить невозможно.</li><li>Ждать идеального рыночного сигнала перед обратимым решением.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Fear of rejection</h3>
-<p class="pattern-short">Possible refusal reduces outreach, negotiation, or direct asks.</p>
-<p>Fear of rejection can make the possibility of hearing “no” influence behavior before a request is even made. The pattern becomes costly when opportunities are filtered out simply because refusal feels threatening.</p>
-<h4>Examples</h4>
-<ul><li>Not asking a prospect for a meeting because you expect they may decline.</li><li>Avoiding a negotiation because you do not want to risk hearing a counteroffer.</li></ul>
+<h3>Страх отказа</h3>
+<p class="pattern-short">Возможный отказ снижает активность, переговоры или прямые просьбы.</p>
+<p>Страх отказа влияет на поведение ещё до того, как человек сделал предложение или запрос. Паттерн становится дорогим, когда потенциальные возможности отбрасываются только потому, что возможный отказ переживается как угроза.</p>
+<h4>Примеры</h4>
+<ul><li>Не предложить перспективному клиенту встречу, ожидая отказа.</li><li>Избегать переговоров, чтобы не услышать встречное предложение.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Anger</h3>
-<p class="pattern-short">Frustration narrows communication and decision range.</p>
-<p>Anger becomes a business pattern when frustration narrows communication or decision-making before the underlying issue is understood. Anger itself is not automatically dysfunctional; the pattern is the loss of choice in how it affects behavior.</p>
-<h4>Examples</h4>
-<ul><li>Sending a sharp message immediately after receiving disappointing news.</li><li>Escalating a disagreement instead of first clarifying the facts.</li></ul>
+<h3>Гнев</h3>
+<p class="pattern-short">Раздражение сужает коммуникацию и диапазон решений.</p>
+<p>Гнев становится деловым паттерном, когда раздражение сужает коммуникацию или выбор до понимания сути проблемы. Сам гнев не обязательно дисфункционален; проблема — потеря выбора в поведении.</p>
+<h4>Примеры</h4>
+<ul><li>Отправлять резкое сообщение сразу после плохой новости.</li><li>Эскалировать спор вместо проверки фактов.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Micromanagement</h3>
-<p class="pattern-short">Delegated work remains under excessive observation or correction.</p>
-<p>Micromanagement is persistent checking, correction, or intervention after responsibility has been delegated. It often looks like quality control but becomes a pattern when the leader cannot tolerate another person’s way of doing the work.</p>
-<h4>Examples</h4>
-<ul><li>Rewriting an employee’s message instead of reviewing the outcome.</li><li>Requesting frequent status updates on work that is already progressing normally.</li></ul>
+<h3>Микроменеджмент</h3>
+<p class="pattern-short">Делегированная работа остаётся под чрезмерным наблюдением.</p>
+<p>Микроменеджмент — постоянная проверка, исправление и вмешательство после передачи ответственности. Контроль качества превращается в паттерн, когда руководителю трудно принять другой способ выполнения работы.</p>
+<h4>Примеры</h4>
+<ul><li>Переписывать сообщение сотрудника вместо оценки результата.</li><li>Требовать частые отчёты по нормально идущей работе.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need to be right</h3>
-<p class="pattern-short">Winning the interpretation becomes more important than updating it.</p>
-<p>The need to be right becomes a pattern when defending an interpretation matters more than updating it when new information appears. The cost is often hidden in prolonged arguments, slow learning, or decisions made to preserve position.</p>
-<h4>Examples</h4>
-<ul><li>Continuing an argument after the practical answer is already clear.</li><li>Rejecting a useful idea because accepting it would mean admitting your earlier view was wrong.</li></ul>
+<h3>Потребность быть правым</h3>
+<p class="pattern-short">Победа в интерпретации становится важнее её обновления.</p>
+<p>Потребность быть правым становится паттерном, когда защита собственной трактовки важнее обновления позиции при появлении новых данных. Цена часто скрыта в спорах, медленном обучении и решениях ради сохранения лица.</p>
+<h4>Примеры</h4>
+<ul><li>Продолжать спор после того, как практический ответ уже очевиден.</li><li>Отвергать полезную идею, потому что её принятие означает признать прежнюю ошибку.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Shame</h3>
-<p class="pattern-short">A mistake becomes evidence about personal worth rather than data.</p>
-<p>Shame turns a mistake or weakness into a judgment about personal worth. In business it can encourage hiding problems, avoiding exposure, or protecting an image instead of using information to correct the situation.</p>
-<h4>Examples</h4>
-<ul><li>Hiding an error because admitting it feels like admitting incompetence.</li><li>Avoiding a difficult question because you fear looking unprepared.</li></ul>
+<h3>Стыд</h3>
+<p class="pattern-short">Ошибка становится выводом о собственной ценности, а не данными.</p>
+<p>Стыд превращает ошибку или слабость в оценку собственной ценности. В бизнесе это может вести к сокрытию проблем, избеганию открытости и защите имиджа вместо использования информации для исправления ситуации.</p>
+<h4>Примеры</h4>
+<ul><li>Скрывать ошибку, потому что признание кажется признанием некомпетентности.</li><li>Не задавать вопрос из страха выглядеть неподготовленным.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need to impress</h3>
-<p class="pattern-short">Signaling competence competes with clarity or usefulness.</p>
-<p>The need to impress appears when signaling competence or status competes with clarity, usefulness, or honest communication. Complexity can become a way of protecting an image rather than solving the actual problem.</p>
-<h4>Examples</h4>
-<ul><li>Adding technical complexity to a proposal mainly to look more sophisticated.</li><li>Using jargon instead of a simple explanation because the simple version feels less impressive.</li></ul>
+<h3>Потребность впечатлять</h3>
+<p class="pattern-short">Демонстрация компетентности конкурирует с ясностью и пользой.</p>
+<p>Потребность производить впечатление возникает, когда демонстрация компетентности или статуса важнее ясности и пользы. Сложность становится способом защищать образ вместо решения реальной задачи.</p>
+<h4>Примеры</h4>
+<ul><li>Добавлять техническую сложность в предложение, чтобы выглядеть умнее.</li><li>Использовать жаргон вместо простого объяснения.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Scarcity mindset</h3>
-<p class="pattern-short">Perceived shortage favors protection over strategic investment.</p>
-<p>A scarcity mindset makes limited resources feel more threatening than the potential value of an investment. It can produce defensive choices even when spending, hiring, or experimentation would create greater long-term value.</p>
-<h4>Examples</h4>
-<ul><li>Rejecting a high-return investment because spending feels unsafe.</li><li>Keeping a critical role vacant despite the cost of lost capacity.</li></ul>
+<h3>Мышление дефицита</h3>
+<p class="pattern-short">Ощущение нехватки ставит защиту выше стратегических инвестиций.</p>
+<p>Мышление дефицита делает ограниченность ресурсов более угрожающей, чем потенциальная ценность инвестиции. Это может приводить к защитным решениям даже там, где расходы или найм создают большую долгосрочную ценность.</p>
+<h4>Примеры</h4>
+<ul><li>Отказаться от высокодоходной инвестиции, потому что тратить деньги кажется опасным.</li><li>Держать критическую позицию незакрытой несмотря на стоимость потерянной мощности.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Attachment</h3>
-<p class="pattern-short">A preferred outcome becomes difficult to reassess objectively.</p>
-<p>Attachment appears when a preferred outcome becomes difficult to reassess objectively. Identity, sunk effort, or emotional investment can make changing direction feel like losing something rather than responding to new evidence.</p>
-<h4>Examples</h4>
-<ul><li>Continuing a project because you have already invested months in it.</li><li>Rejecting evidence that a strategy should change because the original idea feels personally important.</li></ul>
+<h3>Привязанность</h3>
+<p class="pattern-short">Предпочтительный исход трудно переоценить объективно.</p>
+<p>Привязанность возникает, когда предпочтительный результат становится трудно переоценить объективно. Личная идентичность, вложенные усилия и эмоциональная инвестиция превращают смену курса в ощущение потери.</p>
+<h4>Примеры</h4>
+<ul><li>Продолжать проект только потому, что в него уже вложены месяцы.</li><li>Игнорировать данные о необходимости смены стратегии, потому что идея лично важна.</li></ul>
 </article>
 </details>
 </section>

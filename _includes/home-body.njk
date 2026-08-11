@@ -7,7 +7,7 @@
       <h1 class="hero-title">{{ i18n[lang].hero.title | safe }}</h1>
       <p class="hero-copy">{{ i18n[lang].hero.subtitle }}</p>
       <div class="hero-actions">
-        <a class="button accent" href="/calc.html?lang={{ lang }}">
+        <a class="button accent" href="{{ site.calcUrl[lang] }}">
           <span>{{ i18n[lang].hero.ctaPrimary }}</span>
           <svg class="flip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
         </a>
@@ -117,7 +117,7 @@
       </div>
       <div class="cta-actions">
         <a class="button accent" href="https://calendly.com/roman-mantelmakher/intro-call" target="_blank" rel="noopener">{{ i18n[lang].cta.button }}</a>
-        <a class="button ghost" href="/calc.html?lang={{ lang }}">{{ i18n[lang].cta.buttonSecondary }}</a>
+        <a class="button ghost" href="{{ site.calcUrl[lang] }}">{{ i18n[lang].cta.buttonSecondary }}</a>
         <p class="cta-note">{{ i18n[lang].cta.note }}</p>
       </div>
     </div>

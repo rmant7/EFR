@@ -10,7 +10,7 @@ ogType: website
       {{ content | safe }}
     </div>
     <div class="hero-actions" style="margin-top:36px;">
-      <a class="button accent" href="/calc.html?lang={{ lang }}">{{ i18n[lang].hero.ctaPrimary }}</a>
+      <a class="button accent" href="{{ site.calcUrl[lang] }}">{{ i18n[lang].hero.ctaPrimary }}</a>
       <a class="button ghost" href="{{ site.homeUrl[lang] }}#book">{{ i18n[lang].hero.ctaSecondary }}</a>
     </div>
   </section>

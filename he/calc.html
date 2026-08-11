@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-theme="system">
+<html lang="he" dir="rtl" data-theme="system">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Free Emotional Cost Calculator by EFR — estimate how much recurring emotional patterns cost your business each year. Private, runs entirely in your browser.">
-  <title>Emotional Cost Calculator | EFR — Roman Mantelmakher</title>
-  <link rel="canonical" href="https://emotions.help/calc.html">
+  <meta name="description" content="מחשבון העלות הרגשית החינמי של EFR — הערכה כמה עולים לעסק שלכם דפוסים רגשיים חוזרים מדי שנה. פרטי לחלוטין, פועל כולו בדפדפן.">
+  <title>מחשבון העלות הרגשית | EFR — רומן מנטלמכר</title>
+  <link rel="canonical" href="https://emotions.help/he/calc.html">
   <link rel="alternate" hreflang="en" href="https://emotions.help/calc.html">
   <link rel="alternate" hreflang="ru" href="https://emotions.help/ru/calc.html">
   <link rel="alternate" hreflang="he" href="https://emotions.help/he/calc.html">
@@ -841,12 +841,12 @@
     defaultAnswers.interference = 0;
     defaultAnswers.qualityReduction = 0;
 
-    // This page is the fixed "en" edition of the calculator (see /calc.html,
+    // This page is the fixed "he" edition of the calculator (see /calc.html,
     // /ru/calc.html, /he/calc.html). Language is chosen by which page you're on,
     // the same way the rest of the site works — not by an in-page query param.
     const validLangs = ["en", "ru", "he"];
     const savedState = safeParse(localStorage.getItem(STORAGE_KEY));
-    const initialLanguage = "en";
+    const initialLanguage = "he";
     const state = {
       language: initialLanguage,
       theme: savedState.theme || localStorage.getItem("patternCost.theme") || "system",
@@ -1529,183 +1529,183 @@
 
 <section id="emotional-patterns-guide" class="seo-patterns-guide" aria-labelledby="emotional-patterns-guide-title">
   <h2 id="emotional-patterns-guide-title">Emotional Patterns</h2>
-<details open class="seo-pattern-language" lang="en"open>
-<summary>Emotional Patterns That Can Affect Business Decisions</summary>
-<p>The following explanations describe the emotional patterns assessed by the calculator. The examples are practical reference points, not diagnostic labels.</p>
+<details open class="seo-pattern-language" lang="he">
+<summary>דפוסים רגשיים שיכולים להשפיע על החלטות עסקיות</summary>
+<p>ההסברים הבאים מתארים את הדפוסים הרגשיים שהמחשבון בוחן. הדוגמאות הן נקודות ייחוס מעשיות ולא תוויות אבחוניות.</p>
 <article class="seo-pattern">
-<h3>Stress</h3>
-<p class="pattern-short">Persistent activation reduces focus, range, and recovery.</p>
-<p>Stress becomes a recurring pattern when pressure repeatedly disrupts attention, recovery, communication, or judgment. The relevant question is not whether pressure exists, but how strongly it changes your functioning and behavior.</p>
-<h4>Examples</h4>
-<ul><li>Remaining mentally activated long after an urgent issue has been resolved.</li><li>Making a rushed decision because sustained pressure has reduced your patience.</li></ul>
+<h3>לחץ</h3>
+<p class="pattern-short">עוררות מתמשכת מצמצמת ריכוז, טווח והתאוששות.</p>
+<p>לחץ הופך לדפוס כאשר עומס פוגע שוב ושוב בקשב, בהתאוששות, בתקשורת או בשיקול הדעת. השאלה אינה אם יש לחץ, אלא עד כמה הוא משנה את התפקוד וההתנהגות.</p>
+<h4>דוגמאות</h4>
+<ul><li>להישאר דרוך זמן רב אחרי שבעיה דחופה כבר נפתרה.</li><li>לקבל החלטה חפוזה אחרי תקופה ממושכת של לחץ.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Overthinking</h3>
-<p class="pattern-short">Analysis continues after it stops improving the decision.</p>
-<p>Overthinking is analysis that continues after additional thought stops materially improving the decision. It can create an illusion of control while consuming attention and reopening options that were already sufficiently evaluated.</p>
-<h4>Examples</h4>
-<ul><li>Comparing the same three options repeatedly without new information.</li><li>Reopening a settled decision because another possible interpretation occurred to you.</li></ul>
+<h3>חשיבת יתר</h3>
+<p class="pattern-short">הניתוח נמשך לאחר שאינו משפר עוד את ההחלטה.</p>
+<p>חשיבת־יתר היא ניתוח שנמשך אחרי שמחשבה נוספת כבר אינה משפרת את ההחלטה. היא יוצרת תחושת שליטה אך צורכת תשומת לב ופותחת שוב אפשרויות שכבר נבדקו.</p>
+<h4>דוגמאות</h4>
+<ul><li>להשוות שוב ושוב בין אותן אפשרויות בלי מידע חדש.</li><li>לפתוח מחדש החלטה שכבר התקבלה בגלל פרשנות חדשה קטנה.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Anxiety</h3>
-<p class="pattern-short">Anticipated threats distort timing or perceived risk.</p>
-<p>Anxiety can influence business behavior when anticipated threat becomes stronger than the evidence available in the present situation. It may narrow perceived options and make uncertain outcomes feel more negative than they are.</p>
-<h4>Examples</h4>
-<ul><li>Treating a possible problem as if it were already happening.</li><li>Avoiding a conversation because you anticipate several negative outcomes.</li></ul>
+<h3>חרדה</h3>
+<p class="pattern-short">איומים צפויים מעוותים תזמון או תפיסת סיכון.</p>
+<p>חרדה משפיעה על התנהגות עסקית כאשר איום צפוי חזק יותר מהראיות במצב הנוכחי. היא יכולה לצמצם אפשרויות נתפסות ולגרום לתוצאה לא ודאית להיראות שלילית מראש.</p>
+<h4>דוגמאות</h4>
+<ul><li>להתייחס לבעיה אפשרית כאילו כבר קרתה.</li><li>להימנע משיחה בגלל תרחישים שליליים צפויים.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Conflict avoidance</h3>
-<p class="pattern-short">Necessary tension is postponed to preserve short-term comfort.</p>
-<p>Conflict avoidance is a tendency to postpone necessary tension because an uncomfortable conversation feels more costly than leaving the situation unresolved. It can preserve short-term comfort while increasing ambiguity, resentment, or operational cost.</p>
-<h4>Examples</h4>
-<ul><li>Not addressing repeated underperformance because the conversation feels unpleasant.</li><li>Leaving unclear ownership in place rather than clarifying it directly.</li></ul>
+<h3>הימנעות מקונפליקט</h3>
+<p class="pattern-short">מתח נחוץ נדחה כדי לשמור על נוחות בטווח הקצר.</p>
+<p>הימנעות מקונפליקט היא דחייה של שיחה נחוצה ולא נעימה כדי לשמור על נוחות בטווח הקצר. המחיר עלול להיות יותר עמימות, תסכול ועלות תפעולית.</p>
+<h4>דוגמאות</h4>
+<ul><li>לא לטפל בביצועים חלשים של עובד כי השיחה לא נעימה.</li><li>להשאיר אחריות לא ברורה במקום להבהיר אותה ישירות.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Perfectionism</h3>
-<p class="pattern-short">Marginal improvements consume disproportionate time and attention.</p>
-<p>Perfectionism becomes costly when marginal improvements receive more time and attention than their practical value justifies. The standard itself is not the problem; the problem is difficulty stopping when the work is already good enough for its purpose.</p>
-<h4>Examples</h4>
-<ul><li>Polishing an internal presentation for hours after the key decision is already clear.</li><li>Delaying a launch because a non-critical detail is not perfect.</li></ul>
+<h3>פרפקציוניזם</h3>
+<p class="pattern-short">שיפורים שוליים צורכים זמן ותשומת לב לא מידתיים.</p>
+<p>פרפקציוניזם נעשה יקר כאשר שיפורים שוליים מקבלים יותר זמן ותשומת לב מערכם המעשי. הבעיה אינה סטנדרט גבוה אלא קושי לעצור כשהעבודה כבר מתאימה למטרה.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשפר מצגת פנימית במשך שעות אחרי שההחלטה כבר ברורה.</li><li>לדחות השקה בגלל פרט לא מהותי.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>People pleasing</h3>
-<p class="pattern-short">Other people’s comfort overrides capacity, priorities, or truth.</p>
-<p>People pleasing occurs when other people’s comfort, approval, or immediate happiness repeatedly overrides your own priorities, boundaries, or accurate communication. It can look cooperative while creating hidden overload and unclear commitments.</p>
-<h4>Examples</h4>
-<ul><li>Accepting work that displaces a more valuable commitment because saying no feels uncomfortable.</li><li>Avoiding a necessary price increase because you fear disappointing a client.</li></ul>
+<h3>ריצוי אנשים</h3>
+<p class="pattern-short">נוחות של אחרים גוברת על קיבולת, עדיפויות או אמת.</p>
+<p>ריצוי אנשים מתרחש כאשר הנוחות והאישור של אחרים גוברים שוב ושוב על סדרי העדיפויות, הגבולות והתקשורת הישירה שלך. כלפי חוץ זה נראה משתף פעולה, אך יוצר עומס והתחייבויות נסתרות.</p>
+<h4>דוגמאות</h4>
+<ul><li>לקחת עבודה נוספת כדי לא לסרב, למרות שהיא דוחקת משימה חשובה יותר.</li><li>לא להעלות מחיר מחשש לאכזב לקוח.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for approval</h3>
-<p class="pattern-short">External agreement becomes a condition for acting clearly.</p>
-<p>The need for approval appears when agreement, praise, or permission from others becomes necessary before you can act with confidence. The issue is not collaboration itself, but when external validation repeatedly delays a decision or changes your position.</p>
-<h4>Examples</h4>
-<ul><li>Rewriting a proposal after it is already clear because you fear the client will dislike it.</li><li>Waiting for several colleagues to agree before making a decision that is already within your responsibility.</li></ul>
+<h3>צורך באישור</h3>
+<p class="pattern-short">הסכמה חיצונית הופכת לתנאי לפעולה ברורה.</p>
+<p>הצורך באישור מופיע כאשר הסכמה, שבח או רשות מאחרים הופכים לתנאי לפעולה בטוחה. הבעיה אינה שיתוף פעולה, אלא מצב שבו אישור חיצוני דוחה החלטות או משנה עמדה שוב ושוב.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשכתב הצעה שכבר מספיק טובה מחשש שהלקוח לא יאהב אותה.</li><li>להמתין להסכמה של כמה עמיתים לפני החלטה שבאחריותך.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Self-doubt</h3>
-<p class="pattern-short">Capability is discounted despite relevant evidence.</p>
-<p>Self-doubt becomes a pattern when relevant evidence of competence is repeatedly discounted. The result can be unnecessary delegation upward, delayed decisions, or reluctance to act without reassurance.</p>
-<h4>Examples</h4>
-<ul><li>Deferring a decision that clearly falls within your expertise.</li><li>Asking for repeated confirmation even after the available evidence supports your choice.</li></ul>
+<h3>ספק עצמי</h3>
+<p class="pattern-short">היכולת מוערכת בחסר למרות ראיות רלוונטיות.</p>
+<p>ספק עצמי הופך לדפוס כאשר ראיות רלוונטיות ליכולת שלך מופחתות שוב ושוב. התוצאה יכולה להיות דחיית החלטות, העברת אחריות וחיפוש אישור מיותר.</p>
+<h4>דוגמאות</h4>
+<ul><li>לדחות החלטה שנמצאת בבירור בתחום המומחיות שלך.</li><li>לבקש אישור נוסף גם כשהראיות כבר תומכות בבחירה.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Impatience</h3>
-<p class="pattern-short">Pressure for speed reduces listening, sequencing, or quality.</p>
-<p>Impatience appears when the need for immediate progress repeatedly overrides listening, sequencing, or the time required for a sound decision. Speed becomes valuable in itself rather than relative to the cost of mistakes.</p>
-<h4>Examples</h4>
-<ul><li>Interrupting discovery questions to move directly to execution.</li><li>Changing direction before a team has enough time to test the current approach.</li></ul>
+<h3>חוסר סבלנות</h3>
+<p class="pattern-short">לחץ למהירות פוגע בהקשבה, סדר או איכות.</p>
+<p>חוסר סבלנות מופיע כאשר הצורך בתוצאה מיידית גובר שוב ושוב על הקשבה, סדר ומשך הזמן הדרוש להחלטה טובה. המהירות הופכת למטרה בפני עצמה.</p>
+<h4>דוגמאות</h4>
+<ul><li>להפסיק שאלות גילוי כדי לעבור מיד לביצוע או מכירה.</li><li>לשנות כיוון לפני שיש מספיק זמן לבדוק את הגישה.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Rumination</h3>
-<p class="pattern-short">Past interactions keep occupying attention after action is possible.</p>
-<p>Rumination is repeated mental replay of a past interaction, mistake, or conflict after useful action is already possible. The event remains active in attention even though replay does not change what happened.</p>
-<h4>Examples</h4>
-<ul><li>Replaying a difficult meeting for hours after it ended.</li><li>Repeatedly reconstructing what you should have said in an argument from yesterday.</li></ul>
+<h3>הרהור חוזר</h3>
+<p class="pattern-short">אינטראקציות מהעבר ממשיכות לתפוס קשב גם כשאפשר לפעול.</p>
+<p>רומינציה היא חזרה מחשבתית על שיחה, טעות או קונפליקט מהעבר לאחר שכבר אפשר לפעול. האירוע ממשיך לתפוס קשב אף שהחזרה עליו אינה משנה דבר.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשחזר פגישה קשה במשך שעות אחרי שהסתיימה.</li><li>לחשוב שוב ושוב מה היית צריך לומר בוויכוח מאתמול.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Fear of failure</h3>
-<p class="pattern-short">Protecting against a poor outcome limits speed or ambition.</p>
-<p>Fear of failure becomes a pattern when protecting yourself from a bad outcome repeatedly takes priority over learning, testing, or acting. Preparation can then continue long after there is enough evidence to move.</p>
-<h4>Examples</h4>
-<ul><li>Keeping a product in preparation instead of launching a controlled test.</li><li>Avoiding a high-value decision because a visible mistake could damage your reputation.</li></ul>
+<h3>פחד מכישלון</h3>
+<p class="pattern-short">הגנה מפני תוצאה גרועה מגבילה מהירות או שאפתנות.</p>
+<p>פחד מכישלון הופך לדפוס כאשר הגנה מפני תוצאה גרועה חשובה שוב ושוב יותר מניסוי, למידה ופעולה. ההכנה נמשכת גם כשכבר יש מספיק מידע להתקדם.</p>
+<h4>דוגמאות</h4>
+<ul><li>להמשיך להכין מוצר במקום לבצע השקה מוגבלת.</li><li>לדחות החלטה חשובה בגלל חשש מטעות גלויה.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Comparison</h3>
-<p class="pattern-short">Other people’s progress disrupts priorities or judgment.</p>
-<p>Comparison becomes costly when another person’s progress or status repeatedly changes your priorities or judgment. External benchmarks can be useful, but the pattern appears when comparison displaces your own strategy.</p>
-<h4>Examples</h4>
-<ul><li>Changing your product direction after seeing a competitor’s announcement.</li><li>Feeling behind because another founder raised more money and then changing plans without evidence.</li></ul>
+<h3>השוואה</h3>
+<p class="pattern-short">התקדמות של אחרים משבשת סדרי עדיפויות או שיקול דעת.</p>
+<p>השוואה נעשית יקרה כאשר ההתקדמות או המעמד של אחרים משנים שוב ושוב את סדרי העדיפויות והשיפוט שלך. מדדים חיצוניים יכולים לעזור, אך הדפוס מופיע כשהם מחליפים את הנתונים שלך.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשנות אסטרטגיה אחרי הודעת מתחרה בלי מידע חדש על השוק שלך.</li><li>לשנות תוכניות רק כי יזם אחר גייס יותר כסף.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for control</h3>
-<p class="pattern-short">Variability feels more costly than personal involvement.</p>
-<p>The need for control appears when uncertainty or variability feels safer if you personally monitor or decide everything. It can reduce delegation, slow execution, and prevent capable people from taking ownership.</p>
-<h4>Examples</h4>
-<ul><li>Keeping routine approvals because someone else might make a different choice.</li><li>Checking every stage of a project after responsibility has already been delegated.</li></ul>
+<h3>צורך בשליטה</h3>
+<p class="pattern-short">שונות מרגישה יקרה יותר ממעורבות אישית.</p>
+<p>הצורך בשליטה מופיע כאשר חוסר ודאות מרגיש בטוח יותר אם אתה מעורב אישית בכל החלטה. הדבר עלול לפגוע באצילה, להאט ביצוע ולמנוע מאחרים לקחת בעלות.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשמור את כל האישורים אצלך מחשש שמישהו יבחר אחרת.</li><li>לבדוק כל שלב בפרויקט שכבר הועבר לאחריות אחרת.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Guilt</h3>
-<p class="pattern-short">Responsibility expands beyond what is accurate or useful.</p>
-<p>Guilt becomes a pattern when responsibility expands beyond what is actually yours, making reasonable boundaries or necessary decisions feel morally wrong. It can turn other people’s disappointment into a reason not to act.</p>
-<h4>Examples</h4>
-<ul><li>Avoiding a necessary boundary because someone may be upset.</li><li>Keeping an ineffective arrangement because changing it makes you feel responsible for the consequences.</li></ul>
+<h3>אשמה</h3>
+<p class="pattern-short">האחריות מתרחבת מעבר למה שמדויק או שימושי.</p>
+<p>אשמה הופכת לדפוס כאשר האחריות מתרחבת מעבר למה שבאמת נמצא בשליטתך. אז גבולות סבירים והחלטות נחוצות מרגישים לא מוסריים.</p>
+<h4>דוגמאות</h4>
+<ul><li>להימנע מהצבת גבול כי מישהו עלול להיפגע.</li><li>להשאיר הסדר לא יעיל כי שינויו מעורר תחושת אחריות.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Defensiveness</h3>
-<p class="pattern-short">Protecting identity competes with receiving useful information.</p>
-<p>Defensiveness appears when protecting your identity, competence, or intentions becomes more important than receiving information. It can block useful feedback and make problems harder to surface early.</p>
-<h4>Examples</h4>
-<ul><li>Explaining why you were right before asking what impact your decision had.</li><li>Rejecting criticism because it feels like a judgment of your competence.</li></ul>
+<h3>התגוננות</h3>
+<p class="pattern-short">הגנה על הזהות מתחרה בקבלת מידע שימושי.</p>
+<p>התגוננות מופיעה כאשר הגנה על זהות, יכולת או כוונה חשובה יותר מקבלת מידע. הדבר עלול לחסום משוב ולהקשות על חשיפת בעיות מוקדם.</p>
+<h4>דוגמאות</h4>
+<ul><li>להסביר קודם למה צדקת במקום להבין את ההשפעה של ההחלטה.</li><li>לדחות ביקורת כי היא מרגישה כמו שיפוט אישי.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Resentment</h3>
-<p class="pattern-short">Unaddressed expectations reduce collaboration and initiative.</p>
-<p>Resentment can build when unspoken expectations, repeated concessions, or perceived unfairness remain unresolved. The pattern often affects cooperation indirectly through withdrawal, irritation, or reduced initiative.</p>
-<h4>Examples</h4>
-<ul><li>Agreeing to work you do not want and later becoming angry that others expect it.</li><li>Withholding support after feeling that your contribution was not appreciated.</li></ul>
+<h3>טינה</h3>
+<p class="pattern-short">ציפיות שלא טופלו מפחיתות שיתוף פעולה ויוזמה.</p>
+<p>טינה יכולה להצטבר מציפיות שלא נאמרו, ויתורים חוזרים או תחושת חוסר הוגנות. הדפוס מתבטא לעיתים בעקיפין: התרחקות, עצבנות או ירידה ביוזמה.</p>
+<h4>דוגמאות</h4>
+<ul><li>להסכים לעבודה שאינך רוצה ואז לכעוס על הציפיות של אחרים.</li><li>להפסיק לעזור אחרי שהרגשת שלא העריכו את תרומתך.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need for certainty</h3>
-<p class="pattern-short">Action waits for information that the situation cannot provide.</p>
-<p>The need for certainty appears when action is postponed until uncertainty falls below a level that reality cannot provide. More analysis can feel productive while actually delaying the decision.</p>
-<h4>Examples</h4>
-<ul><li>Requesting another report even though the remaining uncertainty cannot be resolved.</li><li>Waiting for a perfect market signal before making a reversible move.</li></ul>
+<h3>צורך בוודאות</h3>
+<p class="pattern-short">הפעולה מחכה למידע שהמצב אינו יכול לספק.</p>
+<p>הצורך בוודאות מופיע כאשר פעולה נדחית עד לרמת ודאות שהמציאות אינה יכולה לספק. ניתוח נוסף עשוי להרגיש כמו עבודה, אך בפועל הוא דוחה את ההחלטה.</p>
+<h4>דוגמאות</h4>
+<ul><li>לבקש עוד ניתוח כשהאי־ודאות שנותרה אינה ניתנת לפתרון.</li><li>להמתין לאות שוק מושלם לפני החלטה הפיכה.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Fear of rejection</h3>
-<p class="pattern-short">Possible refusal reduces outreach, negotiation, or direct asks.</p>
-<p>Fear of rejection can make the possibility of hearing “no” influence behavior before a request is even made. The pattern becomes costly when opportunities are filtered out simply because refusal feels threatening.</p>
-<h4>Examples</h4>
-<ul><li>Not asking a prospect for a meeting because you expect they may decline.</li><li>Avoiding a negotiation because you do not want to risk hearing a counteroffer.</li></ul>
+<h3>פחד מדחייה</h3>
+<p class="pattern-short">אפשרות לסירוב מפחיתה פנייה, משא ומתן או בקשה ישירה.</p>
+<p>פחד מדחייה גורם לאפשרות של \&quot;לא\&quot; להשפיע על ההתנהגות עוד לפני שבקשה נאמרה. הדפוס יקר כאשר הזדמנויות נפסלות רק בגלל החשש מסירוב.</p>
+<h4>דוגמאות</h4>
+<ul><li>לא לפנות ללקוח פוטנציאלי מחשש שיסרב.</li><li>להימנע ממשא ומתן כדי לא לשמוע הצעה נגדית.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Anger</h3>
-<p class="pattern-short">Frustration narrows communication and decision range.</p>
-<p>Anger becomes a business pattern when frustration narrows communication or decision-making before the underlying issue is understood. Anger itself is not automatically dysfunctional; the pattern is the loss of choice in how it affects behavior.</p>
-<h4>Examples</h4>
-<ul><li>Sending a sharp message immediately after receiving disappointing news.</li><li>Escalating a disagreement instead of first clarifying the facts.</li></ul>
+<h3>כעס</h3>
+<p class="pattern-short">תסכול מצמצם תקשורת וטווח החלטה.</p>
+<p>כעס הופך לדפוס עסקי כאשר תסכול מצמצם תקשורת או בחירה לפני שהבעיה מובנת. כעס עצמו אינו בהכרח בעייתי; הדפוס הוא אובדן הבחירה באופן התגובה.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשלוח הודעה חריפה מיד אחרי חדשות מאכזבות.</li><li>להסלים ויכוח במקום לבדוק קודם את העובדות.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Micromanagement</h3>
-<p class="pattern-short">Delegated work remains under excessive observation or correction.</p>
-<p>Micromanagement is persistent checking, correction, or intervention after responsibility has been delegated. It often looks like quality control but becomes a pattern when the leader cannot tolerate another person’s way of doing the work.</p>
-<h4>Examples</h4>
-<ul><li>Rewriting an employee’s message instead of reviewing the outcome.</li><li>Requesting frequent status updates on work that is already progressing normally.</li></ul>
+<h3>מיקרו־ניהול</h3>
+<p class="pattern-short">עבודה שהועברה נשארת תחת פיקוח או תיקון מופרזים.</p>
+<p>ניהול־יתר הוא בדיקה, תיקון והתערבות מתמשכים לאחר שהאחריות כבר הואצלה. בקרת איכות הופכת לדפוס כאשר קשה לקבל דרך ביצוע שונה משלך.</p>
+<h4>דוגמאות</h4>
+<ul><li>לשכתב הודעה של עובד במקום לבדוק את התוצאה.</li><li>לבקש עדכונים תכופים על עבודה שמתנהלת כרגיל.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need to be right</h3>
-<p class="pattern-short">Winning the interpretation becomes more important than updating it.</p>
-<p>The need to be right becomes a pattern when defending an interpretation matters more than updating it when new information appears. The cost is often hidden in prolonged arguments, slow learning, or decisions made to preserve position.</p>
-<h4>Examples</h4>
-<ul><li>Continuing an argument after the practical answer is already clear.</li><li>Rejecting a useful idea because accepting it would mean admitting your earlier view was wrong.</li></ul>
+<h3>צורך להיות צודקים</h3>
+<p class="pattern-short">ניצחון בפרשנות חשוב יותר מעדכונה.</p>
+<p>הצורך להיות צודק הופך לדפוס כאשר הגנה על הפרשנות שלך חשובה יותר מעדכון העמדה מול מידע חדש. המחיר מופיע בוויכוחים, בלמידה איטית ובהחלטות שמטרתן לשמור על עמדה.</p>
+<h4>דוגמאות</h4>
+<ul><li>להמשיך ויכוח אחרי שהתשובה המעשית כבר ברורה.</li><li>לדחות רעיון טוב כי קבלתו תחייב להודות שטעית.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Shame</h3>
-<p class="pattern-short">A mistake becomes evidence about personal worth rather than data.</p>
-<p>Shame turns a mistake or weakness into a judgment about personal worth. In business it can encourage hiding problems, avoiding exposure, or protecting an image instead of using information to correct the situation.</p>
-<h4>Examples</h4>
-<ul><li>Hiding an error because admitting it feels like admitting incompetence.</li><li>Avoiding a difficult question because you fear looking unprepared.</li></ul>
+<h3>בושה</h3>
+<p class="pattern-short">טעות הופכת לראיה על הערך העצמי במקום לנתון.</p>
+<p>בושה הופכת טעות או חולשה לשיפוט על הערך האישי. בעסק היא עלולה לעודד הסתרת בעיות, הימנעות מחשיפה והגנה על תדמית במקום תיקון המציאות.</p>
+<h4>דוגמאות</h4>
+<ul><li>להסתיר טעות כי הודאה בה מרגישה כמו הודאה בחוסר יכולת.</li><li>להימנע משאלה קשה מחשש להיראות לא מוכן.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Need to impress</h3>
-<p class="pattern-short">Signaling competence competes with clarity or usefulness.</p>
-<p>The need to impress appears when signaling competence or status competes with clarity, usefulness, or honest communication. Complexity can become a way of protecting an image rather than solving the actual problem.</p>
-<h4>Examples</h4>
-<ul><li>Adding technical complexity to a proposal mainly to look more sophisticated.</li><li>Using jargon instead of a simple explanation because the simple version feels less impressive.</li></ul>
+<h3>צורך להרשים</h3>
+<p class="pattern-short">הצגת יכולת מתחרה בבהירות או בתועלת.</p>
+<p>הצורך להרשים מופיע כאשר הצגת יכולת או סטטוס מתחרה בבהירות ובשימושיות. מורכבות יכולה להפוך לדרך להגן על תדמית במקום לפתור את הבעיה.</p>
+<h4>דוגמאות</h4>
+<ul><li>להוסיף מורכבות טכנית להצעה בעיקר כדי להיראות מתוחכם.</li><li>להשתמש בז׳רגון במקום בהסבר פשוט.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Scarcity mindset</h3>
-<p class="pattern-short">Perceived shortage favors protection over strategic investment.</p>
-<p>A scarcity mindset makes limited resources feel more threatening than the potential value of an investment. It can produce defensive choices even when spending, hiring, or experimentation would create greater long-term value.</p>
-<h4>Examples</h4>
-<ul><li>Rejecting a high-return investment because spending feels unsafe.</li><li>Keeping a critical role vacant despite the cost of lost capacity.</li></ul>
+<h3>תודעת מחסור</h3>
+<p class="pattern-short">מחסור נתפס מעדיף הגנה על פני השקעה אסטרטגית.</p>
+<p>חשיבת מחסור גורמת למשאבים מוגבלים להיראות מאיימים יותר מהערך האפשרי של השקעה. היא עלולה ליצור החלטות הגנתיות גם כאשר השקעה, גיוס או ניסוי עשויים ליצור ערך ארוך טווח.</p>
+<h4>דוגמאות</h4>
+<ul><li>לדחות השקעה עם תשואה גבוהה כי הוצאה מרגישה מסוכנת.</li><li>להשאיר תפקיד קריטי לא מאויש למרות עלות אובדן הקיבולת.</li></ul>
 </article>
 <article class="seo-pattern">
-<h3>Attachment</h3>
-<p class="pattern-short">A preferred outcome becomes difficult to reassess objectively.</p>
-<p>Attachment appears when a preferred outcome becomes difficult to reassess objectively. Identity, sunk effort, or emotional investment can make changing direction feel like losing something rather than responding to new evidence.</p>
-<h4>Examples</h4>
-<ul><li>Continuing a project because you have already invested months in it.</li><li>Rejecting evidence that a strategy should change because the original idea feels personally important.</li></ul>
+<h3>היקשרות</h3>
+<p class="pattern-short">קשה להעריך מחדש תוצאה מועדפת באופן אובייקטיבי.</p>
+<p>היקשרות מופיעה כאשר קשה להעריך מחדש תוצאה רצויה באופן אובייקטיבי. זהות, מאמץ שכבר הושקע או השקעה רגשית יכולים להפוך שינוי כיוון לתחושת הפסד.</p>
+<h4>דוגמאות</h4>
+<ul><li>להמשיך פרויקט רק כי כבר הושקעו בו חודשים.</li><li>להתעלם מנתונים שמצביעים על צורך לשנות אסטרטגיה.</li></ul>
 </article>
 </details>
 </section>
