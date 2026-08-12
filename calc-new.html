@@ -137,6 +137,7 @@
 
 <script>
 const STRINGS = {
+  contextLabel: "This is about: thoughts about your ex — checking their profile, replaying conversations, hoping they'll reach out.",
   universal: [
     { id: "frequency", label: "How often does this emotional reaction come up?" },
     { id: "duration", label: "When it happens, how long does an episode usually last?" },
@@ -206,6 +207,8 @@ function renderProgress(cur,total){
 function renderQuestion(index){
   const qs=allQuestions(); const q=qs[index];
   const div=document.createElement("div");
+  const ctx=document.createElement("p"); ctx.style.cssText="color:var(--muted);font-size:.85rem;margin-bottom:14px;"; ctx.textContent=STRINGS.contextLabel;
+  div.appendChild(ctx);
   div.appendChild(renderProgress(index+1, qs.length+2));
   const card=document.createElement("div"); card.className="calc-card";
   card.innerHTML=`<span class="q-label">${q.label}</span><div class="scale">${STRINGS.scale.map((l,i)=>`<button data-val="${i}" class="${state.answers[q.id]===i?"active":""}">${l}</button>`).join("")}</div>`;

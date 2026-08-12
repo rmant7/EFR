@@ -137,6 +137,7 @@
 
 <script>
 const STRINGS = {
+  contextLabel: "Речь про: мысли о бывшем — проверку его/её страниц, прокрутку разговоров в голове, надежду, что он/она напишет.",
   universal: [
     { id: "frequency", label: "Как часто это чувство накатывает?" },
     { id: "duration", label: "Когда это происходит, сколько обычно длится один такой эпизод?" },
@@ -206,6 +207,8 @@ function renderProgress(cur,total){
 function renderQuestion(index){
   const qs=allQuestions(); const q=qs[index];
   const div=document.createElement("div");
+  const ctx=document.createElement("p"); ctx.style.cssText="color:var(--muted);font-size:.85rem;margin-bottom:14px;"; ctx.textContent=STRINGS.contextLabel;
+  div.appendChild(ctx);
   div.appendChild(renderProgress(index+1, qs.length+2));
   const card=document.createElement("div"); card.className="calc-card";
   card.innerHTML=`<span class="q-label">${q.label}</span><div class="scale">${STRINGS.scale.map((l,i)=>`<button data-val="${i}" class="${state.answers[q.id]===i?"active":""}">${l}</button>`).join("")}</div>`;
