@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emotional Impact Calculator | EFR</title>
+<meta name="description" content="A short, private calculator that estimates how much of your life a recurring emotional pattern is currently taking — and what to do about it.">
+<link rel="canonical" href="https://emotions.help/calc-new/">
+<link rel="alternate" hreflang="en" href="https://emotions.help/calc-new/">
+<link rel="alternate" hreflang="ru" href="https://emotions.help/ru/calc-new/">
+<link rel="alternate" hreflang="he" href="https://emotions.help/he/calc-new/">
+<link rel="alternate" hreflang="x-default" href="https://emotions.help/calc-new/">
+<meta property="og:title" content="Emotional Impact Calculator | EFR">
+<meta property="og:description" content="A short, private calculator that estimates how much of your life a recurring emotional pattern is currently taking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emotions.help/calc-new/">
+<meta property="og:locale" content="en_US">
+<style>
+  :root{--bg:#0b0b0d;--fg:#f2f2f0;--muted:#9a9a95;--accent:#c9a86a;--card:#151517;--border:#2a2a2d;--danger:#e2574c;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5;}
+  .wrap{max-width:640px;margin:0 auto;padding:32px 20px 80px;}
+  h1{font-size:1.6rem;font-weight:600;margin:0 0 12px;}
+  h2{font-size:1.2rem;font-weight:600;margin:0 0 8px;}
+  p{color:var(--muted);margin:0 0 20px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;}
+  .q-label{font-weight:500;margin-bottom:10px;display:block;color:var(--fg);}
+  .scale{display:flex;gap:6px;}
+  .scale button{flex:1;padding:10px 4px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:0.75rem;cursor:pointer;}
+  .scale button.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
+  .yn{display:flex;gap:10px;}
+  .yn button{flex:1;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--fg);font-size:1rem;cursor:pointer;}
+  .yn button.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
+  .btn-secondary{display:inline-block;padding:12px 20px;background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:10px;font-size:0.95rem;cursor:pointer;margin-top:8px;}
+  .safety-note{font-size:0.85rem;color:var(--muted);background:#1b1b1e;border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;}
+  .metric{font-size:2rem;font-weight:700;margin:4px 0;}
+  .metric-label{color:var(--muted);font-size:0.85rem;text-transform:uppercase;letter-spacing:.04em;}
+  .impact-tag{display:inline-block;padding:4px 12px;border-radius:999px;font-size:0.8rem;font-weight:600;margin-bottom:8px;}
+  .impact-low{background:#1e3a2b;color:#7fd99a;}
+  .impact-moderate{background:#3a331e;color:#e0c07f;}
+  .impact-high{background:#3a1e1e;color:#e08f7f;}
+  .crisis-screen .card{border-color:var(--danger);}
+  .crisis-resource{padding:12px 0;border-bottom:1px solid var(--border);}
+  .crisis-resource:last-child{border-bottom:none;}
+  .crisis-resource b{display:block;}
+  .crisis-resource span{color:var(--muted);font-size:0.9rem;}
+  .progress{height:3px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--accent);transition:width .2s;}
+  a.cta-link{color:var(--accent);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+const STRINGS = {
+  universal: [
+    { id: "frequency", label: "How often does this emotional reaction come up?" },
+    { id: "duration", label: "When it happens, how long does an episode usually last?" },
+    { id: "intrusion", label: "How much does it occupy your thoughts even outside those moments?" },
+    { id: "concentration", label: "How much does it interfere with your concentration or focus?" },
+    { id: "sleep", label: "How much does it affect your sleep?" },
+    { id: "functioning", label: "How much does it affect your ability to function day-to-day?" },
+    { id: "recovery", label: "After an episode, how long does it take to feel back to normal?" },
+  ],
+  specific: [
+    { id: "checking", label: "How often do you check their social media, messages, or mutual contacts?" },
+    { id: "replaying", label: "How often do you replay conversations or imagine what you should have said?" },
+  ],
+  scale: ["Not at all", "A little", "Moderately", "A lot", "Almost constantly"],
+  safetyTitle: "A safety check",
+  safetyNote: "Some people experience intense emotional distress after major life events. This question is optional and does not affect your results above.",
+  safetyQuestion: "Are you currently having thoughts that you would be better off dead, or of hurting yourself in some way?",
+  yes: "Yes", no: "No", back: "Back",
+  loadLabel: "Emotional Load", hoursPerDay: "hours / day",
+  persistent: "Persistent / near-continuous",
+  loadNote: "This is not the cost of what happened. It's the amount of your life currently being consumed by your emotional response to it.",
+  impactCaption: "Based on your answers about sleep, concentration, and daily functioning.",
+  impactLow: "Low functional impact", impactModerate: "Moderate functional impact", impactHigh: "High functional impact",
+  highImpactNote: "Your answers also indicate significant disruption to sleep, concentration, or daily functioning. This calculator cannot determine the cause of these symptoms. If this has been persistent or is getting worse, consider speaking with a qualified mental-health professional. EFR is designed to work with recurring emotional patterns and is not a substitute for professional mental-health care.",
+  ctaTitle: "Emotional Impact Calculator", ctaSubtitle: "For thoughts you can't seem to stop",
+  ctaLink: "Book a free intro conversation →", ctaHref: "https://calendly.com/roman-mantelmakher/intro-call",
+  crisisTitle: "Your immediate wellbeing comes first.",
+  crisisBody: "Your answer indicates that you may be experiencing a level of distress that requires immediate human support. This calculator cannot assess your safety or provide crisis care.",
+  crisisOther: "If none of these apply to you, please search for the crisis line in your country, or contact your local emergency services.",
+  crisisDanger: "If you are in immediate danger, contact your local emergency services or go to the nearest emergency department.",
+};
+const CRISIS_RESOURCES = [
+  { country: "United States", detail: "988 — call, text, or chat, 24/7" },
+  { country: "Israel", detail: "ERAN — 1201, 24/7, anonymous" },
+  { country: "Russia", detail: "112 — единый номер экстренных служб / 8-800-2000-122 — линия психологической помощи МЧС, бесплатно, круглосуточно" },
+];
+let state = { step: 1, answers: {}, safety: null };
+function allQuestions(){ return [...STRINGS.universal, ...STRINGS.specific]; }
+function computeEmotionalLoad(){
+  const qs = allQuestions();
+  const vals = qs.map(q => state.answers[q.id] ?? 0);
+  const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
+  const raw = avg*4;
+  const capped = Math.min(raw,16);
+  const nearContinuous = vals.filter(v=>v>=3).length >= Math.ceil(vals.length*0.7);
+  return { hoursPerDay: capped, nearContinuous };
+}
+function computeFunctionalImpact(){
+  const keys=["concentration","sleep","functioning"];
+  const vals=keys.map(k=>state.answers[k]??0);
+  const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+  if(avg>=3) return "high"; if(avg>=1.5) return "moderate"; return "low";
+}
+const app=document.getElementById("app");
+function render(){
+  app.innerHTML="";
+  const qs=allQuestions();
+  if(state.step<=qs.length) return renderQuestion(state.step-1);
+  if(state.step===qs.length+1) return renderSafety();
+  return renderResult();
+}
+function renderProgress(cur,total){
+  const p=document.createElement("div"); p.className="progress";
+  p.innerHTML=`<div class="progress-fill" style="width:${(cur/total)*100}%"></div>`;
+  return p;
+}
+function renderQuestion(index){
+  const qs=allQuestions(); const q=qs[index];
+  const div=document.createElement("div");
+  div.appendChild(renderProgress(index+1, qs.length+2));
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<span class="q-label">${q.label}</span><div class="scale">${STRINGS.scale.map((l,i)=>`<button data-val="${i}" class="${state.answers[q.id]===i?"active":""}">${l}</button>`).join("")}</div>`;
+  card.querySelectorAll("button").forEach(btn=>{
+    btn.addEventListener("click",()=>{ state.answers[q.id]=parseInt(btn.dataset.val,10); state.step+=1; render(); });
+  });
+  div.appendChild(card);
+  if(index>0){
+    const back=document.createElement("button"); back.className="btn-secondary"; back.textContent=STRINGS.back;
+    back.addEventListener("click",()=>{ state.step-=1; render(); });
+    div.appendChild(back);
+  }
+  app.appendChild(div);
+}
+function renderSafety(){
+  const qs=allQuestions();
+  const div=document.createElement("div");
+  div.appendChild(renderProgress(qs.length+1, qs.length+2));
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<h2>${STRINGS.safetyTitle}</h2><div class="safety-note">${STRINGS.safetyNote}</div><span class="q-label">${STRINGS.safetyQuestion}</span><div class="yn"><button data-val="no">${STRINGS.no}</button><button data-val="yes">${STRINGS.yes}</button></div>`;
+  card.querySelectorAll(".yn button").forEach(btn=>{
+    btn.addEventListener("click",()=>{ state.safety=btn.dataset.val; state.step+=1; render(); });
+  });
+  div.appendChild(card); app.appendChild(div);
+}
+function renderResult(){
+  if(state.safety==="yes") return renderCrisisScreen();
+  const load=computeEmotionalLoad(); const impact=computeFunctionalImpact();
+  const div=document.createElement("div");
+  const loadCard=document.createElement("div"); loadCard.className="card";
+  loadCard.innerHTML = load.nearContinuous
+    ? `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric">${STRINGS.persistent}</div><p style="margin-top:8px;">${STRINGS.loadNote}</p>`
+    : `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric">${load.hoursPerDay.toFixed(1)} ${STRINGS.hoursPerDay}</div><p style="margin-top:8px;">${STRINGS.loadNote}</p>`;
+  div.appendChild(loadCard);
+  const impactCard=document.createElement("div"); impactCard.className="card";
+  const tagClass = impact==="high"?"impact-high":impact==="moderate"?"impact-moderate":"impact-low";
+  const tagText = impact==="high"?STRINGS.impactHigh:impact==="moderate"?STRINGS.impactModerate:STRINGS.impactLow;
+  impactCard.innerHTML=`<span class="impact-tag ${tagClass}">${tagText}</span><p>${STRINGS.impactCaption}</p>`;
+  div.appendChild(impactCard);
+  if(impact==="high"){
+    const proCard=document.createElement("div"); proCard.className="card";
+    proCard.innerHTML=`<p style="margin-bottom:0;">${STRINGS.highImpactNote}</p>`;
+    div.appendChild(proCard);
+  }
+  const ctaCard=document.createElement("div"); ctaCard.className="card";
+  ctaCard.innerHTML=`<h2>${STRINGS.ctaTitle}</h2><p>${STRINGS.ctaSubtitle}</p><a class="cta-link" href="${STRINGS.ctaHref}" target="_blank" rel="noopener">${STRINGS.ctaLink}</a>`;
+  div.appendChild(ctaCard);
+  app.appendChild(div);
+}
+function renderCrisisScreen(){
+  const div=document.createElement("div"); div.className="crisis-screen";
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<h2>${STRINGS.crisisTitle}</h2><p>${STRINGS.crisisBody}</p>${CRISIS_RESOURCES.map(r=>`<div class="crisis-resource"><b>${r.country}</b><span>${r.detail}</span></div>`).join("")}<p style="margin-top:16px;">${STRINGS.crisisOther}</p><p style="margin-bottom:0;">${STRINGS.crisisDanger}</p>`;
+  div.appendChild(card); app.appendChild(div);
+}
+render();
+</script>
+</body>
+</html>
