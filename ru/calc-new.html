@@ -1,56 +1,140 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="ru" dir="ltr" data-theme="system">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Калькулятор эмоционального воздействия | EFR</title>
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="Короткий, приватный тест: сколько вашей жизни сейчас забирает повторяющаяся эмоциональная реакция — и что с этим можно сделать.">
-<link rel="canonical" href="https://emotions.help/ru/calc-new/">
-<link rel="alternate" hreflang="en" href="https://emotions.help/calc-new/">
-<link rel="alternate" hreflang="ru" href="https://emotions.help/ru/calc-new/">
-<link rel="alternate" hreflang="he" href="https://emotions.help/he/calc-new/">
-<link rel="alternate" hreflang="x-default" href="https://emotions.help/calc-new/">
+<title>Калькулятор эмоционального воздействия | EFR</title>
+<link rel="canonical" href="https://emotions.help/ru/calc-new.html">
+<link rel="alternate" hreflang="en" href="https://emotions.help/calc-new.html">
+<link rel="alternate" hreflang="ru" href="https://emotions.help/ru/calc-new.html">
+<link rel="alternate" hreflang="he" href="https://emotions.help/he/calc-new.html">
+<link rel="alternate" hreflang="x-default" href="https://emotions.help/calc-new.html">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Калькулятор эмоционального воздействия | EFR">
 <meta property="og:description" content="Короткий, приватный тест: сколько вашей жизни сейчас забирает повторяющаяся эмоциональная реакция.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://emotions.help/ru/calc-new/">
+<meta property="og:url" content="https://emotions.help/ru/calc-new.html">
 <meta property="og:locale" content="ru_RU">
+<link rel="stylesheet" href="/assets/style.css">
 <style>
-  :root{--bg:#0b0b0d;--fg:#f2f2f0;--muted:#9a9a95;--accent:#c9a86a;--card:#151517;--border:#2a2a2d;--danger:#e2574c;}
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5;}
-  .wrap{max-width:640px;margin:0 auto;padding:32px 20px 80px;}
-  h1{font-size:1.6rem;font-weight:600;margin:0 0 12px;}
-  h2{font-size:1.2rem;font-weight:600;margin:0 0 8px;}
-  p{color:var(--muted);margin:0 0 20px;}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;}
-  .q-label{font-weight:500;margin-bottom:10px;display:block;color:var(--fg);}
-  .scale{display:flex;gap:6px;}
-  .scale button{flex:1;padding:10px 4px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:0.72rem;cursor:pointer;}
-  .scale button.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
+  main{min-height:calc(100vh - 158px);}
+  .calc-wrap{max-width:680px;margin:0 auto;padding:40px 0 90px;}
+  .q-label{font-weight:750;margin-bottom:14px;display:block;font-size:1.05rem;}
+  .scale{display:flex;gap:6px;flex-wrap:wrap;}
+  .scale button{flex:1;min-width:60px;padding:12px 4px;background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:.76rem;cursor:pointer;transition:border-color .18s ease,background .18s ease;}
+  .scale button:hover{border-color:var(--accent);}
+  .scale button.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;}
   .yn{display:flex;gap:10px;}
-  .yn button{flex:1;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--fg);font-size:1rem;cursor:pointer;}
-  .yn button.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600;}
-  .btn-secondary{display:inline-block;padding:12px 20px;background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:10px;font-size:0.95rem;cursor:pointer;margin-top:8px;}
-  .safety-note{font-size:0.85rem;color:var(--muted);background:#1b1b1e;border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;}
-  .metric{font-size:2rem;font-weight:700;margin:4px 0;}
-  .metric-label{color:var(--muted);font-size:0.85rem;text-transform:uppercase;letter-spacing:.04em;}
-  .impact-tag{display:inline-block;padding:4px 12px;border-radius:999px;font-size:0.8rem;font-weight:600;margin-bottom:8px;}
-  .impact-low{background:#1e3a2b;color:#7fd99a;}
-  .impact-moderate{background:#3a331e;color:#e0c07f;}
-  .impact-high{background:#3a1e1e;color:#e08f7f;}
-  .crisis-screen .card{border-color:var(--danger);}
-  .crisis-resource{padding:12px 0;border-bottom:1px solid var(--border);}
-  .crisis-resource:last-child{border-bottom:none;}
-  .crisis-resource b{display:block;}
-  .crisis-resource span{color:var(--muted);font-size:0.9rem;}
-  .progress{height:3px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden;}
-  .progress-fill{height:100%;background:var(--accent);transition:width .2s;}
-  a.cta-link{color:var(--accent);text-decoration:none;font-weight:600;}
+  .yn button{flex:1;min-height:48px;background:var(--surface-solid);border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);font-size:1rem;cursor:pointer;}
+  .yn button.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;}
+  .safety-note{font-size:.86rem;color:var(--muted);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+  .calc-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);backdrop-filter:blur(20px);padding:28px;margin-bottom:16px;}
+  .metric-label{color:var(--muted);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+  .metric-value{font-family:var(--display);font-size:2.6rem;letter-spacing:-.04em;margin:10px 0 4px;}
+  .impact-tag{display:inline-block;padding:5px 14px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:10px;}
+  .impact-low{background:var(--accent-soft);color:var(--accent);}
+  .impact-moderate{background:rgba(181,109,59,.14);color:var(--accent-2);}
+  .impact-high{background:rgba(163,66,54,.12);color:var(--danger);}
+  .crisis-card{border-color:var(--danger);}
+  .crisis-resource{padding:14px 0;border-bottom:1px solid var(--line);}
+  .crisis-resource:last-child{border-bottom:0;}
+  .crisis-resource b{display:block;margin-bottom:2px;}
+  .crisis-resource span{color:var(--muted);font-size:.9rem;}
 </style>
 </head>
 <body>
-<div class="wrap" id="app"></div>
+<div class="app-shell">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="/ru/">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg>
+      <span>EFR</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/ru/#about">О методе</a>
+      <a href="/ru/#roman">Об авторе</a>
+      <a href="/ru/#testimonials">Отзывы</a>
+      <a href="/ru/for-founders/">Основателям</a>
+      <a href="/ru/for-executives/">Руководителям</a>
+      <a href="/ru/for-breakup/">После расставания</a>
+    </nav>
+    <div class="preferences">
+      <a class="compact-select lang-link" href="/calc-new.html" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">EN</a>
+      <a class="compact-select lang-link current" href="/ru/calc-new.html" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">RU</a>
+      <a class="compact-select lang-link" href="/he/calc-new.html" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">HE</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </header>
+  <nav id="mobileNav" class="mobile-nav" aria-label="Mobile">
+    <a href="/ru/#about">О методе</a>
+    <a href="/ru/#roman">Об авторе</a>
+    <a href="/ru/#testimonials">Отзывы</a>
+    <a href="/ru/for-founders/">Основателям</a>
+    <a href="/ru/for-executives/">Руководителям</a>
+    <a href="/ru/for-breakup/">После расставания</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div class="app-shell calc-wrap" id="app"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="app-shell footer-grid">
+    <p style="max-width:520px;">EFR — авторский метод работы с эмоциональными паттернами, влияющими на решения и лидерство. Не заменяет медицинское или психологическое лечение.</p>
+    <div class="footer-links">
+      <a href="mailto:roman.mantelmakher@gmail.com">roman.mantelmakher@gmail.com</a>
+      <a href="https://linkedin.com/in/roman-mantelmakher/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg>
+</button>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111299584', 'ym');
+    ym(111299584, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111299584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script>
+(function () {
+  "use strict";
+  const themeKey = "efr_home_theme";
+  const theme = localStorage.getItem(themeKey) || "system";
+  document.documentElement.dataset.theme = theme;
+  const navToggle = document.getElementById("navToggle");
+  const mobileNav = document.getElementById("mobileNav");
+  navToggle.addEventListener("click", () => {
+    const open = mobileNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    mobileNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }));
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backToTop.classList.toggle("visible", window.scrollY > 480);
+  }, { passive: true });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();
+</script>
+
 <script>
 const STRINGS = {
   universal: [
@@ -78,7 +162,7 @@ const STRINGS = {
   impactLow: "Низкое влияние на повседневность", impactModerate: "Умеренное влияние на повседневность", impactHigh: "Сильное влияние на повседневность",
   highImpactNote: "Ваши ответы также говорят о заметных нарушениях сна, концентрации или повседневных дел. Этот калькулятор не может определить причину этих симптомов. Если это продолжается долго или усиливается, стоит обратиться к квалифицированному специалисту по психическому здоровью. EFR создан для работы с повторяющимися эмоциональными паттернами и не заменяет профессиональную помощь.",
   ctaTitle: "Калькулятор эмоционального воздействия", ctaSubtitle: "Для мыслей, которые не отпускают",
-  ctaLink: "Записаться на бесплатный вводный разговор →", ctaHref: "https://calendly.com/roman-mantelmakher/intro-call",
+  ctaLink: "Записаться на бесплатный вводный разговор", ctaHref: "https://calendly.com/roman-mantelmakher/intro-call",
   crisisTitle: "Сейчас важнее всего ваше состояние.",
   crisisBody: "Ваш ответ говорит о том, что вам может понадобиться немедленная поддержка человека. Этот калькулятор не может оценить вашу безопасность и не заменяет экстренную помощь.",
   crisisOther: "Если ничего из этого не подходит для вашей страны, пожалуйста, найдите местную линию психологической помощи или обратитесь в экстренные службы.",
@@ -115,7 +199,7 @@ function render(){
   return renderResult();
 }
 function renderProgress(cur,total){
-  const p=document.createElement("div"); p.className="progress";
+  const p=document.createElement("div"); p.className="progress-track";
   p.innerHTML=`<div class="progress-fill" style="width:${(cur/total)*100}%"></div>`;
   return p;
 }
@@ -123,14 +207,14 @@ function renderQuestion(index){
   const qs=allQuestions(); const q=qs[index];
   const div=document.createElement("div");
   div.appendChild(renderProgress(index+1, qs.length+2));
-  const card=document.createElement("div"); card.className="card";
+  const card=document.createElement("div"); card.className="calc-card";
   card.innerHTML=`<span class="q-label">${q.label}</span><div class="scale">${STRINGS.scale.map((l,i)=>`<button data-val="${i}" class="${state.answers[q.id]===i?"active":""}">${l}</button>`).join("")}</div>`;
   card.querySelectorAll("button").forEach(btn=>{
     btn.addEventListener("click",()=>{ state.answers[q.id]=parseInt(btn.dataset.val,10); state.step+=1; render(); });
   });
   div.appendChild(card);
   if(index>0){
-    const back=document.createElement("button"); back.className="btn-secondary"; back.textContent=STRINGS.back;
+    const back=document.createElement("button"); back.className="button ghost"; back.style.marginTop="4px"; back.textContent=STRINGS.back;
     back.addEventListener("click",()=>{ state.step-=1; render(); });
     div.appendChild(back);
   }
@@ -140,8 +224,8 @@ function renderSafety(){
   const qs=allQuestions();
   const div=document.createElement("div");
   div.appendChild(renderProgress(qs.length+1, qs.length+2));
-  const card=document.createElement("div"); card.className="card";
-  card.innerHTML=`<h2>${STRINGS.safetyTitle}</h2><div class="safety-note">${STRINGS.safetyNote}</div><span class="q-label">${STRINGS.safetyQuestion}</span><div class="yn"><button data-val="no">${STRINGS.no}</button><button data-val="yes">${STRINGS.yes}</button></div>`;
+  const card=document.createElement("div"); card.className="calc-card";
+  card.innerHTML=`<h2 style="font-family:var(--display);font-weight:400;font-size:1.4rem;margin-bottom:10px;">${STRINGS.safetyTitle}</h2><div class="safety-note">${STRINGS.safetyNote}</div><span class="q-label">${STRINGS.safetyQuestion}</span><div class="yn"><button data-val="no">${STRINGS.no}</button><button data-val="yes">${STRINGS.yes}</button></div>`;
   card.querySelectorAll(".yn button").forEach(btn=>{
     btn.addEventListener("click",()=>{ state.safety=btn.dataset.val; state.step+=1; render(); });
   });
@@ -151,30 +235,30 @@ function renderResult(){
   if(state.safety==="yes") return renderCrisisScreen();
   const load=computeEmotionalLoad(); const impact=computeFunctionalImpact();
   const div=document.createElement("div");
-  const loadCard=document.createElement("div"); loadCard.className="card";
+  const loadCard=document.createElement("div"); loadCard.className="calc-card";
   loadCard.innerHTML = load.nearContinuous
-    ? `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric">${STRINGS.persistent}</div><p style="margin-top:8px;">${STRINGS.loadNote}</p>`
-    : `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric">${load.hoursPerDay.toFixed(1)} ${STRINGS.hoursPerDay}</div><p style="margin-top:8px;">${STRINGS.loadNote}</p>`;
+    ? `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric-value">${STRINGS.persistent}</div><p style="color:var(--muted);margin:0;">${STRINGS.loadNote}</p>`
+    : `<div class="metric-label">${STRINGS.loadLabel}</div><div class="metric-value">${load.hoursPerDay.toFixed(1)} ${STRINGS.hoursPerDay}</div><p style="color:var(--muted);margin:0;">${STRINGS.loadNote}</p>`;
   div.appendChild(loadCard);
-  const impactCard=document.createElement("div"); impactCard.className="card";
+  const impactCard=document.createElement("div"); impactCard.className="calc-card";
   const tagClass = impact==="high"?"impact-high":impact==="moderate"?"impact-moderate":"impact-low";
   const tagText = impact==="high"?STRINGS.impactHigh:impact==="moderate"?STRINGS.impactModerate:STRINGS.impactLow;
-  impactCard.innerHTML=`<span class="impact-tag ${tagClass}">${tagText}</span><p>${STRINGS.impactCaption}</p>`;
+  impactCard.innerHTML=`<span class="impact-tag ${tagClass}">${tagText}</span><p style="color:var(--muted);margin:0;">${STRINGS.impactCaption}</p>`;
   div.appendChild(impactCard);
   if(impact==="high"){
-    const proCard=document.createElement("div"); proCard.className="card";
-    proCard.innerHTML=`<p style="margin-bottom:0;">${STRINGS.highImpactNote}</p>`;
+    const proCard=document.createElement("div"); proCard.className="calc-card";
+    proCard.innerHTML=`<p style="margin:0;color:var(--muted);">${STRINGS.highImpactNote}</p>`;
     div.appendChild(proCard);
   }
-  const ctaCard=document.createElement("div"); ctaCard.className="card";
-  ctaCard.innerHTML=`<h2>${STRINGS.ctaTitle}</h2><p>${STRINGS.ctaSubtitle}</p><a class="cta-link" href="${STRINGS.ctaHref}" target="_blank" rel="noopener">${STRINGS.ctaLink}</a>`;
+  const ctaCard=document.createElement("div"); ctaCard.className="calc-card";
+  ctaCard.innerHTML=`<h2 style="font-family:var(--display);font-weight:400;font-size:1.5rem;margin-bottom:6px;">${STRINGS.ctaTitle}</h2><p style="color:var(--muted);margin-bottom:16px;">${STRINGS.ctaSubtitle}</p><a class="button accent" href="${STRINGS.ctaHref}" target="_blank" rel="noopener">${STRINGS.ctaLink}</a>`;
   div.appendChild(ctaCard);
   app.appendChild(div);
 }
 function renderCrisisScreen(){
-  const div=document.createElement("div"); div.className="crisis-screen";
-  const card=document.createElement("div"); card.className="card";
-  card.innerHTML=`<h2>${STRINGS.crisisTitle}</h2><p>${STRINGS.crisisBody}</p>${CRISIS_RESOURCES.map(r=>`<div class="crisis-resource"><b>${r.country}</b><span>${r.detail}</span></div>`).join("")}<p style="margin-top:16px;">${STRINGS.crisisOther}</p><p style="margin-bottom:0;">${STRINGS.crisisDanger}</p>`;
+  const div=document.createElement("div");
+  const card=document.createElement("div"); card.className="calc-card crisis-card";
+  card.innerHTML=`<h2 style="font-family:var(--display);font-weight:400;font-size:1.5rem;margin-bottom:10px;">${STRINGS.crisisTitle}</h2><p style="color:var(--muted);">${STRINGS.crisisBody}</p>${CRISIS_RESOURCES.map(r=>`<div class="crisis-resource"><b>${r.country}</b><span>${r.detail}</span></div>`).join("")}<p style="margin-top:16px;color:var(--muted);">${STRINGS.crisisOther}</p><p style="margin-bottom:0;color:var(--muted);">${STRINGS.crisisDanger}</p>`;
   div.appendChild(card); app.appendChild(div);
 }
 render();

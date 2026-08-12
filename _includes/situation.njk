@@ -1,0 +1,36 @@
+---
+layout: base.njk
+ogType: website
+---
+{% if faqItems %}{% faqSchema faqItems %}{% endif %}
+<div class="app-shell">
+  <section style="max-width:820px;margin:40px auto;padding-top:0;border-top:0;">
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,4.5vw,3.4rem);">{{ h1 }}</h1>
+    <div class="about-copy" style="margin-top:24px;">
+      {{ content | safe }}
+    </div>
+    <div class="hero-actions" style="margin-top:36px;">
+      <a class="button accent" href="{{ calcUrl }}">{{ ctaPrimary }}</a>
+      <a class="button ghost" href="{{ site.homeUrl[lang] }}#book">{{ i18n[lang].hero.ctaSecondary }}</a>
+    </div>
+    <p class="time-note" style="margin-top:14px;">{{ i18n[lang].hero.note }}</p>
+  </section>
+
+  {% if faqItems %}
+  <section style="max-width:820px;margin:0 auto;">
+    <div class="section-head">
+      <p class="eyebrow">{{ i18n[lang].faq.eyebrow }}</p>
+      <h2 class="section-title">{{ faqTitle }}</h2>
+    </div>
+    <div class="faq-list">
+      {% for item in faqItems %}
+      <details class="faq-item">
+        <summary>{{ item.q }}</summary>
+        <p>{{ item.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>

@@ -14,7 +14,8 @@
       "calculator": "Calculator",
       "faq": "FAQ",
       "forFounders": "For Founders",
-      "forExecutives": "For Executives"
+      "forExecutives": "For Executives",
+      "forBreakup": "For Breakup"
     },
     "hero": {
       "eyebrow": "EFR — Emotional Factory Reset",
@@ -141,7 +142,8 @@
       "calculator": "Калькулятор",
       "faq": "Вопросы",
       "forFounders": "Основателям",
-      "forExecutives": "Руководителям"
+      "forExecutives": "Руководителям",
+      "forBreakup": "После расставания"
     },
     "hero": {
       "eyebrow": "EFR — Обнуление эмоционального паттерна",
@@ -268,7 +270,8 @@
       "calculator": "מחשבון",
       "faq": "שאלות",
       "forFounders": "למייסדים",
-      "forExecutives": "למנהלים"
+      "forExecutives": "למנהלים",
+      "forBreakup": "לאחר פרידה"
     },
     "hero": {
       "eyebrow": "EFR — איפוס רגשי",

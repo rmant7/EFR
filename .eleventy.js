@@ -9,13 +9,30 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("calc.html");
   eleventyConfig.ignores.add("ru/calc.html");
   eleventyConfig.ignores.add("he/calc.html");
+  eleventyConfig.ignores.add("calc-new.html");
+  eleventyConfig.ignores.add("ru/calc-new.html");
+  eleventyConfig.ignores.add("he/calc-new.html");
   eleventyConfig.ignores.add("README.md");
+
+  // Stray orphaned files from an earlier incorrect deploy — these are raw
+  // HTML with no frontmatter/layout and would otherwise collide with the
+  // real content/situations/*/breakup.md pages (permalink /for-breakup/,
+  // /ru/for-breakup/, /he/for-breakup/). Ignored entirely, not passed
+  // through, so they are simply dropped from the build.
+  eleventyConfig.ignores.add("for-breakup.html");
+  eleventyConfig.ignores.add("ru/for-breakup.html");
+  eleventyConfig.ignores.add("he/for-breakup.html");
+  eleventyConfig.ignores.add("ru-for-breakup.html");
+  eleventyConfig.ignores.add("he-for-breakup.html");
 
   // Static assets copied as-is
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("calc.html");
   eleventyConfig.addPassthroughCopy("ru/calc.html");
   eleventyConfig.addPassthroughCopy("he/calc.html");
+  eleventyConfig.addPassthroughCopy("calc-new.html");
+  eleventyConfig.addPassthroughCopy("ru/calc-new.html");
+  eleventyConfig.addPassthroughCopy("he/calc-new.html");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("a9b824cadb14c5dda4814dccd65dabf8.txt");
 
